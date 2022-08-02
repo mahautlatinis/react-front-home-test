@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./styles.css";
-import Recipes from "./Recipes/Recipes";
+import Recipes from "./components/Recipes/Recipes";
 import {
   allRecipes,
   sugarRecipes,
@@ -11,9 +11,9 @@ import {
   autumnRecipes,
   veganRecipes,
   chocolateDessertRecipes,
-} from "./Recipes/RecipeData";
-import { TagList } from "./Tagfilter/ListeDesTags";
-import { tagList } from "./Tags/TagData";
+} from "./components/Recipes/RecipeData";
+import { TagList } from "./components/Tagfilter/ListeDesTags";
+import { tagList } from "./components/Tags/TagData";
 
 export default function App() {
   const [filter, setFilter] = useState<string>("all");
