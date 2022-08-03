@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect} from "react";
-import { RecipeContext } from "../../../context/RecipeContext";
+import { MenuContext } from "../../../context/MenuContext";
 import { RecipeTagList } from "../../../assets/mock_data/TagData";
 import TagItem from "../TagItem/TagItem";
 import { TagInterface } from "../../../interfaces/Tag/Tag.interface";
@@ -9,24 +9,24 @@ import { TagCategoryInterface } from "../../../interfaces/Tag/TagCategory.interf
 
 export default function RecipeTag()
 {
-	const recipeContext = useContext(RecipeContext);
+	const menuContext = useContext(MenuContext);
 	//const [dependentRecipes, setdependentRecipes] = useState<TagInterface[]>()
 	const [selectedCat, setSelectedCat] = useState<TagCategoryInterface[]>()
 	const [nbSelectedCategories, setNbSelectedCategories] = useState<number>(0)
 
 	useEffect(() => {
-		if (recipeContext?.currentRecipes.menuTags)
+		if (menuContext?.currentRecipes.menuTags)
 		{
-			setSelectedCat(recipeContext?.currentRecipes.menuTags);
+			setSelectedCat(menuContext?.currentRecipes.menuTags);
 			// en fonction des menuTags on doit chercher les "recipe" tags correspondants
 			console.log(selectedCat)
 		}
 		
-		if (recipeContext?.currentRecipes.selectedMenu.length)
+		if (menuContext?.currentRecipes.selectedMenu.length)
 		{
-			setNbSelectedCategories(recipeContext.currentRecipes.selectedMenu.length);
+			setNbSelectedCategories(menuContext.currentRecipes.selectedMenu.length);
 		}
-	}, [recipeContext])
+	}, [menuContext])
 	
 	return(
 		<div className="recipe-tag">

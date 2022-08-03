@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import "./assets/styles/styles.css"
 import Tag from "./components/Tag/Tag";
-import RecipeContextInterface, { RecipeContext } from "./context/RecipeContext";
+import MenuContextInterface, { MenuContext } from "./context/MenuContext";
 import { menuTagList } from "./assets/mock_data/TagData";
 import {TagCategoryInterface} from "./interfaces/Tag/TagCategory.interface"
 
@@ -62,7 +62,7 @@ export default class App extends Component<{}, AppState> {
           <h1>Super Cook App</h1>
           <h2>Bienvenue sur notre Super Cook App ✨ !</h2>
           <p>Chaque menu propose différentes recettes adaptées à vos besoins et envies.</p>
-          <RecipeContext.Provider
+          <MenuContext.Provider
                 value={
                     {currentRecipes: {
                         selectedMenu: this.state.currentRecipes.selectedMenu,
@@ -73,7 +73,7 @@ export default class App extends Component<{}, AppState> {
                       }}
             >
               <Tag />
-          </RecipeContext.Provider>
+          </MenuContext.Provider>
         </div>
       </div>
     );

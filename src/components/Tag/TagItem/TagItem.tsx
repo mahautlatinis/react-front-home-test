@@ -1,16 +1,16 @@
 import { TagCategoryInterface} from "../../../interfaces/Tag/TagCategory.interface";
 import {useEffect, useContext} from "react"
 import "./style.css"
-import { RecipeContext } from "../../../context/RecipeContext";
+import { MenuContext } from "../../../context/MenuContext";
 
 export default function TagItem(props: TagCategoryInterface | null)
 {
-  const recipeContext = useContext(RecipeContext)
+  const menuContext = useContext(MenuContext)
 
   const getClassName = (id: number) => {
     if (props?.tagType === "menuTag")
     {
-      if (recipeContext?.currentRecipes.selectedMenu.some( elem => {
+      if (menuContext?.currentRecipes.selectedMenu.some( elem => {
         if (elem == id)
           return true}))
       {
@@ -25,11 +25,11 @@ export default function TagItem(props: TagCategoryInterface | null)
   useEffect(() => {
     if (props && props.onSelect)
     {
-      let len = recipeContext?.currentRecipes.selectedMenu.length;
-      if (len == recipeContext?.currentRecipes.maxSelection)
+      let len = menuContext?.currentRecipes.selectedMenu.length;
+      if (len == menuContext?.currentRecipes.maxSelection)
         props.onSelect(0);
     }
-    }, [recipeContext])
+    }, [menuContext])
 
   return (
     <>
