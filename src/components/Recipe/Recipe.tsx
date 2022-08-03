@@ -6,9 +6,6 @@ export default function Recipe(props: RecipeInterface[])
 {
   return (
     <div className="recipe-list">
-        {/*{recipes.map((obj) => (
-          <RecipeItem name="" description="" imageURL="" ingredients={[]} steps={[]} tags={[]}/>
-        ))}*/}
     </div>
   );
 };

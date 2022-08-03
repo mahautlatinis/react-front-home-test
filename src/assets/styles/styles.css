@@ -1,4 +1,55 @@
 .App {
-  font-family: sans-serif;
   text-align: center;
+  background-color: #fff;
+}
+
+ul {
+  display:inline-block;
+  list-style: none;
+  /*border: 0.2rem solid green;*/
+}
+
+li, .tag {
+  background-color: #fff;
+  border: 0.2rem solid #37b877;
+  padding: 2px 15px;
+  color: #37b877;
+  border-radius: 1em;
+  font-size: 18px;
+  font-family: "Vollkorn", Arial;;
+  margin: 10px;
+}
+
+/*.app-container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0.1rem solid red;
+  text-align: center;
+}
+*/
+
+h1 {
+  font-family: "Vollkorn", Arial;
+  font-size: 2.6em;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+h2 {
+  font-family: "Vollkorn", Arial;
+  margin: 0px;
+}
+
+.selected {
+  background-color: #37b877;
+  color: #fff;
+  border-radius: 1rem;
+  border: 0.2rem solid #fff;
+}
+
+@font-face {
+  font-family: 'Vollkorn';
+  src: url('../fonts/Vollkorn/Vollkorn.ttf') format('truetype')
+  /*src: local('Volkorn'), url(./fonts/Rajdhani/Rajdhani-Regular.ttf) format('truetype');*/
 }

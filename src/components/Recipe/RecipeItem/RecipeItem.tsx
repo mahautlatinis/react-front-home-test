@@ -6,8 +6,8 @@ import "./style.css"
 
 export default function RecipeItem(props: RecipeInterface)
 {
-  const [showSteps, setShowSteps] = useState<Boolean>(false);
-  const [showIngredients, setShowIngredients] = useState<boolean>(false);
+  //const [showSteps, setShowSteps] = useState<Boolean>(false);
+  //const [showIngredients, setShowIngredients] = useState<boolean>(false);
 
   return (
     <div className="recipeItem">
@@ -18,31 +18,20 @@ export default function RecipeItem(props: RecipeInterface)
           {props.description}
         </div>
         <div className="recipe-description-centered">
-          {/* To do : mapper et passer les props */}
-          {/*<Tag 
-            //tags={props.tags} 
-            id=
-          />*/}
         </div>
         <div className="ingredients-container-div">
           Ingrédients:
-          <button onClick={() => setShowIngredients(!showIngredients)}>
+          {/*<button onClick={() => setShowIngredients(!showIngredients)}>
             {showIngredients ? "Masquer" : "Afficher"}
-          </button>
-          {/*{showIngredients && (
-            <IngredientsWithQuantity
-              ingredientsWithQuantity={recipe.ingredientsWithQuantity}
-            />
-          )}*/}
+          </button>*/}
         </div>
         <div className="ingredients-quantity">
           <div>
             Etapes de la recette:
-            <button onClick={() => setShowSteps(!showSteps)}>
+            {/*<button onClick={() => setShowSteps(!showSteps)}>
               {showSteps ? "Masquer" : "Afficher"}
-            </button>
+            </button>*/}
           </div>
-          {/*{props.steps && showSteps && <Step steps={props.steps} />}*/}
         </div>
       </div>
     </div>

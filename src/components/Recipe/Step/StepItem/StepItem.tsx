@@ -9,13 +9,6 @@ export default function StepItem(props: StepInterface)
         <div>
           {props.order}. {props.description}
         </div>
-        {/*<div>
-          {etape.ingredients && (
-            <IngredientsWithQuantity
-              ingredientsWithQuantity={etape.ingredients}
-            />
-          )}
-        </div>*/}
     </Fragment>
   );
 };

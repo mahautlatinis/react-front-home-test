@@ -94,19 +94,22 @@ export const diet: TagInterface = {
 export const seasons: TagCategoryInterface = {
   id: 1,
   name: "saison",
-  tags: [summer, winter, summer, spring]
+  tags: [summer, winter, summer, spring],
+  onSelectTagCategory: () => {}
 }
 
 export const traditional: TagCategoryInterface = {
   id: 2,
   name: "traditionnel",
-  tags: [appetizer, dessert]
+  tags: [appetizer, dessert],
+  onSelectTagCategory: () => {}
 }
 
 export const specialDiet: TagCategoryInterface = {
-  id: 2,
+  id: 3,
   name: "régimes particuliers",
-  tags: [vegan, diet]
+  tags: [vegan, diet],
+  onSelectTagCategory: () => {}
 }
 
-export const tagCategories = [seasons, traditional, specialDiet]
+export const menuTagList: TagCategoryInterface[] = [seasons, traditional, specialDiet]

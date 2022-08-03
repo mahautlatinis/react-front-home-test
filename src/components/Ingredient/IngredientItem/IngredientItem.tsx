@@ -11,11 +11,6 @@ export default function IngredientItem(props: IngredientItemProps)
 {
   return (
     <>
-      {/*{!props.quantity ? (
-        <span>{props.ingredient.name}</span>
-      ) : (
-        <span>{props.ingredient.name}</span>
-      )}*/}
     </>
   );
 };
