@@ -1,25 +1,9 @@
 import { useState } from "react";
 import Recipe from "./components/Recipe/Recipe";
 import RecipeItem from "./components/Recipe/RecipeItem/RecipeItem";
-
-//import {
-//  allRecipes,
-//  sugarRecipes,
-//  summerRecipes,
-//  dessertRecipes,
-//  noEggsRecipes,
-//  chocolateRecipes,
-//  autumnRecipes,
-//  veganRecipes,
-//  chocolateDessertRecipes,
-//} from "./assets/mock_data/RecipeData";
-
 import { pavlova } from "./assets/mock_data/RecipeData";
-
 import "./assets/styles/styles.css"
 
-//import { TagList } from "./components/Tagfilter/Taglist";
-//import { tagList } from "./assets/mock_data/TagData";
 
 export default function App() {
   const [filter, setFilter] = useState<string>("all");
@@ -41,6 +25,7 @@ export default function App() {
       {/*{filter === "all" && 
         <Recipe recipes={allRecipes} />}*/}
 
+{/* Pour test */}
       <RecipeItem
         name={pavlova.name}
         description={pavlova.description}

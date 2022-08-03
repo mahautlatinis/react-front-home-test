@@ -1,9 +1,9 @@
-import { IngredientInterface } from "../Ingredient/Ingredient.interface";
+import { IngredientInterface } from "../../Ingredient/Ingredient.interface";
 
 export interface StepInterface {
   description: string;
   order: number;
   ingredients: IngredientInterface[];
-  quantities: number[];
+  quantities: number[] | undefined;
   //unit: string[];
 };

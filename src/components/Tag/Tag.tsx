@@ -9,9 +9,9 @@ export default function Tag(props: TagInterface[])
       {props.map((obj) => (
         <TagItem 
           id={obj.id}
-          type={obj.type}
           label={obj.label}
-          //color={obj.color}
+          name={obj.name}
+          color={obj.color}
         />
       ))}
     </div>

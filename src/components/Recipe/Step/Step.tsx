@@ -1,5 +1,5 @@
 import StepItem from "./StepItem/StepItem";
-import { StepInterface } from "../../interfaces/Step/Step.interface";
+import { StepInterface } from "../../../interfaces/Recipe/Step/Step.interface";
 import "./style.css"
 
 export default function Step(props: StepInterface[])

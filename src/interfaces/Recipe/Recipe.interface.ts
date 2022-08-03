@@ -1,5 +1,5 @@
 import { IngredientInterface } from "../Ingredient/Ingredient.interface";
-import { StepInterface } from "../Step/Step.interface";
+import { StepInterface } from "./Step/Step.interface";
 import { TagInterface } from "../Tag/Tag.interface"
 
 export interface RecipeInterface {
