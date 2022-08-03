@@ -30,29 +30,42 @@ export default class App extends Component<{}, AppState> {
     }};
   }
 
-  handleMenuSelection = (...args: any) =>  {
+  handleMenuSelection = (args: number) =>  {
+  let newArray: number[] = [];
+
   if (this.state.currentRecipes.selectedMenu.includes(args))
   {
-    const newArray: number[] = this.state.currentRecipes.selectedMenu.filter(selected => { return selected != args});
+    //const
+    //newArray = this.state.currentRecipes.selectedMenu.filter(selected => { return selected != args});
+    for (let i = 0; i < this.state.currentRecipes.selectedMenu.length; i++)
+    {
+      //console.log("args is " + args + " and i is " + this.state.currentRecipes.selectedMenu[i])
+      if (this.state.currentRecipes.selectedMenu[i] != args)
+      {
+        newArray.push(this.state.currentRecipes.selectedMenu[i])
+      }
+    }
     //console.log("First")
   }
   else
   {
-    let newArray: number[] = this.state.currentRecipes.selectedMenu;
+    newArray = this.state.currentRecipes.selectedMenu;
     if (this.state.currentRecipes.selectedMenu.includes(0))
       newArray = [args]
     else if (args == 0)
       newArray = [0];
     else
+    {
       newArray = [...this.state.currentRecipes.selectedMenu, args];
-    this.setState({
+    }
+  }
+  this.setState({
               currentRecipes: {
                 selectedMenu: newArray,
                 menuTags: this.state.currentRecipes.menuTags,
                 maxSelection: this.state.currentRecipes.maxSelection
                 }
               })
-  }
   }
 
   render () {
