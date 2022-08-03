@@ -5,31 +5,31 @@ import { RecipeContext } from "../../../context/RecipeContext";
 
 export default function TagItem(props: TagCategoryInterface | null)
 {
-  useEffect(() => {
-  })
-
   const recipeContext = useContext(RecipeContext)
 
   const getClassName = (id: number) => {
-    let len = recipeContext?.currentRecipes.selectedMenu.length;
-    if (len == recipeContext?.currentRecipes.maxSelection)
+    if (props?.tagType === "menuTag")
     {
-      if (props && props.onSelect)
-        props.onSelect(0);
-      return (false);
-    }
-    if (recipeContext?.currentRecipes.selectedMenu.some( elem => {
-      if (elem == id)
+      if (recipeContext?.currentRecipes.selectedMenu.some( elem => {
+        if (elem == id)
+          return true}))
+      {
         return true
-    }))
-		{
-			return true
-		}
-		else
-		{
-			return false
-		}
+      }
+      else
+        return false
+    }
+    
   }
+
+  useEffect(() => {
+    if (props && props.onSelect)
+    {
+      let len = recipeContext?.currentRecipes.selectedMenu.length;
+      if (len == recipeContext?.currentRecipes.maxSelection)
+        props.onSelect(0);
+    }
+    }, [recipeContext])
 
   return (
     <>

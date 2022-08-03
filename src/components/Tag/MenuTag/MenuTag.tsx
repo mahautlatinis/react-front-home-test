@@ -4,10 +4,8 @@ import { TagCategoryInterface } from "../../../interfaces/Tag/TagCategory.interf
 import TagItem from "../TagItem/TagItem"
 import "./style.css"
 
-interface MenuTagProps {
-}
 
-export default function MenuTag(props: MenuTagProps)
+export default function MenuTag()
 {
 	const recipeContext = useContext(RecipeContext);
 	return (
@@ -30,6 +28,7 @@ export default function MenuTag(props: MenuTagProps)
 							tags={menuTag.tags}
 							key={menuTag.id}
 							onSelect={recipeContext.onSelect.handleSelection}
+							tagType="menuTag"
 						/>
 				)}
 				</div>

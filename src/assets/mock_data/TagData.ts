@@ -61,14 +61,14 @@ export const winter: TagInterface = {
   color: "blue",
 };
 
-export const tagList: TagInterface[] = [
-  summer,
-  winter,
-  dessert,
-  appetizer,
-  autumn,
-  vegan,
-];
+//export const tagList: TagInterface[] = [
+//  summer,
+//  winter,
+//  dessert,
+//  appetizer,
+//  autumn,
+//  vegan,
+//];
 
 //Added
 export const spring: TagInterface = {
@@ -116,3 +116,4 @@ export const specialDiet: TagCategoryInterface = {
 }
 
 export const menuTagList: TagCategoryInterface[] = [seasons, traditional, specialDiet]
+export const RecipeTagList: TagInterface[] = [diet, spring, summer, winter, autumn, vegan, appetizer, dessert]

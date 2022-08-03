@@ -34,24 +34,18 @@ export default class App extends Component<{}, AppState> {
   if (this.state.currentRecipes.selectedMenu.includes(args))
   {
     const newArray: number[] = this.state.currentRecipes.selectedMenu.filter(selected => { return selected != args});
-    console.log("First")
+    //console.log("First")
   }
   else
   {
     let newArray: number[] = this.state.currentRecipes.selectedMenu;
     if (this.state.currentRecipes.selectedMenu.includes(0))
-    {
       newArray = [args]
-    }
     else if (args == 0)
-    {
       newArray = [0];
-    }
     else
-    {
       newArray = [...this.state.currentRecipes.selectedMenu, args];
-    }
-      this.setState({
+    this.setState({
               currentRecipes: {
                 selectedMenu: newArray,
                 menuTags: this.state.currentRecipes.menuTags,
