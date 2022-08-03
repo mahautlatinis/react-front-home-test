@@ -1,45 +1,50 @@
-import { useState } from "react"
-//import { menuTagList } from "../../../assets/mock_data/TagData"
+import { useState, useContext } from "react"
+import { RecipeContext } from "../../../context/RecipeContext";
 import { TagCategoryInterface } from "../../../interfaces/Tag/TagCategory.interface"
 import TagItem from "../TagItem/TagItem"
 import "./style.css"
 
 interface MenuTagProps {
-	onSelectMenuTag: (id: number) => void
-	selectedMenu: number[],
-	menuTags: TagCategoryInterface[]
 }
 
 export default function MenuTag(props: MenuTagProps)
 {
-	//const [menuTags, setMenuTagList] = useState<TagCategoryInterface[]>(menuTagList)
+	const recipeContext = useContext(RecipeContext);
 
 	const isSelected = (menuTag: TagCategoryInterface) => {
-		if (props.selectedMenu.includes(menuTag.id))
-			return true
+		if (recipeContext)
+		{
+			if (recipeContext.selectedMenu.includes(menuTag.id))
+				return true
+		}
 		return false
 	}
 
+	const onSelectMenuTag = (id: number) => {
+		console.log(id);
+	}
+
 	return (
-		<div className="menutag">
-			<h2>Menu</h2>
-			<div 
-				className="tag-list"
-			>
-				<ul>
-					<li key={0} className={props.selectedMenu.includes(0) ? "selected" : "tag"}  onClick={() => props.onSelectMenuTag(0)}>Toutes</li>
-				</ul>
-				{props.menuTags.map(menuTag => 
-					<TagItem 
-						id={menuTag.id}
-						name={menuTag.name}
-						tags={menuTag.tags}
-						onSelectTagCategory={props.onSelectMenuTag}
-						key={menuTag.id}
-						isSelected={isSelected(menuTag)}
-					/>
-			)}
+			<div className="menutag">
+				<h2>Menu</h2>
+				<div 
+					className="tag-list"
+				>
+					<ul>
+						<li key={0}
+							className={recipeContext && recipeContext.selectedMenu.includes(0) ? "selected" : "tag"}  
+							onClick={() => recipeContext && onSelectMenuTag(0)}>Toutes</li>
+					</ul>
+					{recipeContext && recipeContext.menuTags.map(menuTag => 
+						<TagItem 
+							id={menuTag.id}
+							name={menuTag.name}
+							tags={menuTag.tags}
+							key={menuTag.id}
+							isSelected={isSelected(menuTag)}
+						/>
+				)}
+				</div>
 			</div>
-		</div>
 	)
 }

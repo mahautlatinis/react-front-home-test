@@ -4,6 +4,6 @@ export interface TagCategoryInterface {
 	id: number;
 	name: string,
 	tags: TagInterface[],
-	onSelectTagCategory: (id: number) => void,
-	isSelected: boolean
+	//onSelectMenuTag?: (id: number) => void | undefined,
+	isSelected?: boolean
 };

@@ -6,9 +6,6 @@ import "./style.css"
 
 export default function RecipeItem(props: RecipeInterface)
 {
-  //const [showSteps, setShowSteps] = useState<Boolean>(false);
-  //const [showIngredients, setShowIngredients] = useState<boolean>(false);
-
   return (
     <div className="recipeItem">
       <div className="recipe-image"></div>
@@ -21,16 +18,10 @@ export default function RecipeItem(props: RecipeInterface)
         </div>
         <div className="ingredients-container-div">
           Ingrédients:
-          {/*<button onClick={() => setShowIngredients(!showIngredients)}>
-            {showIngredients ? "Masquer" : "Afficher"}
-          </button>*/}
         </div>
         <div className="ingredients-quantity">
           <div>
             Etapes de la recette:
-            {/*<button onClick={() => setShowSteps(!showSteps)}>
-              {showSteps ? "Masquer" : "Afficher"}
-            </button>*/}
           </div>
         </div>
       </div>

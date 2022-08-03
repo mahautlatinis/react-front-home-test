@@ -10,10 +10,6 @@ export default function Ingredient(props: IngredientProps)
 {
   return (
     <>
-      {/*{props.ingredients &&
-        props.ingredients.map((ingredient) => 
-          <IngredientItem ingredient={ingredient} />
-        )}*/}
     </>
   );
 };
