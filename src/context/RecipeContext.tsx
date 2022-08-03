@@ -5,11 +5,14 @@ import { menuTagList} from "../assets/mock_data/TagData";
 
 //TODO: a remettre avec les autres interfaces
 export default interface RecipeContextInterface {
-	selectedMenu: number[],
-	menuTags: TagCategoryInterface[],
-	maxSelection: number,
-	onSelectMenutag?: () => {
-
+  //setState(arg0: { selectedMenu: number[]; });
+	currentRecipes: {
+		selectedMenu: number[],
+		menuTags?: TagCategoryInterface[],
+		maxSelection?: number
+	},
+	onSelect: {
+		handleSelection: (...args: any) => void 
 	}
 }
 

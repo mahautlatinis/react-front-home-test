@@ -1,46 +1,65 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import "./assets/styles/styles.css"
 import Tag from "./components/Tag/Tag";
 import RecipeContextInterface, { RecipeContext } from "./context/RecipeContext";
 import { menuTagList } from "./assets/mock_data/TagData";
+import {TagCategoryInterface} from "./interfaces/Tag/TagCategory.interface"
 
-interface AppProps {
+type AppState = {
+    currentRecipes: {
+      selectedMenu: number[],
+      menuTags: TagCategoryInterface[],
+      maxSelection: number
+    }
+    onSelect: {
+      handleSelection?: (...args: any) => void
+    }
 }
 
-const sampleRecipeContext: RecipeContextInterface = {
-  selectedMenu: [0],
-  menuTags: menuTagList,
-  maxSelection: 3
-};
-
-export default class App extends Component {
-
-  handleMenuSelection = (id: number) => {
-    //if (this.state.selectedMenu.includes(id))
-    //{
-    //  const newArray: number[] = this.state.selectedMenu.filter(selected => { return selected != id});
-    //  this.setState({selectedMenu: newArray});
-    //}
-    //else
-    //{
-    //  let newArray: number[] = this.state.selectedMenu;
-    //  if (this.state.selectedMenu.includes(0))
-    //  {
-    //    newArray = [id]
-    //    this.setState({selectedMenu: newArray});
-    //  }
-    //  else if (id == 0)
-    //  {
-    //    newArray = [0];
-    //    this.setState({selectedMenu: newArray});
-    //  }
-    //  else {
-    //    newArray = [...this.state.selectedMenu, id];
-    //    this.setState({selectedMenu: newArray});
-    //  }
-    //}
+export default class App extends Component<{}, AppState> {
+  constructor(props: any) {
+    super(props);
+    this.state = {  
+    currentRecipes: {
+      selectedMenu: [0],
+      menuTags: menuTagList,
+      maxSelection: 3
+    },
+    onSelect: {
+      handleSelection: undefined
+    }};
   }
 
+  handleMenuSelection = (...args: any) =>  {
+  if (this.state.currentRecipes.selectedMenu.includes(args))
+  {
+    const newArray: number[] = this.state.currentRecipes.selectedMenu.filter(selected => { return selected != args});
+    console.log("First")
+  }
+  else
+  {
+    let newArray: number[] = this.state.currentRecipes.selectedMenu;
+    if (this.state.currentRecipes.selectedMenu.includes(0))
+    {
+      newArray = [args]
+    }
+    else if (args == 0)
+    {
+      newArray = [0];
+    }
+    else
+    {
+      newArray = [...this.state.currentRecipes.selectedMenu, args];
+    }
+      this.setState({
+              currentRecipes: {
+                selectedMenu: newArray,
+                menuTags: this.state.currentRecipes.menuTags,
+                maxSelection: this.state.currentRecipes.maxSelection
+                }
+              })
+  }
+  }
 
   render () {
     return (
@@ -50,7 +69,14 @@ export default class App extends Component {
           <h2>Bienvenue sur notre Super Cook App ✨ !</h2>
           <p>Chaque menu propose différentes recettes adaptées à vos besoins et envies.</p>
           <RecipeContext.Provider
-                value={sampleRecipeContext}
+                value={
+                    {currentRecipes: {
+                        selectedMenu: this.state.currentRecipes.selectedMenu,
+                        menuTags: this.state.currentRecipes.menuTags,
+                        maxSelection: 3}, 
+                      onSelect: {
+                        handleSelection: this.handleMenuSelection}
+                      }}
             >
               <Tag />
           </RecipeContext.Provider>
