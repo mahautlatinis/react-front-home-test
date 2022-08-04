@@ -19,7 +19,6 @@ export default function RecipeTag()
 		let newArray: RecipeTagInterface[] = [];
 		let newArraylabels: string[] = [];
 
-		//console.clear();
 		recipeContext?.currentRecipes.recipeTags?.forEach(recipeTag => {
 			if (recipeTag.label && !(newArraylabels?.includes(recipeTag.label)))
 			{
@@ -30,7 +29,7 @@ export default function RecipeTag()
 		setClearedRecipesNames(newArraylabels);
 		if (newArray.length == 0)
 		{
-			console.log("all selected")
+			//console.log("all selected")
 			setClearedRecipes(RecipeTagList);
 		}
 		if (newArraylabels.length == 0)
@@ -47,15 +46,14 @@ export default function RecipeTag()
 			return;
 		}
 
-		console.log(newArraylabels);
+		//console.log(newArraylabels);
 		setClearedRecipes(newArray);
-		console.log(newArray);
+		//console.log(newArray);
 	}
 
 	useEffect( () => {
 		getClearedRecipes();
-		//console.log(recipeContext?.currentRecipes.selectedRecipes?.forEach (recipe => console.log(recipe)));
-		//recipeContext?.currentRecipes.recipeTags?.forEach(recipeTag => console.log(recipeTag))
+		//console.log("Selected recipes : " + recipeContext?.currentRecipes.selectedRecipes);
 	}, [recipeContext])
 	
 	return(
@@ -65,14 +63,16 @@ export default function RecipeTag()
 			{/*<p>Les catégories séléctionnées sont : </p>*/}
 			<div>
 				<ul>
-					<li key={0} className="selected">Toutes</li>
+					<li key={0} 
+						className={recipeContext && recipeContext.currentRecipes.selectedRecipes && recipeContext.currentRecipes.selectedRecipes.includes(0) ? "selected" : "tag"} 
+						>Toutes</li>
 					{clearedRecipesNames && clearedRecipesNames.map((name,index) => 
-					//<li key={name}>{name}</li>)
 					<TagItem 
 							id={clearedRecipes[index].id}
 							name={clearedRecipes[index].label}
 							key={clearedRecipes[index].id}
-							tagType="recipeTag" 
+							tagType="recipeTag"
+							onSelect={recipeContext?.onSelectRecipe.handleSelection}
 							tags={[]}					
 					/>
 					)}
@@ -81,10 +81,3 @@ export default function RecipeTag()
 		</div>
 	)
 }
-//<TagItem
-						//	id={recipe.id ? recipe.id : 0}
-						//	name={recipe.label ? recipe.label : ""}
-						//	key={recipe.label ? recipe.label : ""}
-						//	tagType="recipeTag"
-						//	tags={[]}
-						//	/>

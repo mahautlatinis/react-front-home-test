@@ -14,14 +14,76 @@ export default class App extends Component<{}, AppState> {
     this.state = appStateInitializer
   }
 
-  handleMenuSelection = async(args: number) =>  {
+  handleRecipeSelection = async(id: number) => {
+    //console.log(id);
+    let newArray: number[] | undefined = [];
+  
+    if (this.state.currentRecipes.selectedRecipes.includes(id))
+    {
+      for (let i = 0; i < this.state.currentRecipes.selectedRecipes.length; i++)
+      {
+        if (this.state.currentRecipes.selectedRecipes[i] != id)
+        {
+          newArray.push(this.state.currentRecipes.selectedRecipes[i])
+        }
+      }
+    }
+    else
+    {
+      newArray = this.state.currentRecipes.preSelectedRecipes;
+      if (this.state.currentRecipes.selectedRecipes?.includes(0))
+      {
+        newArray = [id];
+      }
+      else if (id == 0)
+      {
+        newArray = [0];
+      }
+      else
+      {
+        newArray = [...this.state.currentRecipes.selectedRecipes, id];
+      }
+    }
+    await this.setState({
+      currentMenues: {
+        selectedMenu: this.state.currentMenues.selectedMenu,
+        menuTags: this.state.currentMenues.menuTags,
+        maxSelection: this.state.currentMenues.maxSelection
+        },
+        currentRecipes: {
+          preSelectedRecipes: this.state.currentRecipes.preSelectedRecipes,
+          selectedRecipes: newArray,
+          recipeTags: this.state.currentRecipes.recipeTags,
+          maxSelection: this.state.currentRecipes.maxSelection
+        }
+    })
+  }
+
+  getSelectedRecipes = () => {
+    let newArray: RecipeTagInterface[] | undefined = this.onMenuSelectionDisplayRecipes();
+    let newArrayId: number[] = [];
+
+    let i = 0;
+    let len: number | undefined = newArray?.length;
+    //console.log("len is " + len);
+    while (len && i < len && newArray)
+    {
+      if (!(newArray[i].id in newArrayId))
+        newArrayId = [...newArrayId, newArray[i].id];
+      i++;
+    }
+    //console.log("new arred id " + newArrayId)
+    return newArrayId;
+  }
+
+  handleMenuSelection = async(id: number) =>  {
   let newArray: number[] = [];
 
-  if (this.state.currentMenues.selectedMenu.includes(args))
+  if (this.state.currentMenues.selectedMenu.includes(id))
   {
     for (let i = 0; i < this.state.currentMenues.selectedMenu.length; i++)
     {
-      if (this.state.currentMenues.selectedMenu[i] != args)
+      if (this.state.currentMenues.selectedMenu[i] != id)
       {
         newArray.push(this.state.currentMenues.selectedMenu[i])
       }
@@ -31,15 +93,15 @@ export default class App extends Component<{}, AppState> {
   {
     newArray = this.state.currentMenues.selectedMenu;
     if (this.state.currentMenues.selectedMenu.includes(0))
-      newArray = [args]
-    else if (args == 0)
+      newArray = [id]
+    else if (id == 0)
     {
       newArray = [0];
     }
     else
     {
       
-      newArray = [...this.state.currentMenues.selectedMenu, args];
+      newArray = [...this.state.currentMenues.selectedMenu, id];
     }
   }
   await this.setState({
@@ -49,13 +111,16 @@ export default class App extends Component<{}, AppState> {
                 maxSelection: this.state.currentMenues.maxSelection
                 }
               })
-  if (args != 0)
+  if (id != 0)
     this.onMenuSelectionDisplayRecipes();
   }
 
+
+  //TODO: a renommer 
   onMenuSelectionDisplayRecipes(): RecipeTagInterface[] | undefined
   {
     let newArray: RecipeTagInterface[] = []
+    //const [estimatedRecipesTags, setEstimatedRecipesTags] = useState([])
 
     if (this.state.currentMenues.selectedMenu.includes(0))
     {
@@ -73,7 +138,6 @@ export default class App extends Component<{}, AppState> {
           newArray = [...newArray, this.state.currentMenues.menuTags[i].tags[j]]
         }
       }
-     //console.log(newArray);
       return (newArray)
     }
 
@@ -85,7 +149,11 @@ export default class App extends Component<{}, AppState> {
                 }
                 ,
       currentRecipes: {
-        recipeTags: newArray}
+        preSelectedRecipes: this.state.currentRecipes.preSelectedRecipes,
+        selectedRecipes: this.state.currentRecipes.selectedRecipes,
+        recipeTags: newArray,
+        maxSelection: this.state.currentRecipes.maxSelection
+      }
     })
   }
 
@@ -110,10 +178,14 @@ export default class App extends Component<{}, AppState> {
                 value={
                   {
                     currentRecipes: {
-                      //selectedRecipes: number[]
-                      recipeTags: this.onMenuSelectionDisplayRecipes()
+                      preSelectedRecipes: this.state.currentRecipes.preSelectedRecipes,
+                      selectedRecipes: this.state.currentRecipes.selectedRecipes,
+                      recipeTags: this.state.currentRecipes.recipeTags,
+                      maxSelection: this.state.currentRecipes.maxSelection
                     },
-                    onSelectRecipe: {}
+                    onSelectRecipe: {
+                      handleSelection: this.handleRecipeSelection
+                    }
                   }
                 }
               >

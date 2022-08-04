@@ -12,9 +12,10 @@ export interface AppState  {
 	handleSelection?: (id: number) => void
     }
     currentRecipes: {
-		//selectedRecipes?: number[],
-		recipeTags?: RecipeTagInterface[]
-		//maxSelection?: number
+		preSelectedRecipes: any
+		selectedRecipes: number[],
+		recipeTags: RecipeTagInterface[]
+		maxSelection?: number
     }
     //onSelectRecipes: {
 	//	handleSelection?: (id: number) => void
@@ -30,9 +31,12 @@ export const appStateInitializer = {
     onSelect: {
         handleSelection: undefined
 	},
-    currentRecipes: {
-		recipeTags: []
-    }
+	currentRecipes: {
+		preSelectedRecipes: [0],
+		selectedRecipes: [0],
+		recipeTags: [],
+		maxSelection: 8
+	}
     //onSelectRecipes: {
 	//	handleSelection: undefined 
     //}
