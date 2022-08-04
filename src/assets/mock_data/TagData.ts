@@ -46,8 +46,8 @@ export const diet: RecipeTagInterface = {
 export const seasons: MenuTagInterface = {
   id: 1,
   name: "saison",
-  //tags: [winter, summer, spring, fall]
-  tags: [{id:6, label: "winter"}, {id:1, label: "summer"}, {id: 7, label:"spring"}, {id: 5, label: "fall"}],
+  tags: [winter, summer, spring, fall]
+  //tags: [{id:6, label: "winter"}, {id:1, label: "summer"}, {id: 7, label:"spring"}, {id: 5, label: "fall"}],
 }
 
 export const traditional: MenuTagInterface = {

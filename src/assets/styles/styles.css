@@ -38,15 +38,9 @@ li, button {
   /*width: 45%;*/
   margin-left: auto;
   margin-right: auto;
-  /*border: 0.1rem solid red;*/
   text-align: center;
   align-items: center;
 }
-
-
-/*.tag-list {
-  display: inline;
-}*/
 
 h1 {
   font-family: "Vollkorn", Arial;

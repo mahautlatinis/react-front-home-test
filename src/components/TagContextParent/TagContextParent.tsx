@@ -99,9 +99,7 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 					newArray.push(this.state.currentMenues.selectedMenu[i])
 			}
 			if (newArray.length == 0)
-			{
 				newArray = [1];
-			}
 		}
 		else
 		{
@@ -129,11 +127,7 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 					maxSelection: this.state.currentMenues.maxSelection
 				},
 				currentRecipes: {
-					//preSelectedRecipes: [],
-					//selectedRecipes: this.state.currentRecipes.selectedRecipes,
 					recipeTags: ret,
-					//clearedRecipes: ret,
-					//clearedRecipesNames: this.state.currentRecipes.clearedRecipesNames,
 				}
 				})
 			})
@@ -208,9 +202,65 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 		}
 		console.log(newArray);
 		return (newArray);
-			
+		//return([]);
+	}
 
-		//let newArrayId: number[] = [];
+	//Permet de filtrer pour qu'il n'y ait pas de doublons dans les tags recettes
+	setClearedRecipes = (cleared: any, clearedNames: string[]) =>
+	{
+		//console.log("set cleared recipes called");
+
+		this.setState({
+			currentMenues: {
+				selectedMenu: this.state.currentMenues.selectedMenu,
+				menuTags: this.state.currentMenues.menuTags,
+				maxSelection: this.state.currentMenues.maxSelection
+			},
+			currentRecipes: {
+				recipeTags: this.state.currentRecipes.recipeTags
+			}
+		})
+	}
+
+	//getClearedRecipes = () => 
+	//{
+	//	//console.log("--------");
+	//}
+
+	componentDidUpdate()
+	{
+		let ret: RecipeTagInterface[] | undefined = this.getSelectedRecipes();
+		console.log(ret);
+		console.log(this.state);
+	}
+
+	render() {
+		return (
+		<>
+			<MenuContext.Provider
+                value={
+                    {currentMenues: {
+                        selectedMenu: this.state.currentMenues.selectedMenu,
+                        menuTags: this.state.currentMenues.menuTags,
+                        maxSelection: 3}, 
+                    onSelect: {
+                        handleSelection: this.handleMenuSelection}}}>
+            <RecipeContext.Provider
+                value={
+                    {currentRecipes: {
+						recipeTags: this.state.currentRecipes.recipeTags,
+						}
+				}}>
+                <Tag />
+				{/*<Recipe />*/}
+				</RecipeContext.Provider>
+			</MenuContext.Provider>
+		</>)
+	}
+}
+
+//getSelectedRecipes = () => 
+//		//let newArrayId: number[] = [];
 		//let newArrayNames: string[] = [];
 
 		//let i: number = 0
@@ -257,71 +307,3 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 		//	}
 		//	m++;
 		//}
-		
-		////return (obj);
-		return([]);
-	}
-
-	//Permet de filtrer pour qu'il n'y ait pas de doublons dans les tags recettes
-	setClearedRecipes = (cleared: any, clearedNames: string[]) =>
-	{
-		//console.log("set cleared recipes called");
-
-		this.setState({
-			currentMenues: {
-				selectedMenu: this.state.currentMenues.selectedMenu,
-				menuTags: this.state.currentMenues.menuTags,
-				maxSelection: this.state.currentMenues.maxSelection
-			},
-			currentRecipes: {
-				//preSelectedRecipes: this.state.currentRecipes.preSelectedRecipes,
-				//selectedRecipes: this.state.currentRecipes.selectedRecipes,
-				recipeTags: this.state.currentRecipes.recipeTags,
-				//clearedRecipes: cleared,
-				//clearedRecipesNames: clearedNames,
-				//maxSelection: this.state.currentRecipes.maxSelection
-			}
-		})
-	}
-
-	//getClearedRecipes = () => 
-	//{
-	//	//console.log("--------");
-	//}
-
-	componentDidUpdate()
-	{
-		//console.log("Updated component");
-		let ret: RecipeTagInterface[] | undefined = this.getSelectedRecipes();
-		//console.log(ret);
-		//console.log(this.state);
-	}
-
-	render() {
-		return (
-		<>
-			<MenuContext.Provider
-                value={
-                    {currentMenues: {
-                        selectedMenu: this.state.currentMenues.selectedMenu,
-                        menuTags: this.state.currentMenues.menuTags,
-                        maxSelection: 3}, 
-                    onSelect: {
-                        handleSelection: this.handleMenuSelection}}}>
-            <RecipeContext.Provider
-                value={
-                    {currentRecipes: {
-						//preSelectedRecipes: this.state.currentRecipes.preSelectedRecipes,
-						//selectedRecipes: this.state.currentRecipes.,
-						recipeTags: this.state.currentRecipes.recipeTags,
-						}
-						//clearedRecipes: this.state.currentRecipes.clearedRecipes,
-						//maxSelection: this.state.currentRecipes.maxSelection
-				}}>
-                <Tag />
-				{/*<Recipe />*/}
-				</RecipeContext.Provider>
-			</MenuContext.Provider>
-		</>)
-	}
-}

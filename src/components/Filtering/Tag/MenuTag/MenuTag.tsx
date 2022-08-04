@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from "react"
 import { MenuContext } from "../../../../context/MenuContext";
-//import { MenuTagInterface } from "../../../../interfaces/Tag/MenuTag.interface"
 import TagItem from "../../../Displaying/Tag/TagItem/TagItem"
 import "./style.css"
 
