@@ -67,7 +67,7 @@ export const allRecipes = [
 // Filtres à reprendre 
 
 //export const summerRecipes = allRecipes.filter((recipe) => {
-//  const recipesTags = recipe.tags.map((tag) => tag.label);
+//  const recipesTags = recipe.tags((tag) => tag.label);
 //  return recipesTags.includes("summer");
 //});
 

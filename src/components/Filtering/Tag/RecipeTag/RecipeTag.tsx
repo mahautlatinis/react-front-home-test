@@ -19,7 +19,7 @@ export default function RecipeTag()
 		let newArray: RecipeTagInterface[] = [];
 		let newArraylabels: string[] = [];
 
-		console.clear();
+		//console.clear();
 		recipeContext?.currentRecipes.recipeTags?.forEach(recipeTag => {
 			if (recipeTag.label && !(newArraylabels?.includes(recipeTag.label)))
 			{
@@ -28,11 +28,33 @@ export default function RecipeTag()
 			}
 		})
 		setClearedRecipesNames(newArraylabels);
-		setClearedRecipes(newArray)
+		if (newArray.length == 0)
+		{
+			console.log("all selected")
+			setClearedRecipes(RecipeTagList);
+		}
+		if (newArraylabels.length == 0)
+		{
+			let i = 0;
+			newArraylabels = []
+			while (i < RecipeTagList.length)
+			{
+				if (RecipeTagList[i].label)
+					newArraylabels.push(RecipeTagList[i].label)
+				i++;
+			}
+			setClearedRecipesNames(newArraylabels);
+			return;
+		}
+
+		console.log(newArraylabels);
+		setClearedRecipes(newArray);
+		console.log(newArray);
 	}
 
-	useEffect(() => {
+	useEffect( () => {
 		getClearedRecipes();
+		//console.log(recipeContext?.currentRecipes.selectedRecipes?.forEach (recipe => console.log(recipe)));
 		//recipeContext?.currentRecipes.recipeTags?.forEach(recipeTag => console.log(recipeTag))
 	}, [recipeContext])
 	
@@ -43,15 +65,26 @@ export default function RecipeTag()
 			{/*<p>Les catégories séléctionnées sont : </p>*/}
 			<div>
 				<ul>
-					{/*<TagItem
-							id={recipe.id ? recipe.id : 0}
-							name={recipe.label ? recipe.label : ""}
-							key={recipe.label ? recipe.label : ""}
-							tagType="recipeTag"
-							tags={[]}
-							/>*/}
+					<li key={0} className="selected">Toutes</li>
+					{clearedRecipesNames && clearedRecipesNames.map((name,index) => 
+					//<li key={name}>{name}</li>)
+					<TagItem 
+							id={clearedRecipes[index].id}
+							name={clearedRecipes[index].label}
+							key={clearedRecipes[index].id}
+							tagType="recipeTag" 
+							tags={[]}					
+					/>
+					)}
 				</ul>
 			</div>
 		</div>
 	)
 }
+//<TagItem
+						//	id={recipe.id ? recipe.id : 0}
+						//	name={recipe.label ? recipe.label : ""}
+						//	key={recipe.label ? recipe.label : ""}
+						//	tagType="recipeTag"
+						//	tags={[]}
+						//	/>

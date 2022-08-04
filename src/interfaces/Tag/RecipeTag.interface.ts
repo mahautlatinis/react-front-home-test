@@ -1,6 +1,6 @@
 export interface RecipeTagInterface {
-	id?: number;
-	label?: string;
+	id: number;
+	label: string;
 	name?: {
 		fr?: string;
 		en?: string;
