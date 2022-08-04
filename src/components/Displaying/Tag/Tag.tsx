@@ -9,7 +9,7 @@ export default function Tag()
   return (
       <div className="tag-div">
         <MenuTag />
-        {/*<RecipeTag />*/}
+        <RecipeTag />
       </div>
   );
 }

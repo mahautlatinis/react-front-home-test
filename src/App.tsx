@@ -53,13 +53,13 @@ export default class App extends Component<{}, AppState> {
     this.onMenuSelectionDisplayRecipes();
   }
 
-  onMenuSelectionDisplayRecipes()
+  onMenuSelectionDisplayRecipes(): RecipeTagInterface[] | undefined
   {
     let newArray: RecipeTagInterface[] = []
 
     if (this.state.currentMenues.selectedMenu.includes(0))
     {
-      return;
+      return [];
     }
 
     if (this.state.currentMenues.selectedMenu)
@@ -73,6 +73,8 @@ export default class App extends Component<{}, AppState> {
           newArray = [...newArray, this.state.currentMenues.menuTags[i].tags[j]]
         }
       }
+     //console.log(newArray);
+      return (newArray)
     }
 
     this.setState({
@@ -104,8 +106,20 @@ export default class App extends Component<{}, AppState> {
                         handleSelection: this.handleMenuSelection}
                       }}
             >
+              <RecipeContext.Provider
+                value={
+                  {
+                    currentRecipes: {
+                      //selectedRecipes: number[]
+                      recipeTags: this.onMenuSelectionDisplayRecipes()
+                    },
+                    onSelectRecipe: {}
+                  }
+                }
+              >
               {/* Header */}
-              <Tag />
+                <Tag />
+              </RecipeContext.Provider>
           </MenuContext.Provider>
         </div>
       </div>

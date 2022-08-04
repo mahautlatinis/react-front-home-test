@@ -4,12 +4,12 @@ import { RecipeTagInterface } from "../interfaces/Tag/RecipeTag.interface"
 
 export default interface RecipeContextInterface {
 	currentRecipes: {
-		selectedRecipes: number[],
-		recipeTags?: RecipeTagInterface[],
+		selectedRecipes?: number[],
+		recipeTags?: RecipeTagInterface[] | undefined,
 		maxSelection?: number
 	},
 	onSelectRecipe: {
-		handleSelection : (id: number) => void
+		handleSelection? : (id: number) => void
 	}
 }
 

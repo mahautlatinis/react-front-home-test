@@ -5,21 +5,36 @@ import TagItem from "../../../Displaying/Tag/TagItem/TagItem";
 import { RecipeTagInterface } from "../../../../interfaces/Tag/RecipeTag.interface";
 import { menuTagList } from "../../../../assets/mock_data/TagData";
 import { MenuTagInterface } from "../../../../interfaces/Tag/MenuTag.interface";
-
+import { RecipeContext } from "../../../../context/RecipeContext";
 
 export default function RecipeTag()
 {
-	const menuContext = useContext(MenuContext);
-	const [selectedCat, setSelectedCat] = useState<RecipeTagInterface[]>(RecipeTagList)
+	const recipeContext = useContext(RecipeContext)
+	const [clearedRecipes, setClearedRecipes] = useState<RecipeTagInterface[]>([])
+	const [clearedRecipesNames, setClearedRecipesNames] = useState<string[]>([])
 	const [nbSelectedCategories, setNbSelectedCategories] = useState<number>(0)
 
+	const getClearedRecipes = () => 
+	{
+		let newArray: RecipeTagInterface[] = [];
+		let newArraylabels: string[] = [];
+
+		console.clear();
+		recipeContext?.currentRecipes.recipeTags?.forEach(recipeTag => {
+			if (recipeTag.label && !(newArraylabels?.includes(recipeTag.label)))
+			{
+				newArraylabels = [...newArraylabels, recipeTag.label];
+				newArray = [...newArray, recipeTag]
+			}
+		})
+		setClearedRecipesNames(newArraylabels);
+		setClearedRecipes(newArray)
+	}
+
 	useEffect(() => {
-		if (menuContext?.currentMenues.selectedMenu && menuContext?.currentMenues.selectedMenu.length == 0)
-		{
-			console.log("emptying");
-			setSelectedCat([]);
-		}
-	}, [menuContext])
+		getClearedRecipes();
+		//recipeContext?.currentRecipes.recipeTags?.forEach(recipeTag => console.log(recipeTag))
+	}, [recipeContext])
 	
 	return(
 		<div className="recipe-tag">
@@ -28,17 +43,13 @@ export default function RecipeTag()
 			{/*<p>Les catégories séléctionnées sont : </p>*/}
 			<div>
 				<ul>
-					{selectedCat && selectedCat.map(recipe => 
-						<TagItem
+					{/*<TagItem
 							id={recipe.id ? recipe.id : 0}
 							name={recipe.label ? recipe.label : ""}
 							key={recipe.label ? recipe.label : ""}
 							tagType="recipeTag"
 							tags={[]}
-							//className={menuContext ? "tag" : "selected"}
-							/>
-							//{recipe.label}
-					)}
+							/>*/}
 				</ul>
 			</div>
 		</div>
