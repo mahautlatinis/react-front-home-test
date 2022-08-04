@@ -4,61 +4,61 @@ import { MenuTagInterface } from "../../interfaces/Tag/MenuTag.interface";
 export const summer: RecipeTagInterface = {
   id: 1,
   label: "summer",
-  name: {
-    fr: "été",
-    en: "summer",
-  },
-  color: "yellow"
+  //name: {
+  //  fr: "été",
+  //  en: "summer",
+  //},
+  //color: "yellow"
 };
 
 export const vegan: RecipeTagInterface = {
   id: 2,
-  name: {
-    fr: "vegan",
-    en: "vegan",
-  },
+  //name: {
+  //  fr: "vegan",
+  //  en: "vegan",
+  //},
   label: "vegan",
-  color: "green"
+  //color: "green"
 };
 
 export const appetizer: RecipeTagInterface = {
   id: 3,
-  name: {
-    fr: "entrée",
-    en: "appetizer",
-  },
+  //name: {
+  //  fr: "entrée",
+  //  en: "appetizer",
+  //},
   label: "entrées",
-  color: "purple"
+  //color: "purple"
 };
 
 export const dessert: RecipeTagInterface = {
   id: 4,
-  name: {
-    fr: "dessert",
-    en: "appetizer",
-  },
+  //name: {
+  //  fr: "dessert",
+  //  en: "appetizer",
+  //},
   label: "dessert",
-  color: "#e320bd",
+  //color: "#e320bd",
 };
 
 export const autumn: RecipeTagInterface = {
   id: 5,
   label: "automne",
-  name: {
-    fr: "automne",
-    en: "autumn"
-  },
-  color: "orange"
+  //name: {
+  //  fr: "automne",
+  //  en: "autumn"
+  //},
+  //color: "orange"
 };
 
 export const winter: RecipeTagInterface = {
   id: 6,
   label: "hiver",
-  name: {
-    fr: "hiver",
-    en: "winter",
-  },
-  color: "blue",
+  //name: {
+  //  fr: "hiver",
+  //  en: "winter",
+  //},
+  //color: "blue",
 };
 
 //export const tagList: TagInterface[] = [
@@ -74,21 +74,21 @@ export const winter: RecipeTagInterface = {
 export const spring: RecipeTagInterface = {
   id: 7, 
   label: "printemps",
-  name: {
-    fr: "printemps",
-    en: "spring"
-  },
-  color: "green"
+  //name: {
+  //  fr: "printemps",
+  //  en: "spring"
+  //},
+  //color: "green"
 }
 
 export const diet: RecipeTagInterface = {
   id: 8,
   label: "régime",
-  name: {
-    fr: "régime",
-    en: "diet"
-  },
-  color: "purple"
+  //name: {
+  //  fr: "régime",
+  //  en: "diet"
+  //},
+  //color: "purple"
 }
 
 export const seasons: MenuTagInterface = {

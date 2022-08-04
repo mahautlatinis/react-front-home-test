@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { RecipeInterface } from "../../../../interfaces/Recipe/Recipe.interface";
-import Step from "../Step/Step";
+import { RecipeInterface, RecipeItemInterface } from "../../../../interfaces/Recipe/Recipe.interface";
+import Step from "./Step/Step";
 import Tag from "../../Tag/Tag";
 import "./style.css"
 
-export default function RecipeItem(props: RecipeInterface)
+export default function RecipeItem(props: RecipeItemInterface)
 {
   return (
     <div className="recipeItem">
