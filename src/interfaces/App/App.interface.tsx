@@ -1,6 +1,6 @@
 import { MenuTagInterface } from "../Tag/MenuTag.interface"
 import { RecipeTagInterface } from "../Tag/RecipeTag.interface"
-import { menuTagList } from "../../assets/mock_data/TagData"
+import { menuTagList, allRecipesTag } from "../../assets/mock_data/TagData"	
 
 //TODO: a renommer
 export interface AppState  {
@@ -13,16 +13,16 @@ export interface AppState  {
 	handleSelection?: (id: number) => void
     }
     currentRecipes: {
-		preSelectedRecipes: any
-		selectedRecipes: number[],
-		recipeTags: RecipeTagInterface[],
-		clearedRecipes?: RecipeTagInterface[],
-		clearedRecipesNames: string[],
-		maxSelection?: number
+		//preSelectedRecipes: any
+		//selectedRecipes: number[],
+		recipeTags: RecipeTagInterface[] | undefined,
+		//clearedRecipes?: RecipeTagInterface[],
+		//clearedRecipesNames: string[],
+		//maxSelection?: number
     }
-    onSelectRecipe: {
-		handleSelection?: (id: number) => void
-    }
+    //onSelectRecipe?: {
+	//	handleSelection?: (id: number) => void
+    //}
 	//,setClearedRecipes: {
 	//	setClearedRecipes?: (cleared: RecipeTagInterface[], clearedNames: string[]) => void
 	//}
@@ -30,7 +30,7 @@ export interface AppState  {
 
 export const appStateInitializer = {
 	currentMenues: {
-        selectedMenu: [0],
+        selectedMenu: [1, 2, 3],
         menuTags: menuTagList,
         maxSelection: 3
     },
@@ -38,14 +38,15 @@ export const appStateInitializer = {
         handleSelection: undefined
 	},
 	currentRecipes: {
-		preSelectedRecipes: [0],
-		selectedRecipes: [0],
-		recipeTags: [],
-		clearedRecipes: [],
-		clearedRecipesNames: [""],
-		maxSelection: 8
-	},
-    onSelectRecipe: {
-		handleSelection: undefined 
-    }
+		//preSelectedRecipes: [1],
+		//selectedRecipes: [0],
+		recipeTags: allRecipesTag,
+		//clearedRecipes: [],
+		//clearedRecipesNames: [""],
+		//maxSelection: 8
+	}
+	//,
+    //onSelectRecipe: {
+	//	handleSelection: undefined 
+    //}
 }

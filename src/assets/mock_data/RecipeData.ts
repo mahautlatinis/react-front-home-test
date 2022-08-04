@@ -1,8 +1,7 @@
 import { RecipeInterface } from "../../interfaces/Recipe/Recipe.interface";
 import { stepsFondantChocolat,stepsPavlova, stepsTarteAuxPoires, stepsWaldorfSalad, stepsOliveCake} from "./StepData";
 import {sugar, egg, cream, chocolate, butter, flour, pear, redFruits, almondPowder, salad, feta, cucumber, olive, apple, vinegar} from "./IngredientData"
-//import { mockIngredients } from "./IngredientData";
-import { appetizer, autumn, dessert, summer, vegan, winter, spring, diet} from "./TagData";
+import { appetizer, fall, dessert, summer, vegan, winter, spring, diet} from "./TagData";
 
 export const pavlova: RecipeInterface = {
   name: "Pavlova",
@@ -33,7 +32,7 @@ export const pearPie: RecipeInterface = {
     "https://assets.afcdn.com/recipe/20201228/116793_w1200h800c1cx1060cy707cxb2121cyb1414.webp",
   ingredients: [almondPowder, sugar, butter, flour, pear],
   steps: stepsTarteAuxPoires,
-  tags: [dessert, autumn],
+  tags: [dessert, fall],
 };
 
 export const waldorfSalad: RecipeInterface = {

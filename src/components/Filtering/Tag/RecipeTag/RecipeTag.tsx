@@ -4,8 +4,9 @@ import { RecipeTagList } from "../../../../assets/mock_data/TagData";
 import TagItem from "../../../Displaying/Tag/TagItem/TagItem";
 import { RecipeTagInterface } from "../../../../interfaces/Tag/RecipeTag.interface";
 import { menuTagList } from "../../../../assets/mock_data/TagData";
-import { MenuTagInterface } from "../../../../interfaces/Tag/MenuTag.interface";
+//import { MenuTagInterface } from "../../../../interfaces/Tag/MenuTag.interface";
 import { RecipeContext } from "../../../../context/RecipeContext";
+//import allRecipesTag from "../../../assets/mock_data/TagData"
 import "./style.css"
 
 export default function RecipeTag()
@@ -14,24 +15,25 @@ export default function RecipeTag()
 	const recipeContext = useContext(RecipeContext)
 	const menuContext = useContext(MenuContext)
 
-	//const getAllisSelected = () => {	
-	//	if (recipeContext && recipeContext.currentRecipes.selectedRecipes && recipeContext.currentRecipes.selectedRecipes.length == 0)
-	//	{
-	//		if (recipeContext.onSelectRecipe.handleSelection && recipeContext.currentRecipes.selectedRecipes.length == 0)
-	//			recipeContext.onSelectRecipe.handleSelection(0);
-	//	}
-	//	if (recipeContext && recipeContext.currentRecipes.selectedRecipes && recipeContext.currentRecipes.selectedRecipes.includes(0))
-	//		return "selected";
-	//	else if (!(recipeContext && recipeContext.currentRecipes.selectedRecipes))
-	//		return "selected";
-	//	return ("tag");
-	//}
+	const getAllisSelected = () => {	
+		//if (recipeContext && recipeContext.currentRecipes.recipeTags && recipeContext.currentRecipes.recipeTags.length == 0)
+		//{
+		//	if (recipeContext.onSelectRecipe.handleSelection && recipeContext.currentRecipes.recipeTags.length == 0)
+		//		recipeContext.onSelectRecipe.handleSelection(0);
+		//}
+		//if (recipeContext && recipeContext.currentRecipes.recipeTags && recipeContext.currentRecipes.recipeTags.includes({i1)
+		//	return "selected";
+		
+		if (!(recipeContext && recipeContext.currentRecipes.recipeTags))
+			return "selected";
+		return ("tag");
+	}
 
 	useEffect( () => {
 		//console.log("Printing current recipes");
-		recipeContext?.currentRecipes.clearedRecipes?.map( (recipes) => {
-			console.log(recipes)
-		})
+		//recipeContext?.currentRecipes.clearedRecipes?.map( (recipes) => {
+		//	console.log(recipes)
+		//})
 	}, [recipeContext, menuContext])
 	
 	return(
@@ -46,13 +48,13 @@ export default function RecipeTag()
 								&& recipeContext.onSelectRecipe.handleSelection(0)}
 						>Toutes</li>*/}
 				</ul>
-					{recipeContext?.currentRecipes.clearedRecipes?.map((recipes) => 
+					{recipeContext?.currentRecipes.recipeTags?.map((recipes) => 
 					<TagItem 
 							id={recipes.id} 
 							name={recipes.label}
 							key={recipes.id}
 							tagType="recipeTag"
-							onSelect={recipeContext.onSelectRecipe.handleSelection}
+							//onSelect={recipeContext.onSelectRecipe.handleSelection}
 							tags={[]}					
 					/>
 					)}

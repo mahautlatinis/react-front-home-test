@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react"
 import { MenuContext } from "../../../../context/MenuContext";
-import { MenuTagInterface } from "../../../../interfaces/Tag/MenuTag.interface"
+//import { MenuTagInterface } from "../../../../interfaces/Tag/MenuTag.interface"
 import TagItem from "../../../Displaying/Tag/TagItem/TagItem"
 import "./style.css"
 
@@ -8,16 +8,16 @@ export default function MenuTag()
 {
 	const menuContext = useContext(MenuContext);
 
-	//const getAllisSelected = () => {
-	//	if (menuContext && menuContext.currentMenues.selectedMenu && menuContext.currentMenues.selectedMenu.includes(0))
-	//		return "selected";
-	//	if (menuContext && menuContext.currentMenues.selectedMenu && menuContext.currentMenues.selectedMenu.length == 0)
-	//	{
-	//		if (menuContext.onSelect.handleSelection)
-	//			menuContext.onSelect.handleSelection(0);
-	//	}
-	//	return "tag"
-	//}
+	const getAllisSelected = () => {
+		if (menuContext && menuContext.currentMenues.selectedMenu && menuContext.currentMenues.selectedMenu.includes(0))
+			return "selected";
+		if (menuContext && menuContext.currentMenues.selectedMenu && menuContext.currentMenues.selectedMenu.length == 0)
+		{
+			if (menuContext.onSelect.handleSelection)
+				menuContext.onSelect.handleSelection(1);
+		}
+		return "tag"
+	}
 
 	useEffect(() => {
 	}, [menuContext])
@@ -25,7 +25,7 @@ export default function MenuTag()
 			<div>
 				<h2>Menu</h2>
 				<div>
-					<ul /*className="tags"*/>
+					<ul className="tags">
 						{/*<li key={0}
 							className={getAllisSelected()}  
 							onClick={() => menuContext && menuContext.currentMenues
