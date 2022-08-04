@@ -8,6 +8,17 @@ export default function MenuTag()
 {
 	const menuContext = useContext(MenuContext);
 
+	const getAllisSelected = () => {
+		if (menuContext && menuContext.currentMenues.selectedMenu && menuContext.currentMenues.selectedMenu.includes(0))
+			return "selected";
+		if (menuContext && menuContext.currentMenues.selectedMenu && menuContext.currentMenues.selectedMenu.length == 0)
+		{
+			if (menuContext.onSelect.handleSelection)
+				menuContext.onSelect.handleSelection(0);
+		}
+		return "tag"
+	}
+
 	useEffect(() => {
 	}, [menuContext])
 	return (
@@ -16,7 +27,7 @@ export default function MenuTag()
 				<div>
 					<ul /*className="tags"*/>
 						<li key={0}
-							className={menuContext && menuContext.currentMenues.selectedMenu && menuContext.currentMenues.selectedMenu.includes(0) ? "selected" : "tag"}  
+							className={getAllisSelected()}  
 							onClick={() => menuContext && menuContext.currentMenues
 								&& menuContext.onSelect.handleSelection(0)
 								}>Toutes</li>

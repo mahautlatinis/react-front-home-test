@@ -2,6 +2,7 @@ import { MenuTagInterface } from "../Tag/MenuTag.interface"
 import { RecipeTagInterface } from "../Tag/RecipeTag.interface"
 import { menuTagList } from "../../assets/mock_data/TagData"
 
+//TODO: a renommer
 export interface AppState  {
     currentMenues: {
 		selectedMenu: number[],

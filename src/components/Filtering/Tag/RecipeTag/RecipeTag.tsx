@@ -29,10 +29,7 @@ export default function RecipeTag()
 		})
 		setClearedRecipesNames(newArraylabels);
 		if (newArray.length == 0)
-		{
-			//console.log("all selected")
 			setClearedRecipes(RecipeTagList);
-		}
 		if (newArraylabels.length == 0)
 		{
 			let i = 0;
@@ -46,15 +43,24 @@ export default function RecipeTag()
 			setClearedRecipesNames(newArraylabels);
 			return;
 		}
-
-		//console.log(newArraylabels);
 		setClearedRecipes(newArray);
-		//console.log(newArray);
+	}
+
+	const getAllisSelected = () => {	
+		if (recipeContext && recipeContext.currentRecipes.selectedRecipes && recipeContext.currentRecipes.selectedRecipes.length == 0)
+		{
+			if (recipeContext.onSelectRecipe.handleSelection && recipeContext.currentRecipes.selectedRecipes.length == 0)
+				recipeContext.onSelectRecipe.handleSelection(0);
+		}
+		if (recipeContext && recipeContext.currentRecipes.selectedRecipes && recipeContext.currentRecipes.selectedRecipes.includes(0))
+			return "selected";
+		else if (!(recipeContext && recipeContext.currentRecipes.selectedRecipes))
+			return "selected";
+		return ("tag");
 	}
 
 	useEffect( () => {
 		getClearedRecipes();
-		//console.log("Selected recipes : " + recipeContext?.currentRecipes.selectedRecipes);
 	}, [recipeContext])
 	
 	return(
@@ -65,7 +71,9 @@ export default function RecipeTag()
 			<div className="recipeTags">
 				<ul /*className="tags"*/>
 					<li key={0} 
-						className={recipeContext && recipeContext.currentRecipes.selectedRecipes && recipeContext.currentRecipes.selectedRecipes.includes(0) ? "selected" : "tag"} 
+						className={getAllisSelected()}
+						onClick={() => recipeContext && recipeContext.onSelectRecipe.handleSelection
+								&& recipeContext.onSelectRecipe.handleSelection(0)}
 						>Toutes</li>
 				</ul>
 					{clearedRecipesNames && clearedRecipesNames.map((name,index) => 
