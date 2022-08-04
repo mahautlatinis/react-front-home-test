@@ -26,7 +26,6 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 	getCorrespondingTag = (id: number) => {
 
 		//console.log("got corresponding tag called");
-
 		let all = menuTagList;
 		let i = 0;
 		while (i < menuTagList.length)
@@ -41,46 +40,38 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 
 	//Permet de sélectionner les recettes (sélectionnables) en fonction du menu, mise à jour du contexte
 	//TODO: a reprendre avec recipeTags
-	//handleRecipeSelection = (id: number) => {
+	handleRecipeSelection = (id: number) => {
 
-	//	//console.log("handle recipe called");
+		console.log("recipe selected");
 
-	//	let newArray: number[] | undefined = [];
-	//	if (this.state.currentRecipes.selectedRecipes.includes(id))
-	//	{
-	//		for (let i = 0; i < this.state.currentRecipes.selectedRecipes.length; i++)
-	//		{
-	//			if (this.state.currentRecipes.selectedRecipes[i] != id)
-	//				newArray.push(this.state.currentRecipes.selectedRecipes[i])
-	//		}
-	//	}
-	//	else
-	//	{
-	//		newArray = this.state.currentRecipes.selectedRecipes;
-	//		//if (this.state.currentRecipes.selectedRecipes?.includes(0))
-	//		//	newArray = [id];
-	//		//if (id == 0 )
-	//		//	newArray = [0];
-	//		//else
-	//			newArray = [...this.state.currentRecipes.selectedRecipes, id];
-	//	}
+		console.log(id);
+		let newArray: number[] | undefined = [];
+		if (this.state.currentRecipes.selectedRecipes.includes(id))
+		{
+			for (let i = 0; i < this.state.currentRecipes.selectedRecipes.length; i++)
+			{
+				if (this.state.currentRecipes.selectedRecipes[i] != id)
+					newArray.push(this.state.currentRecipes.selectedRecipes[i])
+			}
+		}
+		else
+		{
+			newArray = this.state.currentRecipes.selectedRecipes;
+			newArray = [...this.state.currentRecipes.selectedRecipes, id];
+		}
 
-	//	this.setState
-	//	({
-	//		currentMenues: {
-	//			selectedMenu: this.state.currentMenues.selectedMenu,
-	//			menuTags: this.state.currentMenues.menuTags,
-	//			maxSelection: this.state.currentMenues.maxSelection
-	//		},
-	//		currentRecipes: {
-	//			//preSelectedRecipes: this.state.currentRecipes.preSelectedRecipes,
-	//			//selectedRecipes: newArray,
-	//			recipeTags: this.state.currentRecipes.recipeTags,
-	//			//clearedRecipes: this.state.currentRecipes.clearedRecipes,
-	//			//clearedRecipesNames: this.state.currentRecipes.clearedRecipesNames,
-	//			//maxSelection: newArray.length
-	//		}})
-	//}
+		this.setState
+		({
+			currentMenues: {
+				selectedMenu: this.state.currentMenues.selectedMenu,
+				menuTags: this.state.currentMenues.menuTags,
+				maxSelection: this.state.currentMenues.maxSelection
+			},
+			currentRecipes: {
+				recipeTags: this.state.currentRecipes.recipeTags,
+				selectedRecipes: newArray,
+			}})
+	}
 
 	//Permet de sélectionner les menus, mise à jour du contexte
 	handleMenuSelection = (id: number) =>  {
@@ -128,6 +119,7 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 				},
 				currentRecipes: {
 					recipeTags: ret,
+					selectedRecipes: []
 				}
 				})
 			})
@@ -138,8 +130,6 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 	//TODO: a renommer
 	onMenuSelectionDisplayRecipes = () => {
 		let newArray: any[] = [];
-		
-		//console.log("On menu Selection called");
 
 		let tags: any;
 
@@ -158,13 +148,10 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 	//Permet d'extraire l'id et le nom (label) des recettes dépendantes des sélection
 	getSelectedRecipes = () => 
 	{
-		console.log("getSelectedRecipes called");
-
-		//let newArray: RecipeTagInterface[] | any = this.onMenuSelectionDisplayRecipes();
+		//console.log("getSelectedRecipes called");
 
 		let newArray: RecipeTagInterface[] = [];
 		console.log(newArray);
-		//let selectedRecipes: RecipeTagInterface[];
 
 		//Si il sont tous sélectionnés, il faut renvoyer la liste entière
 		if (this.state.currentMenues.selectedMenu.length == 3)
@@ -175,8 +162,6 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 		}
 
 		//TODO: corriger, dirty
-		//if (this.state.selectedMenus)
-
 		console.log("selected meny is" + this.state.currentMenues.selectedMenu)
 		if (this.state.currentMenues.selectedMenu.includes(1))
 		{
@@ -189,20 +174,17 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 			
 		if (this.state.currentMenues.selectedMenu.includes(2))
 		{
-			//console.log("two");
 			newArray = [...newArray, appetizer];
 			newArray = [...newArray, dessert];
 		}
 			
 		if (this.state.currentMenues.selectedMenu.includes(3))
 		{
-			//console.log("three");
 			newArray = [...newArray, vegan];
 			newArray = [...newArray, diet];
 		}
 		console.log(newArray);
 		return (newArray);
-		//return([]);
 	}
 
 	//Permet de filtrer pour qu'il n'y ait pas de doublons dans les tags recettes
@@ -217,7 +199,8 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 				maxSelection: this.state.currentMenues.maxSelection
 			},
 			currentRecipes: {
-				recipeTags: this.state.currentRecipes.recipeTags
+				recipeTags: this.state.currentRecipes.recipeTags,
+				selectedRecipes: [],//TODO
 			}
 		})
 	}
@@ -249,7 +232,9 @@ export default class TagContextParent extends React.Component<{}, AppState> {
                 value={
                     {currentRecipes: {
 						recipeTags: this.state.currentRecipes.recipeTags,
-						}
+						selectedRecipes: this.state.currentRecipes.selectedRecipes,
+						},
+					onSelectRecipe: {handleSelection: this.handleRecipeSelection}
 				}}>
                 <Tag />
 				{/*<Recipe />*/}
@@ -258,52 +243,3 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 		</>)
 	}
 }
-
-//getSelectedRecipes = () => 
-//		//let newArrayId: number[] = [];
-		//let newArrayNames: string[] = [];
-
-		//let i: number = 0
-		//let totalLen: number = newArray.length;
-
-		//console.log("total len " + totalLen);
-	
-
-		//let l: number = 0;
-		////récupération des propriétés du tableau des recipes
-		//while (l < totalLen)
-		//{
-		//	while (i < newArray[l].length)
-		//	{
-		//		console.log(i + " :");
-		//		console.log(newArray[l][i].id);
-		//		console.log(newArray[l][i].label);
-		//		newArrayId = [...newArrayId, newArray[l][i].id];
-		//		newArrayNames = [...newArrayNames, newArray[l][i].label];
-		//		i++;
-		//	}
-		//	l++;
-		//}
-		
-
-		//let ret = { ids: newArrayId, labels: newArrayNames}
-
-		////Retour avec ces infos d'un object d'interface RecipeTagInterface[]
-		//let obj: RecipeTagInterface[] = []
-
-		//let k: number = 0;
-		//let m: number = 0;
-		//while (m < totalLen)
-		//{
-		//	k = 0;
-		//	while (k < newArray[m].length)
-		//	{
-		//		//if (!newArrayId[k])
-		//		//	return;
-		//		console.log(newArrayId[m])
-		//		console.log(newArrayNames[m])
-		//		obj.push({id: newArrayId[m], label: newArrayNames[m]})
-		//		k++;
-		//	}
-		//	m++;
-		//}

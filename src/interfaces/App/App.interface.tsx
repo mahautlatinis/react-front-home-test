@@ -13,19 +13,12 @@ export interface AppState  {
 	handleSelection?: (id: number) => void
     }
     currentRecipes: {
-		//preSelectedRecipes: any
-		//selectedRecipes: number[],
 		recipeTags: RecipeTagInterface[] | undefined,
-		//clearedRecipes?: RecipeTagInterface[],
-		//clearedRecipesNames: string[],
-		//maxSelection?: number
+		selectedRecipes: number[],
+    },
+    onSelectRecipe: {
+		handleSelection?: (id: number) => void
     }
-    //onSelectRecipe?: {
-	//	handleSelection?: (id: number) => void
-    //}
-	//,setClearedRecipes: {
-	//	setClearedRecipes?: (cleared: RecipeTagInterface[], clearedNames: string[]) => void
-	//}
 }
 
 export const appStateInitializer = {
@@ -38,15 +31,10 @@ export const appStateInitializer = {
         handleSelection: undefined
 	},
 	currentRecipes: {
-		//preSelectedRecipes: [1],
-		//selectedRecipes: [0],
 		recipeTags: allRecipesTag,
-		//clearedRecipes: [],
-		//clearedRecipesNames: [""],
-		//maxSelection: 8
+		selectedRecipes: [1, 2, 3, 4, 5, 6, 7, 8],
+	},
+    onSelectRecipe: {
+		handleSelection: undefined
 	}
-	//,
-    //onSelectRecipe: {
-	//	handleSelection: undefined 
-    //}
 }
