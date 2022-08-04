@@ -6,9 +6,14 @@
 ul {
   display:inline-block;
   list-style: none;
+  overflow-x: scroll;
+  /*border: 0.1rem solid red;*/
+  /*text-align: center;*/
+  /*display-flex: center;*/
+  /*max-width: 25%;*/
 }
 
-li, .tag, button {
+li, button {
   background-color: #fff;
   border: 0.2rem solid #37b877;
   padding: 2px 15px;
@@ -16,8 +21,9 @@ li, .tag, button {
   border-radius: 1em;
   font-size: 18px;
   font-family: "Vollkorn", Arial;;
-  margin: 10px;
-  display: inline;
+  /*margin: 10px;*/
+  /*space-between: 10px;*/
+  /*display: inline;*/
 }
 
 .selected {
@@ -25,16 +31,18 @@ li, .tag, button {
   color: #fff;
   border-radius: 1rem;
   border: 0.2rem solid #99ff99;
+  /*max-width: 20px;*/
 }
 
-/*.app-container {
-  width: 80%;
+.app-container {
+  /*width: 45%;*/
   margin-left: auto;
   margin-right: auto;
-  border: 0.1rem solid red;
+  /*border: 0.1rem solid red;*/
   text-align: center;
+  align-items: center;
 }
-*/
+
 
 /*.tag-list {
   display: inline;

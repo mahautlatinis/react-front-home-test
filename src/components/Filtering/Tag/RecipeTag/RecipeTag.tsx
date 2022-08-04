@@ -6,6 +6,7 @@ import { RecipeTagInterface } from "../../../../interfaces/Tag/RecipeTag.interfa
 import { menuTagList } from "../../../../assets/mock_data/TagData";
 import { MenuTagInterface } from "../../../../interfaces/Tag/MenuTag.interface";
 import { RecipeContext } from "../../../../context/RecipeContext";
+import "./style.css"
 
 export default function RecipeTag()
 {
@@ -61,11 +62,12 @@ export default function RecipeTag()
 			<h2>Recettes</h2>
 			{/*<h3>Il y a {nbSelectedCategories} catégorie(s) sélectionnée(s) !</h3>*/}
 			{/*<p>Les catégories séléctionnées sont : </p>*/}
-			<div>
-				<ul>
+			<div className="recipeTags">
+				<ul /*className="tags"*/>
 					<li key={0} 
 						className={recipeContext && recipeContext.currentRecipes.selectedRecipes && recipeContext.currentRecipes.selectedRecipes.includes(0) ? "selected" : "tag"} 
 						>Toutes</li>
+				</ul>
 					{clearedRecipesNames && clearedRecipesNames.map((name,index) => 
 					<TagItem 
 							id={clearedRecipes[index].id}
@@ -76,7 +78,7 @@ export default function RecipeTag()
 							tags={[]}					
 					/>
 					)}
-				</ul>
+				
 			</div>
 		</div>
 	)

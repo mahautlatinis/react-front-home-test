@@ -55,7 +55,7 @@ export default function TagItem(props: MenuTagInterface | null)
     }, [menuContext, recipeContext])
 
   return (
-    <>
+    <ul className="tags">
         <button
           className={props && getClassName(props.id) ? "selected" : "tag"}
           onClick={() => {
@@ -66,6 +66,6 @@ export default function TagItem(props: MenuTagInterface | null)
             }
         }>{props && props.name ? props.name : ""}
         </button>
-    </>
+    </ul>
   );
 };

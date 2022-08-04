@@ -30,7 +30,7 @@ export default class App extends Component<{}, AppState> {
     }
     else
     {
-      newArray = this.state.currentRecipes.preSelectedRecipes;
+      newArray = this.state.currentRecipes.selectedRecipes;
       if (this.state.currentRecipes.selectedRecipes?.includes(0))
       {
         newArray = [id];
@@ -60,7 +60,7 @@ export default class App extends Component<{}, AppState> {
   }
 
   getSelectedRecipes = () => {
-    let newArray: RecipeTagInterface[] | undefined = this.onMenuSelectionDisplayRecipes();
+    let newArray: RecipeTagInterface[] | any =  this.onMenuSelectionDisplayRecipes();
     let newArrayId: number[] = [];
 
     let i = 0;
@@ -109,16 +109,14 @@ export default class App extends Component<{}, AppState> {
                 selectedMenu: newArray,
                 menuTags: this.state.currentMenues.menuTags,
                 maxSelection: this.state.currentMenues.maxSelection
-                }
-              })
+              }})
   if (id != 0)
     this.onMenuSelectionDisplayRecipes();
   }
 
 
   //TODO: a renommer 
-  onMenuSelectionDisplayRecipes(): RecipeTagInterface[] | undefined
-  {
+  onMenuSelectionDisplayRecipes = async() => {
     let newArray: RecipeTagInterface[] = []
     //const [estimatedRecipesTags, setEstimatedRecipesTags] = useState([])
 
@@ -138,10 +136,10 @@ export default class App extends Component<{}, AppState> {
           newArray = [...newArray, this.state.currentMenues.menuTags[i].tags[j]]
         }
       }
-      return (newArray)
+     //return (newArray)
     }
-
-    this.setState({
+    //console.log("here");
+    await this.setState({
       currentMenues: {
                 selectedMenu: this.state.currentMenues.selectedMenu,
                 menuTags: this.state.currentMenues.menuTags,
@@ -150,11 +148,14 @@ export default class App extends Component<{}, AppState> {
                 ,
       currentRecipes: {
         preSelectedRecipes: this.state.currentRecipes.preSelectedRecipes,
-        selectedRecipes: this.state.currentRecipes.selectedRecipes,
+        selectedRecipes: this.getSelectedRecipes(),
         recipeTags: newArray,
         maxSelection: this.state.currentRecipes.maxSelection
       }
     })
+    //if (this.state.currentMenues.selectedMenu.includes(0))
+    //  return []
+    return (newArray);
   }
 
   render () {

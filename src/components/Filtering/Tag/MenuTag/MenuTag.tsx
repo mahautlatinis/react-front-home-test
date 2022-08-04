@@ -14,7 +14,7 @@ export default function MenuTag()
 			<div>
 				<h2>Menu</h2>
 				<div>
-					<ul>
+					<ul /*className="tags"*/>
 						<li key={0}
 							className={menuContext && menuContext.currentMenues.selectedMenu && menuContext.currentMenues.selectedMenu.includes(0) ? "selected" : "tag"}  
 							onClick={() => menuContext && menuContext.currentMenues
