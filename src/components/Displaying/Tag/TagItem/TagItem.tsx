@@ -1,16 +1,16 @@
-import { TagCategoryInterface} from "../../../interfaces/Tag/TagCategory.interface";
+import { MenuTagInterface} from "../../../../interfaces/Tag/MenuTag.interface";
 import {useEffect, useContext} from "react"
+import { MenuContext } from "../../../../context/MenuContext";
 import "./style.css"
-import { MenuContext } from "../../../context/MenuContext";
 
-export default function TagItem(props: TagCategoryInterface | null)
+export default function TagItem(props: MenuTagInterface | null)
 {
   const menuContext = useContext(MenuContext)
 
   const getClassName = (id: number) => {
     if (props?.tagType === "menuTag")
     {
-      if (menuContext?.currentRecipes.selectedMenu.some( elem => {
+      if (menuContext?.currentMenues.selectedMenu && menuContext?.currentMenues.selectedMenu.some( elem => {
         if (elem == id)
           return true}))
       {
@@ -25,8 +25,8 @@ export default function TagItem(props: TagCategoryInterface | null)
   useEffect(() => {
     if (props && props.onSelect)
     {
-      let len = menuContext?.currentRecipes.selectedMenu.length;
-      if (len == menuContext?.currentRecipes.maxSelection)
+      let len = menuContext?.currentMenues.selectedMenu && menuContext?.currentMenues.selectedMenu.length;
+      if (len && len == menuContext?.currentMenues.maxSelection)
         props.onSelect(0);
     }
     }, [menuContext])
@@ -36,7 +36,7 @@ export default function TagItem(props: TagCategoryInterface | null)
         <button
           className={props && getClassName(props.id) ? "selected" : "tag"}
           onClick={() => {
-            if (props && props.onSelect)
+            if (props && props.onSelect && props.tagType=="menuTag")
               props.onSelect(props.id)
             }
         }>{props && props.name ? props.name : ""}

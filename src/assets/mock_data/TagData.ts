@@ -1,7 +1,7 @@
-import { TagInterface } from "../../interfaces/Tag/Tag.interface"
-import { TagCategoryInterface } from "../../interfaces/Tag/TagCategory.interface";
+import { RecipeTagInterface } from "../../interfaces/Tag/RecipeTag.interface"
+import { MenuTagInterface } from "../../interfaces/Tag/MenuTag.interface";
 
-export const summer: TagInterface = {
+export const summer: RecipeTagInterface = {
   id: 1,
   label: "summer",
   name: {
@@ -11,7 +11,7 @@ export const summer: TagInterface = {
   color: "yellow"
 };
 
-export const vegan: TagInterface = {
+export const vegan: RecipeTagInterface = {
   id: 2,
   name: {
     fr: "vegan",
@@ -21,7 +21,7 @@ export const vegan: TagInterface = {
   color: "green"
 };
 
-export const appetizer: TagInterface = {
+export const appetizer: RecipeTagInterface = {
   id: 3,
   name: {
     fr: "entrée",
@@ -31,7 +31,7 @@ export const appetizer: TagInterface = {
   color: "purple"
 };
 
-export const dessert: TagInterface = {
+export const dessert: RecipeTagInterface = {
   id: 4,
   name: {
     fr: "dessert",
@@ -41,7 +41,7 @@ export const dessert: TagInterface = {
   color: "#e320bd",
 };
 
-export const autumn: TagInterface = {
+export const autumn: RecipeTagInterface = {
   id: 5,
   label: "automne",
   name: {
@@ -51,7 +51,7 @@ export const autumn: TagInterface = {
   color: "orange"
 };
 
-export const winter: TagInterface = {
+export const winter: RecipeTagInterface = {
   id: 6,
   label: "hiver",
   name: {
@@ -71,7 +71,7 @@ export const winter: TagInterface = {
 //];
 
 //Added
-export const spring: TagInterface = {
+export const spring: RecipeTagInterface = {
   id: 7, 
   label: "printemps",
   name: {
@@ -81,7 +81,7 @@ export const spring: TagInterface = {
   color: "green"
 }
 
-export const diet: TagInterface = {
+export const diet: RecipeTagInterface = {
   id: 8,
   label: "régime",
   name: {
@@ -91,7 +91,7 @@ export const diet: TagInterface = {
   color: "purple"
 }
 
-export const seasons: TagCategoryInterface = {
+export const seasons: MenuTagInterface = {
   id: 1,
   name: "saison",
   tags: [summer, winter, summer, spring],
@@ -99,7 +99,7 @@ export const seasons: TagCategoryInterface = {
   //isSelected: false
 }
 
-export const traditional: TagCategoryInterface = {
+export const traditional: MenuTagInterface = {
   id: 2,
   name: "traditionnel",
   tags: [appetizer, dessert],
@@ -107,7 +107,7 @@ export const traditional: TagCategoryInterface = {
   //isSelected: false
 }
 
-export const specialDiet: TagCategoryInterface = {
+export const specialDiet: MenuTagInterface = {
   id: 3,
   name: "régimes particuliers",
   tags: [vegan, diet],
@@ -115,5 +115,5 @@ export const specialDiet: TagCategoryInterface = {
   //isSelected: false
 }
 
-export const menuTagList: TagCategoryInterface[] = [seasons, traditional, specialDiet]
-export const RecipeTagList: TagInterface[] = [diet, spring, summer, winter, autumn, vegan, appetizer, dessert]
+export const menuTagList: MenuTagInterface[] = [seasons, traditional, specialDiet]
+export const RecipeTagList: RecipeTagInterface[] = [diet, spring, summer, winter, autumn, vegan, appetizer, dessert]

@@ -1,5 +1,5 @@
 import IngredientItem from "./IngredientItem/IngredientItem";
-import {IngredientInterface} from "../../interfaces/Ingredient/Ingredient.interface";
+import {IngredientInterface} from "../../../../interfaces/Ingredient/Ingredient.interface";
 import "./style.css"
 
 interface IngredientProps {

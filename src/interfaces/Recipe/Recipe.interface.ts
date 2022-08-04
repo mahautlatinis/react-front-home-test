@@ -1,6 +1,6 @@
 import { IngredientInterface } from "../Ingredient/Ingredient.interface";
 import { StepInterface } from "./Step/Step.interface";
-import { TagInterface } from "../Tag/Tag.interface"
+import { RecipeTagInterface } from "../Tag/RecipeTag.interface"
 
 export interface RecipeInterface {
   name: string;
@@ -8,5 +8,5 @@ export interface RecipeInterface {
   imageURL: string;
   ingredients: IngredientInterface[];
   steps: StepInterface[];
-  tags: TagInterface[];
+  tags: RecipeTagInterface[];
 }

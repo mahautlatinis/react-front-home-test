@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext} from "react";
-import MenuTag from "./MenuTag/MenuTag";
-import RecipeTag from "./RecipeTag/RecipeTag";
+import MenuTag from "../../Filtering/Tag/MenuTag/MenuTag";
+import RecipeTag from "../../Filtering/Tag/RecipeTag/RecipeTag";
 
 import "./style.css"
 

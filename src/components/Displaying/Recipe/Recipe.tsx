@@ -1,4 +1,4 @@
-import { RecipeInterface } from "../../interfaces/Recipe/Recipe.interface";
+import { RecipeInterface } from "../../../interfaces/Recipe/Recipe.interface";
 import RecipeItem from "./RecipeItem/RecipeItem";
 import "./style.css"
 

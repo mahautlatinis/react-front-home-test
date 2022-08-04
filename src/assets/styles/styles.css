@@ -17,6 +17,7 @@ li, .tag, button {
   font-size: 18px;
   font-family: "Vollkorn", Arial;;
   margin: 10px;
+  display: inline;
 }
 
 .selected {
@@ -34,6 +35,10 @@ li, .tag, button {
   text-align: center;
 }
 */
+
+/*.tag-list {
+  display: inline;
+}*/
 
 h1 {
   font-family: "Vollkorn", Arial;

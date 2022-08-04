@@ -1,31 +1,27 @@
 import { useState, useContext, useEffect } from "react"
-import { MenuContext } from "../../../context/MenuContext";
-import { TagCategoryInterface } from "../../../interfaces/Tag/TagCategory.interface"
-import TagItem from "../TagItem/TagItem"
+import { MenuContext } from "../../../../context/MenuContext";
+import { MenuTagInterface } from "../../../../interfaces/Tag/MenuTag.interface"
+import TagItem from "../../../Displaying/Tag/TagItem/TagItem"
 import "./style.css"
-
 
 export default function MenuTag()
 {
 	const menuContext = useContext(MenuContext);
 
 	useEffect(() => {
-		console.log(menuContext);
 	}, [menuContext])
 	return (
-			<div className="menutag">
+			<div>
 				<h2>Menu</h2>
-				<div 
-					className="tag-list"
-				>
+				<div>
 					<ul>
 						<li key={0}
-							className={menuContext && menuContext.currentRecipes.selectedMenu.includes(0) ? "selected" : "tag"}  
-							onClick={() => menuContext && menuContext.currentRecipes
+							className={menuContext && menuContext.currentMenues.selectedMenu && menuContext.currentMenues.selectedMenu.includes(0) ? "selected" : "tag"}  
+							onClick={() => menuContext && menuContext.currentMenues
 								&& menuContext.onSelect.handleSelection(0)
 								}>Toutes</li>
 					</ul>
-					{menuContext && menuContext.currentRecipes.menuTags && menuContext.currentRecipes.menuTags.map(menuTag => 
+					{menuContext && menuContext.currentMenues.menuTags && menuContext.currentMenues.menuTags.map(menuTag => 
 						<TagItem 
 							id={menuTag.id}
 							name={menuTag.name}

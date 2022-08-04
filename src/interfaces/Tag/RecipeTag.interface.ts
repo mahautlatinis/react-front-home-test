@@ -1,4 +1,4 @@
-export interface TagInterface {
+export interface RecipeTagInterface {
 	id?: number;
 	label?: string;
 	name?: {

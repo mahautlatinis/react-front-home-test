@@ -5,5 +5,4 @@ export interface StepInterface {
   order: number;
   ingredients: IngredientInterface[];
   quantities: number[] | undefined;
-  //unit: string[];
 };
