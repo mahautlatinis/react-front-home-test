@@ -11,10 +11,8 @@ export default function MenuTag()
 	}, [menuContext])
 	return (
 			<div>
-				<h2>Menu</h2>
+				<h1>Choisissez vos menus préférés 😋</h1>
 				<div>
-					<ul className="tags">
-					</ul>
 					{menuContext && menuContext.currentMenues.menuTags && menuContext.currentMenues.menuTags.map(menuTag => 
 						<TagItem 
 							id={menuTag.id}

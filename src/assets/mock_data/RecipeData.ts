@@ -47,7 +47,7 @@ export const waldorfSalad: RecipeItemInterface = {
 };
 
 export const oliveCake: RecipeItemInterface = {
-  name:"Le délicieux cake aux olives",
+  name:"Le cake aux olives",
   description: "Le cake aux olives parfait pour le printemps",
   imageURL:
     "https://img-3.journaldesfemmes.fr/FMseEv4OWBADkpClRZdcp0iIArA=/750x500/smart/bb58e69d2891490eb1044d9414e8b2c3/recipe-jdf/10027203.jpg",

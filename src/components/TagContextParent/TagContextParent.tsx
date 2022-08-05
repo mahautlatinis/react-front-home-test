@@ -14,7 +14,7 @@ import { MenuTagInterface } from "../../interfaces/Tag/MenuTag.interface";
 import Header from "../Displaying/Header/Header";
 import { RecipeItemInterface} from "../../interfaces/Recipe/Recipe.interface"
 import { AllRecipes } from "../../assets/mock_data/RecipeData";
-//import { menuTagList } from "../../assets/mock_data/TagData";
+import Presentation from "../Displaying/Presentation/Presentation";
 
 export default class TagContextParent extends React.Component<{}, ContextInterface> {
 
@@ -317,6 +317,7 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 					getSelectedRecipesTags: {getSelectedRecipesTags: this.getSelectedRecipesTags},
 				}}>
 				<Header />
+				<Presentation />
                 <Tag />
 				<Recipe />
 				</RecipeContext.Provider>

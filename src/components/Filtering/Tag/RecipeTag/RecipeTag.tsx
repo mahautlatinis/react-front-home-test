@@ -18,7 +18,8 @@ export default function RecipeTag()
 	
 	return(
 		<div className="recipe-tag">
-			<h2>Recettes</h2>
+			<br />
+			<h2>Vos menus proposent des recettes aux thématiques suivantes 🍂</h2>
 			{/*<h3>Il y a {nbSelectedCategories} catégorie(s) sélectionnée(s) !</h3>*/}
 			{/*<p>Les catégories séléctionnées sont : </p>*/}
 			<div className="recipeTags">

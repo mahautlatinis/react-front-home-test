@@ -4,9 +4,6 @@ import "./style.css"
 import { RecipeItemInterface } from "../../../../interfaces/Recipe/Recipe.interface"
 
 interface IngredientProps {
-  //ingredients?: IngredientInterface[]
-  //recipeId?: number,
-  //recipeName?: string,
   list:  IngredientInterface[],
 }
 
@@ -24,7 +21,7 @@ export default function Ingredient(props: IngredientProps)
           names={item.names}
           type={item.type}
           unit={item.unit}
-          imgURL={item.imgURL}
+          //imgURL={item.imgURL}
           prefix={item.prefix}
         />)}
     </ul>
