@@ -20,32 +20,6 @@ export default function Header()
 	const [selectedRecipesTags, setSelectedRecipesTags] = useState<RecipeTagInterface[]>(recipeTagList)
 	
 
-	//TODO: refactor les noms des variables 
-	//TODO: mettre ses fonctions plutôt dans le parent pour qu'elles soient réutilisables
-	const menuTagsOnSelectedId = () => {
-		let selected: MenuTagInterface[] | undefined = [];
-
-		//Faire le tour des id selectionnés et récupérer les menus correspondant dans la liste
-		let i: number = 0;
-		let len: number = menuContext?.currentMenues?.selectedMenu?.length ? menuContext?.currentMenues?.selectedMenu?.length  : 0
-		let j: number = 0;
-		let len2: number = MenuTaglist.length;
-		while (i < len)
-		{
-			j = 0;
-			while (j < len2)
-			{
-				if (menuContext?.currentMenues?.selectedMenu && menuContext?.currentMenues?.selectedMenu[i] == menuTagList[j].id)
-				{
-					selected = [...selected, menuTagList[j]];
-				}
-				j++;
-			}
-			i++;
-		}
-		return (selected);
-	}
-
 	//TODO: A refactoriser pour rassembler avec celle du dessus
 	const getSelectedRecipeTags = () => {
 		let ret: RecipeTagInterface[] = [];
@@ -73,26 +47,22 @@ export default function Header()
 	}
 
 	useEffect(() => {
-		//console.log("updating menus");
-		//console.log(JSON.stringify(menuContext));
-		let ret: MenuTagInterface[] = menuTagsOnSelectedId();
-		//console.log(ret);
-		setSelectedMenuTags(ret);
-
-		//console.log("updating recipes");
+		//Récupération depuis le contexte des menus Tags sélectionnés 
+		let ret: MenuTagInterface[] | undefined = [];
+		//menuTagsOnSelectedId();
+		if (recipeContext?.getSelectedMenuTags.getSelectedMenuTags != undefined)
+			ret = recipeContext?.getSelectedMenuTags?.getSelectedMenuTags();
+		if (ret)
+			setSelectedMenuTags(ret);
 		let recipe : RecipeTagInterface[] | undefined = getSelectedRecipeTags();
-		//console.log("recipe are " + JSON.stringify(recipe));
 		setSelectedRecipesTags(recipe);
 	}, [recipeContext])
 	return (
 		<>
-		{/*<nav></nav>*/}
 		<nav className="navbar navbar-light bg-light">
-			<span className="navbar-brand mb-0 h1">Navbar</span>
-			{/*<h2>Selected menus tags</h2>*/}
+			<span className="navbar-brand mb-0 h1">Tags' header</span>
 			<ul>
 				{selectedMenuTags && selectedMenuTags.map( (menuTag) => 
-				//<button>{menuTag.name}</button>
 				<TagItem 
 					tagType="headerMenu"
 					id={menuTag.id}
@@ -104,7 +74,6 @@ export default function Header()
 			<br/>
 			<ul>
 				{selectedRecipesTags && selectedRecipesTags.map( (recipeTag) => 
-					//<button>{recipeTag.label}</button>
 					<TagItem
 						tagType="headerRecipe"
 						id={recipeTag.id}

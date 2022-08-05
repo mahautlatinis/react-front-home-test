@@ -1,6 +1,8 @@
 import React from "react"
 
 import { RecipeTagInterface } from "../interfaces/Tag/RecipeTag.interface"
+import { RecipeItemInterface } from "../interfaces/Recipe/Recipe.interface"
+import { MenuTagInterface} from "../interfaces/Tag/MenuTag.interface"
 
 export default interface RecipeContextInterface {
 	currentRecipes: {
@@ -9,6 +11,12 @@ export default interface RecipeContextInterface {
 	},
 	onSelectRecipe: {
 		handleSelection?: (id: number) => void,
+	},
+	getRecipesToDisplay: {
+		getRecipesToDisplay?: () => RecipeItemInterface[]
+	}
+	getSelectedMenuTags: {
+		getSelectedMenuTags?: () => MenuTagInterface[]
 	}
 }
 

@@ -1,6 +1,7 @@
 import { MenuTagInterface } from "../Tag/MenuTag.interface"
 import { RecipeTagInterface } from "../Tag/RecipeTag.interface"
 import { menuTagList, allRecipesTag } from "../../assets/mock_data/TagData"	
+import { RecipeItemInterface} from "../Recipe/Recipe.interface"
 
 export interface ContextInterface  {
     currentMenues: {
@@ -17,9 +18,19 @@ export interface ContextInterface  {
     },
     onSelectRecipe: {
 		handleSelection?: (id: number) => void
-    }
+    },
+	getClassname: {
+		getClassName?: (id: number, tagType: string) => boolean
+	},
+	getRecipesToDisplay: {
+		getRecipesToDisplay?: () => RecipeItemInterface[]
+	},
+	getSelectedMenuTags: {
+		getSelectedMenuTags?: () => MenuTagInterface[]
+	}
 }
 
+//TODO: a deplacer dans un autre fichier ?
 export const contextInitializer = {
 	currentMenues: {
         selectedMenu: [1, 2, 3],
@@ -35,5 +46,14 @@ export const contextInitializer = {
 	},
     onSelectRecipe: {
 		handleSelection: undefined
+	},
+	getClassname: {
+		getClassName: undefined
+	},
+	getRecipesToDisplay: {
+		getRecipesToDisplay: undefined 
+	},
+	getSelectedMenuTags: {
+		getSelectedMenuTags: undefined
 	}
 }

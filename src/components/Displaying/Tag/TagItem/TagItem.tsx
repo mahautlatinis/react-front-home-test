@@ -10,30 +10,6 @@ export default function TagItem(props: MenuTagInterface | null)
   const menuContext = useContext(MenuContext)
   const recipeContext = useContext(RecipeContext)
 
-  //Permet de générer une classe spéciale si le tag est sélectionné
-  //TODO: a refacto, mettre dans la classe parent
-  const getClassName = (id: number) => {
-    if (props?.tagType === "menuTag")
-    {
-      if (menuContext?.currentMenues.selectedMenu && menuContext?.currentMenues.selectedMenu.some( elem => {
-        if (elem == id)
-          return true}))
-        return true
-      else
-        return false
-    }
-    else if (props?.tagType == "recipeTag")
-    {
-      if (recipeContext?.currentRecipes.selectedRecipes && recipeContext?.currentRecipes.selectedRecipes.some( elem => {
-        if (elem == id)
-          return true}))
-        return true
-      else
-        return false
-    }
-    return false
-  }
-
   useEffect(() => {
     //Permet de sélectionner automatiquement "Toutes" si tous les tags sont sélectionnés
     }, [menuContext, recipeContext])
@@ -41,7 +17,7 @@ export default function TagItem(props: MenuTagInterface | null)
   return (
     <ul className="tags">
         <button
-          className={props && getClassName(props.id) ? "selected" : "tag"}
+          className={props && menuContext && menuContext?.getClassName.getClassName(props.id, props.tagType ?  props.tagType : "") ? "selected" : "tag"}
           onClick={() => {
               if (props && props?.tagType == "recipeTag" || props?.tagType == "headerRecipe")
               {

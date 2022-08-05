@@ -11,6 +11,9 @@ export default interface MenuContextInterface {
 	},
 	onSelect: {
 		handleSelection: (id: number) => void 
+	},
+	getClassName: {
+		getClassName: (id: number, tagType: string) => boolean
 	}
 }
 
