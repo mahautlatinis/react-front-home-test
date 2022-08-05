@@ -36,6 +36,7 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 		}
 	}
 
+	//Permet de retourner un tableau indiquant les menus tags sélectionnés
 	getSelectedMenuTags = () =>  {
 		let selected: MenuTagInterface[] = [];
 
@@ -57,8 +58,23 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 	}
 
 	//Permet de retourner un tableau de RecipeTags afin de voir les recipe tags sélectionnés
-	getSelectedRecipeTags =  () => {
+	getSelectedRecipesTags =  () => {
 		let ret: RecipeTagInterface[] = [];
+
+		let i: number = 0, j: number = 0, len2: number = RecipeTagList.length;
+		let len: number = this.state?.currentRecipes?.selectedRecipes?.length ? this.state.currentRecipes?.selectedRecipes?.length : 0;
+
+		while (i < len)
+		{
+			j = 0;
+			while (j < len2)
+			{
+				if (this.state.currentRecipes?.selectedRecipes && this.state.currentRecipes?.selectedRecipes[i] == RecipeTagList[j].id)
+					ret = [...ret, RecipeTagList[j]];
+				j++;
+			}
+			i++;
+		}
 		return (ret);
 	}
 
@@ -297,8 +313,8 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 						},
 					onSelectRecipe: {handleSelection: this.handleRecipeSelection},
 					getRecipesToDisplay: {getRecipesToDisplay: this.getRecipesToDisplay},
-					getSelectedMenuTags: {getSelectedMenuTags: this.getSelectedMenuTags}
-
+					getSelectedMenuTags: {getSelectedMenuTags: this.getSelectedMenuTags},
+					getSelectedRecipesTags: {getSelectedRecipesTags: this.getSelectedRecipesTags},
 				}}>
 				<Header />
                 <Tag />

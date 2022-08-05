@@ -5,10 +5,10 @@ import "../style.css"
 export default function StepItem(props: StepInterface)
 {
   return (
-    <Fragment>
-        <div>
-          {props.order}. {props.description}
-        </div>
-    </Fragment>
+    <>
+        <li>
+          <label className="step-index">{props.order}.</label>{props.description}
+        </li>
+    </>
   );
 };

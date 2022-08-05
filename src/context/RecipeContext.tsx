@@ -17,6 +17,9 @@ export default interface RecipeContextInterface {
 	}
 	getSelectedMenuTags: {
 		getSelectedMenuTags?: () => MenuTagInterface[]
+	},
+	getSelectedRecipesTags:  {
+		getSelectedRecipesTags?: () => RecipeTagInterface[]
 	}
 }
 

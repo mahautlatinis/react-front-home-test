@@ -27,6 +27,9 @@ export interface ContextInterface  {
 	},
 	getSelectedMenuTags: {
 		getSelectedMenuTags?: () => MenuTagInterface[]
+	},
+	getSelectedRecipesTags: {
+		getSelectedRecipesTags?: () => RecipeTagInterface[]
 	}
 }
 
@@ -55,5 +58,8 @@ export const contextInitializer = {
 	},
 	getSelectedMenuTags: {
 		getSelectedMenuTags: undefined
+	},
+	getSelectedRecipesTags: {
+        getSelectedRecipesTags: undefined
 	}
 }

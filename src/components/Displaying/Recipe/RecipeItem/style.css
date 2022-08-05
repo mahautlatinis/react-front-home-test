@@ -13,9 +13,19 @@
 }
 
 .recipe-image {
-	width: 200px;/*TODO: voir après media queries*/
+	/*width: 200px;*/
 	clip-path: circle();
+	/*height: 200px;*/
+}
+
+.recipe-cover {
+	width: 200px;
 	height: 200px;
+}
+
+.ingredients-image {
+	height: 100px;
+	width: 100px;
 }
 
 .recipe-description {

@@ -18,44 +18,24 @@ export default function Header()
 	const recipeTagList = RecipeTagList;
 	const [selectedMenuTags, setSelectedMenuTags] = useState(MenuTaglist);
 	const [selectedRecipesTags, setSelectedRecipesTags] = useState<RecipeTagInterface[]>(recipeTagList)
-	
 
-	//TODO: A refactoriser pour rassembler avec celle du dessus
-	const getSelectedRecipeTags = () => {
-		let ret: RecipeTagInterface[] = [];
-
-		let i: number = 0;
-		let len: number = recipeContext?.currentRecipes?.selectedRecipes?.length ? recipeContext?.currentRecipes?.selectedRecipes?.length : 0;
-
-		let j: number = 0;
-		let len2: number = recipeTagList.length;
-
-		while (i < len)
-		{
-			j = 0;
-			while (j < len2)
-			{
-				if (recipeContext?.currentRecipes?.selectedRecipes && recipeContext?.currentRecipes?.selectedRecipes[i] == recipeTagList[j].id)
-				{
-					ret = [...ret, recipeTagList[j]];
-				}
-				j++;
-			}
-			i++;
-		}
-		return (ret);
-	}
 
 	useEffect(() => {
 		//Récupération depuis le contexte des menus Tags sélectionnés 
 		let ret: MenuTagInterface[] | undefined = [];
-		//menuTagsOnSelectedId();
+
 		if (recipeContext?.getSelectedMenuTags.getSelectedMenuTags != undefined)
 			ret = recipeContext?.getSelectedMenuTags?.getSelectedMenuTags();
 		if (ret)
 			setSelectedMenuTags(ret);
-		let recipe : RecipeTagInterface[] | undefined = getSelectedRecipeTags();
+
+		//Récupérations des tags de recttes sélectionnés
+		let recipe : RecipeTagInterface[] | undefined = [];
+		
+		if (recipeContext?.getSelectedRecipesTags.getSelectedRecipesTags != undefined)
+			recipe = recipeContext?.getSelectedRecipesTags?.getSelectedRecipesTags();
 		setSelectedRecipesTags(recipe);
+
 	}, [recipeContext])
 	return (
 		<>
@@ -64,7 +44,7 @@ export default function Header()
 			<ul>
 				{selectedMenuTags && selectedMenuTags.map( (menuTag) => 
 				<TagItem 
-					tagType="headerMenu"
+					tagType="headerRecipe"
 					id={menuTag.id}
 					name={menuTag.name}
 					key={menuTag.id}
