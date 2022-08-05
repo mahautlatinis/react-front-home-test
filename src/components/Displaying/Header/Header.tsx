@@ -75,29 +75,6 @@ export default function Header()
 			</AppBar>
 			</Box>
 		<br />
-		{/*<nav className="navbar navbar-light bg-light">
-			<ul>
-				{selectedMenuTags && selectedMenuTags.map( (menuTag) => 
-				<TagItem 
-					tagType="headerRecipe"
-					id={menuTag.id}
-					name={menuTag.name}
-					key={menuTag.id}
-				/>
-				)}
-			</ul>
-			<br/>
-			<ul>
-				{selectedRecipesTags && selectedRecipesTags.map( (recipeTag) => 
-					<TagItem
-						tagType="headerRecipe"
-						id={recipeTag.id}
-						name={recipeTag.label}
-						key={recipeTag.id}
-					/>
-				)}
-			</ul>
-		</nav>*/}
 		</>
 	);
 };

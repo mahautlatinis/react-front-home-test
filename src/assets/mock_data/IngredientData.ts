@@ -55,8 +55,8 @@ export const egg: IngredientInterface = {
 };
 
 export const redFruits: IngredientInterface = {
-  name: "fruits rouges",
-  names: "fruits rouges",
+  name: "fruits",
+  names: "fruits",
   type: "fruit",
   imgURL: "https://www.as-productrice.fr/sites/default/files/product_type/fruits-rouge.png",
   unit: "kg",
@@ -64,8 +64,8 @@ export const redFruits: IngredientInterface = {
 };
 
 export const almondPowder: IngredientInterface = {
-  name: "poudre d'amande",
-  names: "poudre d'amande",
+  name: "poudre",
+  names: "poudre",
   type: "aides à la pâtisserie",
   imgURL: "https://d1e3z2jco40k3v.cloudfront.net/-/media/vah18/produits/800x800/amandes_en_poudre.png?rev=3a33e19ceaea4c77bbcf57a69be77139&vd=20210809T134020Z&hash=AF8E4A55F2D399738F53DF0AC21950C9",
   unit: "kg",
@@ -73,8 +73,8 @@ export const almondPowder: IngredientInterface = {
 };
 
 export const cream: IngredientInterface = {
-  name: "crème liquide",
-  names: "crème liquide",
+  name: "crème",
+  names: "crème",
   type: "crèmerie et produits frais",
   imgURL: "https://media.auchan.fr/MEDIASTEP132248486_0x0/B2CD/",
   unit: "cl",

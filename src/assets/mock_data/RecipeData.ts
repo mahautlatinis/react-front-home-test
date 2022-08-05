@@ -26,7 +26,7 @@ export const fondantChocolat: RecipeItemInterface = {
 };
 
 export const pearPie: RecipeItemInterface = {
-  name: "Tarte amandine aux poires",
+  name: "Tarte aux poires",
   description:
     "La tarte au poire est une tarte faite à base d'un appareil à l'amande, d'une pâte sablée et de poires",
   imageURL:
