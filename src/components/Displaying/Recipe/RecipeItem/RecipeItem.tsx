@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { RecipeInterface, RecipeItemInterface } from "../../../../interfaces/Recipe/Recipe.interface";
+import { RecipeItemInterface } from "../../../../interfaces/Recipe/Recipe.interface";
 import Step from "./Step/Step";
 import Tag from "../../Tag/Tag";
 import "./style.css"

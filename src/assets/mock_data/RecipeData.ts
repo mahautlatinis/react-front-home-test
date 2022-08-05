@@ -1,9 +1,9 @@
-import { RecipeInterface } from "../../interfaces/Recipe/Recipe.interface";
+import { RecipeItemInterface } from "../../interfaces/Recipe/Recipe.interface";
 import { stepsFondantChocolat,stepsPavlova, stepsTarteAuxPoires, stepsWaldorfSalad, stepsOliveCake} from "./StepData";
 import {sugar, egg, cream, chocolate, butter, flour, pear, redFruits, almondPowder, salad, feta, cucumber, olive, apple, vinegar} from "./IngredientData"
 import { appetizer, fall, dessert, summer, vegan, winter, spring, diet} from "./TagData";
 
-export const pavlova: RecipeInterface = {
+export const pavlova: RecipeItemInterface= {
   name: "Pavlova",
   description: "La pavlova est un dessert à base de meringue et de fruits",
   imageURL:
@@ -13,7 +13,7 @@ export const pavlova: RecipeInterface = {
   tags: [summer, dessert],
 };
 
-export const fondantChocolat: RecipeInterface = {
+export const fondantChocolat: RecipeItemInterface = {
   name: "Fondant au chocolat",
   description:
     "Le fondant au chocolat est un gâteau au chocolat qui fond en bouche",
@@ -24,7 +24,7 @@ export const fondantChocolat: RecipeInterface = {
   tags: [dessert, winter],
 };
 
-export const pearPie: RecipeInterface = {
+export const pearPie: RecipeItemInterface = {
   name: "Tarte amandine aux poires",
   description:
     "La tarte au poire est une tarte faite à base d'un appareil à l'amande, d'une pâte sablée et de poires",
@@ -35,7 +35,7 @@ export const pearPie: RecipeInterface = {
   tags: [dessert, fall],
 };
 
-export const waldorfSalad: RecipeInterface = {
+export const waldorfSalad: RecipeItemInterface = {
   name: "Salade Waldorf",
   description: "La salade greque est parfaite pour l'été",
   imageURL:
@@ -45,8 +45,8 @@ export const waldorfSalad: RecipeInterface = {
   tags: [appetizer, summer, vegan, diet],
 };
 
-export const oliveCake: RecipeInterface = {
-  name:"",
+export const oliveCake: RecipeItemInterface = {
+  name:"Le délicieux cake aux olives",
   description: "Le cake aux olives parfait pour le printemps",
   imageURL:
     "https://img-3.journaldesfemmes.fr/FMseEv4OWBADkpClRZdcp0iIArA=/750x500/smart/bb58e69d2891490eb1044d9414e8b2c3/recipe-jdf/10027203.jpg",
@@ -55,7 +55,8 @@ export const oliveCake: RecipeInterface = {
   tags: [appetizer, spring, diet],
 }
 
-export const allRecipes = [
+//TODO: a renimmer ? attention une recette au nom en français
+export const AllRecipes: RecipeItemInterface[] = [
   pavlova,
   fondantChocolat,
   pearPie,
