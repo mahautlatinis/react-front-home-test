@@ -10,6 +10,15 @@ import { RecipeTagInterface } from "../../../interfaces/Tag/RecipeTag.interface"
 import RecipeTag from "../../Filtering/Tag/RecipeTag/RecipeTag";
 import TagItem from "../Tag/TagItem/TagItem";
 
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+//import MenuIcon from '@mui/icons-material/Menu';
+
+
 export default function Header()
 {
 	const recipeContext = useContext(RecipeContext);
@@ -18,6 +27,7 @@ export default function Header()
 	const recipeTagList = RecipeTagList;
 	const [selectedMenuTags, setSelectedMenuTags] = useState(MenuTaglist);
 	const [selectedRecipesTags, setSelectedRecipesTags] = useState<RecipeTagInterface[]>(recipeTagList)
+	
 
 
 	useEffect(() => {
@@ -39,8 +49,36 @@ export default function Header()
 	}, [recipeContext])
 	return (
 		<>
-		<nav className="navbar navbar-light bg-light">
-			<span className="navbar-brand mb-0 h1">Tags' header</span>
+		<Box sx={{ flexGrow: 1 }}>
+			<br />
+			<AppBar position="static" color="transparent">
+				<Toolbar>
+					<ul>
+						{selectedMenuTags && selectedMenuTags.map( (menuTag) => 
+						<TagItem 
+							tagType="headerRecipe"
+							id={menuTag.id}
+							name={menuTag.name}
+							key={menuTag.id}
+						/>
+						)}
+					</ul>
+					<br/>
+					<ul>
+						{selectedRecipesTags && selectedRecipesTags.map( (recipeTag) => 
+							<TagItem
+								tagType="headerRecipe"
+								id={recipeTag.id}
+								name={recipeTag.label}
+								key={recipeTag.id}
+							/>
+						)}
+					</ul>
+				</Toolbar>
+			</AppBar>
+			</Box>
+		<br />
+		{/*<nav className="navbar navbar-light bg-light">
 			<ul>
 				{selectedMenuTags && selectedMenuTags.map( (menuTag) => 
 				<TagItem 
@@ -62,7 +100,7 @@ export default function Header()
 					/>
 				)}
 			</ul>
-		</nav>
+		</nav>*/}
 		</>
 	);
 };

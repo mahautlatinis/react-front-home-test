@@ -50,9 +50,14 @@ h1 {
   letter-spacing: .02em;
 }
 
-h2, .step-index, .ingredients-title{
+h2, .step-index, .ingredients-title, p{
   font-family: "Grotesk";
   margin: 0px;
+  text-justify: auto;
+}
+
+p {
+  color: #c0c0c0;
 }
 
 .step-index {
