@@ -13,63 +13,66 @@ export default function Recipe()
 {
   const recipeContext = useContext(RecipeContext);
   const menuContext = useContext(MenuContext);
+  const allRecipes = AllRecipes;
+  //const all
 
-  const [recipeTags, setRecipeTags] = useState<RecipeTagInterface[] | undefined>(RecipeTagList)
-  const [selectedRecipesTag, setSelectedRecipesTag] = useState<number[] | undefined >([]);
-  const [allRecipes, setAllRecipes] = useState<RecipeItemInterface[]>(AllRecipes);
-  const [recipesToDisplay, setRecipesToDisplay] = useState<RecipeItemInterface[]>(AllRecipes);
+  //const [recipeTags, setRecipeTags] = useState<RecipeTagInterface[] | undefined>(RecipeTagList)
+  //const [selectedRecipesTag, setSelectedRecipesTag] = useState<number[] | undefined >([]);
+  //const [allRecipes, setAllRecipes] = useState<RecipeItemInterface[]>(AllRecipes);
+  const [recipesToDisplay, setRecipesToDisplay] = useState<RecipeItemInterface[]>();
 
-
+  //TODO: a refacto
   const getRecipesToDisplay = () => {
 
-    console.log("calling get recipes to display");
+    //console.log("calling get recipes to display");
 
     let arrToDisplay: RecipeItemInterface[] = [];
-    let len: number = selectedRecipesTag?.length ? selectedRecipesTag.length : 0
+    let len: number = recipeContext?.currentRecipes?.selectedRecipes?.length ? recipeContext?.currentRecipes?.selectedRecipes?.length : 0
 
-    //console.log("len is " + recipeTags?.length + "vs " + len);
-    // Object.keys(allRecipes).length
-
-
-    if (selectedRecipesTag && selectedRecipesTag.length == recipeTags?.length)
+    if (AllRecipes)
     {
-      //console.log("all selected !");
-      return (allRecipes);
+      if (len == 8)
+      {
+        //console.log("all selected !");
+        return (allRecipes);
+      }
+      else
+      {
+          let i: number = 0;
+          let j: number = 0;
+          let len2: number = AllRecipes?.length ? AllRecipes?.length : 0;
+          let k: number = 0;
+          let len3: number = 0;
+          while (i < len)
+          {
+            j = 0;
+            while (j < len2)
+            {
+              len3 = AllRecipes[j].tags.length;
+              k = 0;
+              while (k < len3)
+              {
+                if (recipeContext?.currentRecipes?.selectedRecipes && AllRecipes[j].tags[k].id == recipeContext?.currentRecipes?.selectedRecipes[i])
+                {
+                  arrToDisplay = [...arrToDisplay, AllRecipes[j]];
+                  
+                }
+                k++;
+              }
+              j++;
+            }
+            i++;
+          }
+          //Maintenant je veux l'ajouter sans doublons
+          arrToDisplay = arrToDisplay.filter((value, index, self) =>
+          index === self.findIndex((t) => (
+            t.name === value.name
+          )))
+          //console.log("arr to display is " + JSON.stringify(arrToDisplay));
+          return (arrToDisplay)
+          }
+          //return (allRecipes);
     }
-    //return (allRecipes);
-
-
-    //let i: number = 0;
-    //len = selectedRecipesTag?.length ? selectedRecipesTag.length : 0
-    //let j: number = 0;
-    //let len2: number = AllRecipes?.length ? AllRecipes?.length : 0;
-    //let k: number = 0;
-    //let len3: number = 0;
-    //while (i < len)
-    //{
-    //  //faire le tour de la liste
-    //  j = 0;
-    //  while (j < len2)
-    //  {
-    //    //console.log("recipe is " + JSON.stringify(AllRecipes[j].tags))
-    //    len3 = AllRecipes[j].tags.length;
-    //    k = 0;
-    //    while (k < len3)
-    //    {
-    //      //console.log("id is " + AllRecipes[j].tags[k].id);
-    //      if (selectedRecipesTag && selectedRecipesTag[i] && AllRecipes[j].tags[k].id == selectedRecipesTag[i])
-    //      {
-    //        //console.log("Found an id that is selected : " + selectedRecipesTag[i]);
-    //        arrToDisplay = [...arrToDisplay, AllRecipes[j]];
-    //      }
-    //      k++;
-    //    }
-    //    j++;
-    //  }
-    //  i++;
-    //}
-    ////console.log("arr to display is " + JSON.stringify(arrToDisplay));
-    //return ([])
   }
 
   //const 
@@ -77,8 +80,8 @@ export default function Recipe()
   useEffect(() => {
     //console.log("Recipe context updated");
     //console.log(recipeContext?.currentRecipes.selectedRecipes);
-    setRecipeTags(recipeContext?.currentRecipes.recipeTags);
-    setSelectedRecipesTag(recipeContext?.currentRecipes.selectedRecipes);
+    //setRecipeTags(recipeContext?.currentRecipes.recipeTags);
+    //setSelectedRecipesTag(recipeContext?.currentRecipes.selectedRecipes);
 
     let res = getRecipesToDisplay();
     if (res)
@@ -100,7 +103,6 @@ export default function Recipe()
   return (
     <div className="recipe-list">
       {recipesToDisplay && recipesToDisplay?.map((recipe) => 
-        <>
         <RecipeItem
           name={recipe.name} 
           description={recipe.description}
@@ -108,8 +110,8 @@ export default function Recipe()
           ingredients={recipe.ingredients}
           steps={recipe.steps}
           tags={recipe.tags}
-          />
-        </>)}
+          key={recipe.name}
+          />)}
     </div>
   );
 };

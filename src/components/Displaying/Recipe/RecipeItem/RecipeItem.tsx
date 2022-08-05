@@ -8,22 +8,31 @@ export default function RecipeItem(props: RecipeItemInterface)
 {
   return (
     <div className="recipeItem">
-      <div className="recipe-image"></div>
       <div className="recipe-description">
         <h2 className="recipe-title">Nom de la recette: {props.name}</h2>
-        <div>
+        <p>
           {props.description}
-        </div>
-        <div className="recipe-description-centered">
-        </div>
-        <div className="ingredients-container-div">
-          Ingrédients:
-        </div>
-        <div className="ingredients-quantity">
-          <div>
-            Etapes de la recette:
-          </div>
-        </div>
+        </p>
+          <img src={props.imageURL} className="recipe-image"></img>
+        
+        {/*<div className="recipe-description-centered">
+        </div>*/}
+        {/*<ul className="ingredients-container-div">
+          <label>Ingrédients:</label>
+          <li></li>
+        </ul>*/}
+        {/*<hr></hr>*/}
+        {/*<ul className="ingredients-quantity"/>
+          <label>Etapes de la recette:</label>
+          <li>
+          </li>
+        </ul>*/}
+        <br />
+        <ul>
+          {props.tags.map( (tag) => 
+            <button className="" key={tag.label}>{tag.label}</button>
+          )}
+        </ul>
       </div>
     </div>
   );
