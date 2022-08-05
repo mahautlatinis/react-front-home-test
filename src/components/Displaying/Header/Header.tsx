@@ -8,6 +8,7 @@ import { MenuTagInterface } from "../../../interfaces/Tag/MenuTag.interface";
 import { RecipeItemInterface } from "../../../interfaces/Recipe/Recipe.interface";
 import { RecipeTagInterface } from "../../../interfaces/Tag/RecipeTag.interface";
 import RecipeTag from "../../Filtering/Tag/RecipeTag/RecipeTag";
+import TagItem from "../Tag/TagItem/TagItem";
 
 export default function Header()
 {
@@ -72,13 +73,13 @@ export default function Header()
 	}
 
 	useEffect(() => {
-		console.log("updating menus");
+		//console.log("updating menus");
 		//console.log(JSON.stringify(menuContext));
 		let ret: MenuTagInterface[] = menuTagsOnSelectedId();
 		//console.log(ret);
 		setSelectedMenuTags(ret);
 
-		console.log("updating recipes");
+		//console.log("updating recipes");
 		let recipe : RecipeTagInterface[] | undefined = getSelectedRecipeTags();
 		//console.log("recipe are " + JSON.stringify(recipe));
 		setSelectedRecipesTags(recipe);
@@ -90,11 +91,27 @@ export default function Header()
 			<span className="navbar-brand mb-0 h1">Navbar</span>
 			{/*<h2>Selected menus tags</h2>*/}
 			<ul>
-				{selectedMenuTags && selectedMenuTags.map( (menuTag) => <button>{menuTag.name}</button>)}
+				{selectedMenuTags && selectedMenuTags.map( (menuTag) => 
+				//<button>{menuTag.name}</button>
+				<TagItem 
+					tagType="headerMenu"
+					id={menuTag.id}
+					name={menuTag.name}
+					key={menuTag.id}
+				/>
+				)}
 			</ul>
 			<br/>
 			<ul>
-				{selectedRecipesTags && selectedRecipesTags.map( (recipeTag) => <button>{recipeTag.label}</button>)}
+				{selectedRecipesTags && selectedRecipesTags.map( (recipeTag) => 
+					//<button>{recipeTag.label}</button>
+					<TagItem
+						tagType="headerRecipe"
+						id={recipeTag.id}
+						name={recipeTag.label}
+						key={recipeTag.id}
+					/>
+				)}
 			</ul>
 		</nav>
 		</>

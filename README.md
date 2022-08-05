@@ -8,17 +8,17 @@ Currently, the filter system is not working. You will try to improve/redo this f
 
 ## Preliminary Tasks
 
-- add one recipe in the recipe database (RecipeData.ts)
-- add 2 new tags and affect these tags to the recipes (it could be any type of tag)
+- add one recipe in the recipe database (RecipeData.ts) ✅ "Cake aux olives"
+- add 2 new tags and affect these tags to the recipes (it could be any type of tag) ✅ "spring" & "diet"
 
 ## Features to add
 
-- add a feature to allow to filter recipes by clicking on a tag (the behavior must work if you click on a menu tag or a recipe tag).
-- display the selected tags in the header and hide those that are not selected
-- if you click on the tag in the header, it will remove the tag from the filter
-- add the possibility to select several tags at the same time (the displayed recipes should contain all the selected tags)
+- add a feature to allow to filter recipes by clicking on a tag (the behavior must work if you click on a menu tag or a recipe tag). ✅ 
+- display the selected tags in the header and hide those that are not selected ✅ 
+- if you click on the tag in the header, it will remove the tag from the filter ✅ 
+- add the possibility to select several tags at the same time (the displayed recipes should contain all the selected tags) ✅ 
 
-To develop this feature you can use a state, a context or any other solution you like.
+To develop this feature you can use a state, a context or any other solution you like. ✅ 
 
 You are encouraged to refactor the existing code before adding your own, as you would do if this was a real task in real life.
 

@@ -21,7 +21,7 @@ export default function MenuTag()
 							name={menuTag.name}
 							tags={menuTag.tags}
 							key={menuTag.id}
-							onSelect={menuContext.onSelect.handleSelection}
+							//onSelect={menuContext.onSelect.handleSelection}
 							tagType="menuTag"
 						/>
 				)}
