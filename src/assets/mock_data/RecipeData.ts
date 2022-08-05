@@ -65,58 +65,58 @@ export const AllRecipes: RecipeItemInterface[] = [
   oliveCake
 ];
 
-// Filtres à reprendre 
+// Pas utilisé, déclaré dans le sujet 
 
-//export const summerRecipes = allRecipes.filter((recipe) => {
+//export const summerRecipes = AllRecipes.filter((recipe) => {
 //  const recipesTags = recipe.tags((tag) => tag.label);
 //  return recipesTags.includes("summer");
 //});
 
-//export const sugarRecipes: RecipeInterface[] = allRecipes.filter((recipe) => {
-//  const ingredientsList: string[] | undefined = recipe.ingredients?.map(
-//    (ingredient) => ingredient.name
-//  );
-//  return ingredientsList && ingredientsList.includes("sucre");
-//});
+export const sugarRecipes: RecipeItemInterface[] =AllRecipes.filter((recipe) => {
+  const ingredientsList: string[] | undefined = recipe.ingredients?.map(
+    (ingredient) => ingredient.name
+  );
+  return ingredientsList && ingredientsList.includes("sucre");
+});
 
-//export const chocolateRecipes:  RecipeInterface[] = allRecipes.filter((recipe) => {
-//  const ingredientsList: string[] | undefined = recipe.ingredients?.map(
-//    (ingredient) => ingredient.name
-//  );
+export const chocolateRecipes:  RecipeItemInterface[] = AllRecipes.filter((recipe) => {
+  const ingredientsList: string[] | undefined = recipe.ingredients?.map(
+    (ingredient) => ingredient.name
+  );
 
-//  return ingredientsList && ingredientsList.includes("chocolat");
-//});
+  return ingredientsList && ingredientsList.includes("chocolat");
+});
 
-//export const dessertRecipes: RecipeInterface[] = allRecipes.filter((recipe) => {
-//  const tags: string[] = recipe.tags.map((tag) => tag.label);
-//  return tags.includes("dessert");
-//});
+export const dessertRecipes: RecipeItemInterface[] = AllRecipes.filter((recipe) => {
+  const tags: string[] = recipe.tags.map((tag) => tag.label);
+  return tags.includes("dessert");
+});
 
-//export const chocolateDessertRecipes: RecipeInterface[] = allRecipes.filter(
-//  (recipe) => {
-//    const tagsString: string[] = recipe.tags.map((tag) => tag.label);
-//    const ingredientString: string[] = recipe.ingredients
-//      ? recipe.ingredients.map((ingredient) => ingredient.name)
-//      : [];
-//    return (
-//      tagsString.includes("dessert") && ingredientString.includes("chocolat")
-//    );
-//  }
-//);
+export const chocolateDessertRecipes: RecipeItemInterface[] = AllRecipes.filter(
+  (recipe) => {
+    const tagsString: string[] = recipe.tags.map((tag) => tag.label);
+    const ingredientString: string[] = recipe.ingredients
+      ? recipe.ingredients.map((ingredient) => ingredient.name)
+      : [];
+    return (
+      tagsString.includes("dessert") && ingredientString.includes("chocolat")
+    );
+  }
+);
 
-//export const noEggsRecipes: RecipeInterface[] = allRecipes.filter((recette) => {
-//  const ingredientsString: string[] = recette.ingredients
-//    ? recette.ingredients.map((ingredient) => ingredient.name)
-//    : [];
-//  return !ingredientsString.includes("oeuf");
-//});
+export const noEggsRecipes: RecipeItemInterface[] = AllRecipes.filter((recette) => {
+  const ingredientsString: string[] = recette.ingredients
+    ? recette.ingredients.map((ingredient) => ingredient.name)
+    : [];
+  return !ingredientsString.includes("oeuf");
+});
 
-//export const autumnRecipes: RecipeInterface[] = allRecipes.filter((recette) => {
-//  const tagIds = recette.tags.map((tag) => tag.label);
-//  return tagIds.includes("autumn");
-//});
+export const autumnRecipes: RecipeItemInterface[] = AllRecipes.filter((recette) => {
+  const tagIds = recette.tags.map((tag) => tag.label);
+  return tagIds.includes("autumn");
+});
 
-//export const veganRecipes: RecipeInterface[] = allRecipes.filter((recette) => {
-//  const tagIds: string[] = recette.tags.map((tag) => tag.label);
-//  return tagIds.includes("vegan");
-//});
+export const veganRecipes: RecipeItemInterface[] = AllRecipes.filter((recette) => {
+  const tagIds: string[] = recette.tags.map((tag) => tag.label);
+  return tagIds.includes("vegan");
+});

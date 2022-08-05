@@ -11,7 +11,6 @@ export default function TagItem(props: MenuTagInterface | null)
   const recipeContext = useContext(RecipeContext)
 
   //Permet de générer une classe spéciale si le tag est sélectionné
-  //TODO: a reprendre
   const getClassName = (id: number) => {
     if (props?.tagType === "menuTag")
     {
@@ -45,19 +44,13 @@ export default function TagItem(props: MenuTagInterface | null)
               if (props && props?.tagType == "recipeTag")
               {
                 if (recipeContext?.onSelectRecipe.handleSelection && props)
-                {
-                  //console.log("ouh");
                   recipeContext?.onSelectRecipe.handleSelection(props.id)
-                }
               }
               else if (props && props?.tagType=="menuTag")
               {
                 if (menuContext?.onSelect.handleSelection && props)
-                {
                   menuContext?.onSelect.handleSelection(props.id)
-                }
               }
-              
             }}>{props && props.name ? props.name : ""}
         </button>
     </ul>

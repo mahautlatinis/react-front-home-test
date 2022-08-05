@@ -4,8 +4,7 @@ export interface MenuTagInterface {
 	id: number;
 	name: string,
 	tags: RecipeTagInterface[],
-	//tags: []
 	onSelect?: (...args: any) => void,
-	isSelected?: boolean,
+	//isSelected?: boolean,
 	tagType?: string
 };

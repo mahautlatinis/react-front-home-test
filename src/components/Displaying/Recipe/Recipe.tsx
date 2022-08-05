@@ -3,7 +3,6 @@ import RecipeItem from "./RecipeItem/RecipeItem";
 import { RecipeContext} from "../../../context/RecipeContext";
 import { MenuContext} from "../../../context/MenuContext";
 import React, { useState, useEffect, useContext} from "react";
-//import RecipeContextInterface from "../../../context/RecipeContext";
 import {RecipeTagInterface} from "../../../interfaces/Tag/RecipeTag.interface";
 import { RecipeTagList} from "../../../assets/mock_data/TagData"
 import {AllRecipes, oliveCake, waldorfSalad, pearPie, fondantChocolat, pavlova} from "../../../assets/mock_data/RecipeData"
@@ -14,28 +13,22 @@ export default function Recipe()
   const recipeContext = useContext(RecipeContext);
   const menuContext = useContext(MenuContext);
   const allRecipes = AllRecipes;
-  //const all
-
-  //const [recipeTags, setRecipeTags] = useState<RecipeTagInterface[] | undefined>(RecipeTagList)
-  //const [selectedRecipesTag, setSelectedRecipesTag] = useState<number[] | undefined >([]);
-  //const [allRecipes, setAllRecipes] = useState<RecipeItemInterface[]>(AllRecipes);
+  //Reviter d'utiliser trop, useState, récupérer directement les propriétés du contexte 
   const [recipesToDisplay, setRecipesToDisplay] = useState<RecipeItemInterface[]>();
 
-  //TODO: a refacto
   const getRecipesToDisplay = () => {
-
-    //console.log("calling get recipes to display");
 
     let arrToDisplay: RecipeItemInterface[] = [];
     let len: number = recipeContext?.currentRecipes?.selectedRecipes?.length ? recipeContext?.currentRecipes?.selectedRecipes?.length : 0
 
     if (AllRecipes)
     {
+      //Si tous les tags sont sélectionnés, retourner directement la liste entière des recettes 
       if (len == 8)
       {
-        //console.log("all selected !");
         return (allRecipes);
       }
+      //Si tous les tags ne sont pas sélectionnés, chercher les recettes correspondantes 
       else
       {
           let i: number = 0;
@@ -63,12 +56,14 @@ export default function Recipe()
             }
             i++;
           }
-          //Maintenant je veux l'ajouter sans doublons
+          //Filtrage pour éviter les doublons dans le tableau
           arrToDisplay = arrToDisplay.filter((value, index, self) =>
           index === self.findIndex((t) => (
             t.name === value.name
           )))
-          //console.log("arr to display is " + JSON.stringify(arrToDisplay));
+
+          //Shuffling pour qu'on voit bien que ca se rafraichit à chaque clique
+          arrToDisplay.sort(() => Math.random() - 0.5)
           return (arrToDisplay)
           }
           //return (allRecipes);
@@ -78,27 +73,14 @@ export default function Recipe()
   //const 
 
   useEffect(() => {
-    //console.log("Recipe context updated");
-    //console.log(recipeContext?.currentRecipes.selectedRecipes);
-    //setRecipeTags(recipeContext?.currentRecipes.recipeTags);
-    //setSelectedRecipesTag(recipeContext?.currentRecipes.selectedRecipes);
-
+    //Rafraichissement à chaque le contexte est modifiés
     let res = getRecipesToDisplay();
+
+    //Rafraichissement du tableau contenant les recettes dépendantes du contexte
     if (res)
       setRecipesToDisplay(res);
 
-    //console.log("recipes to display are " + JSON.stringify(recipesToDisplay))
-
   }, [recipeContext])
-
-  //0. Récupérer toutes les recettes  
-  
-  //1. On récupère les tags de recettes sélectionnées
-
-  //2. Faire le tour des recettes et si la recette est possède un tag dans les tags sélectionnés, on l'affiche
-
-  //J'ai l'id d'un Tag de recette et en fonction de cet id, je veux récupérer les recettes correspondantes
-
 
   return (
     <div className="recipe-list">

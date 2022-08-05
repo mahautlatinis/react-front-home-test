@@ -2,8 +2,7 @@ import { MenuTagInterface } from "../Tag/MenuTag.interface"
 import { RecipeTagInterface } from "../Tag/RecipeTag.interface"
 import { menuTagList, allRecipesTag } from "../../assets/mock_data/TagData"	
 
-//TODO: a renommer
-export interface AppState  {
+export interface ContextInterface  {
     currentMenues: {
 		selectedMenu: number[],
 		menuTags: MenuTagInterface[],
@@ -21,7 +20,7 @@ export interface AppState  {
     }
 }
 
-export const appStateInitializer = {
+export const contextInitializer = {
 	currentMenues: {
         selectedMenu: [1, 2, 3],
         menuTags: menuTagList,

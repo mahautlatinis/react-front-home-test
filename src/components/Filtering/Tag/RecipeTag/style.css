@@ -1,13 +1,7 @@
 
 .recipeTags {
-	/*border: 10px solid red;*/
-	/*overflow-x: scroll;*/
 	overflow-x: auto;
 	overflow-y: scroll;
 	white-space: nowrap;
-	/*display: inline-block;*/
-	/*max-height: 75px;*/
-	/*max-width: 75%;*/
 	padding: 20px;
-	/*background-color: red;*/
 }

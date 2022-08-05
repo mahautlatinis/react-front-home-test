@@ -4,36 +4,16 @@ import { RecipeTagList } from "../../../../assets/mock_data/TagData";
 import TagItem from "../../../Displaying/Tag/TagItem/TagItem";
 import { RecipeTagInterface } from "../../../../interfaces/Tag/RecipeTag.interface";
 import { menuTagList } from "../../../../assets/mock_data/TagData";
-//import { MenuTagInterface } from "../../../../interfaces/Tag/MenuTag.interface";
 import { RecipeContext } from "../../../../context/RecipeContext";
-//import allRecipesTag from "../../../assets/mock_data/TagData"
 import "./style.css"
 
 export default function RecipeTag()
 {
 	//"Consommation" des contexts
-	const recipeContext = useContext(RecipeContext)
-	const menuContext = useContext(MenuContext)
-
-	const getAllisSelected = () => {	
-		//if (recipeContext && recipeContext.currentRecipes.recipeTags && recipeContext.currentRecipes.recipeTags.length == 0)
-		//{
-		//	if (recipeContext.onSelectRecipe.handleSelection && recipeContext.currentRecipes.recipeTags.length == 0)
-		//		recipeContext.onSelectRecipe.handleSelection(0);
-		//}
-		//if (recipeContext && recipeContext.currentRecipes.recipeTags && recipeContext.currentRecipes.recipeTags.includes({i1)
-		//	return "selected";
-		
-		if (!(recipeContext && recipeContext.currentRecipes.recipeTags))
-			return "selected";
-		return ("tag");
-	}
+	const recipeContext = useContext(RecipeContext);
+	const menuContext = useContext(MenuContext);
 
 	useEffect( () => {
-		//console.log("Printing current recipes");
-		//recipeContext?.currentRecipes.clearedRecipes?.map( (recipes) => {
-		//	console.log(recipes)
-		//})
 	}, [recipeContext, menuContext])
 	
 	return(
@@ -43,10 +23,6 @@ export default function RecipeTag()
 			{/*<p>Les catégories séléctionnées sont : </p>*/}
 			<div className="recipeTags">
 				<ul>
-					{/*<li key={0} 
-						onClick={() => recipeContext && recipeContext.onSelectRecipe.handleSelection
-								&& recipeContext.onSelectRecipe.handleSelection(0)}
-						>Toutes</li>*/}
 				</ul>
 					{recipeContext?.currentRecipes.recipeTags?.map((recipes) => 
 					<TagItem 
@@ -54,7 +30,6 @@ export default function RecipeTag()
 							name={recipes.label}
 							key={recipes.id}
 							tagType="recipeTag"
-							//onSelect={recipeContext.onSelectRecipe.handleSelection}
 							tags={[]}					
 					/>
 					)}

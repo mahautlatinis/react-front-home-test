@@ -1,51 +1,39 @@
 import React from "react"
-import { AppState, appStateInitializer } from "../../interfaces/App/App.interface"
+import { ContextInterface, contextInitializer } from "../../interfaces/ParentContext/ParentContext.interface"
 import { RecipeTagInterface } from "../../interfaces/Tag/RecipeTag.interface";
 import "../../assets/styles/styles.css"
 import Tag from "../../components/Displaying/Tag/Tag";
 import MenuContextInterface, { MenuContext } from "../../context/MenuContext";
 import { menuTagList, allRecipesTag, seasons, traditional, specialDiet, winter, summer, fall, spring, appetizer, diet, dessert, vegan} from "../../assets/mock_data/TagData";
-//import { MenuTagInterface } from "../../interfaces/Tag/MenuTag.interface"
 import {RecipeContext} from "../../context/RecipeContext";
 import { RecipeTagList } from "../../assets/mock_data/TagData";
 import Recipe  from "../../components/Displaying/Recipe/Recipe"
 import RecipeTag from "../Filtering/Tag/RecipeTag/RecipeTag";
 import { RecipeTagType } from "../../interfaces/Tag/RecipeTag.interface";
 import { MenuTagInterface } from "../../interfaces/Tag/MenuTag.interface";
+import Header from "../Displaying/Header/Header";
 
-export default class TagContextParent extends React.Component<{}, AppState> {
+export default class TagContextParent extends React.Component<{}, ContextInterface> {
 
 	constructor(props: any) {
     super(props);
-		this.state = appStateInitializer
-		//console.log(this.state)
+		this.state = contextInitializer;
 		let ret: RecipeTagInterface[] | undefined = this.getSelectedRecipes();
-		//console.log(ret);
 	}
 
 	getCorrespondingTag = (id: number) => {
-
-		//console.log("got corresponding tag called");
 		let all = menuTagList;
 		let i = 0;
 		while (i < menuTagList.length)
 		{
 			if (menuTagList[i].id === id)
-			{
 				return menuTagList[i].tags;
-			}
 			i++;
 		}
 	}
 
-	//Permet de sélectionner les recettes (sélectionnables) en fonction du menu, mise à jour du contexte
-	//TODO: a reprendre avec recipeTags
+	//Permet de gérer la sélection des MenuTag
 	handleRecipeSelection = (id: number) => {
-
-		//console.log("recipe selected");
-
-		//console.log(id);
-
 		let newArray: number[] | undefined = [];
 		if (this.state.currentRecipes.selectedRecipes.includes(id))
 		{
@@ -78,9 +66,6 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 	handleMenuSelection = (id: number) =>  {
 		if (!id)
 			return;
-
-		//console.log("Handle Menu Selection called");
-
 		let newArray: number[] = [];
 
 		if (this.state.currentMenues.selectedMenu.includes(id))
@@ -127,8 +112,6 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 		
 	}
 
-	//Permet de retourner les recettes en fonction de la sélection du menu
-	//TODO: a renommer
 	onMenuSelectionDisplayRecipes = () => {
 		let newArray: any[] = [];
 
@@ -149,24 +132,13 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 	//Permet d'extraire l'id et le nom (label) des recettes dépendantes des sélection
 	getSelectedRecipes = () => 
 	{
-		//console.log("getSelectedRecipes called");
-
 		let newArray: RecipeTagInterface[] = [];
-		//console.log(newArray);
 
-		//Si il sont tous sélectionnés, il faut renvoyer la liste entière
 		if (this.state.currentMenues.selectedMenu.length == 3)
-		{
-			//console.log("all selected");
-
 			return allRecipesTag;
-		}
 
-		//TODO: corriger, dirty
-		//console.log("selected meny is" + this.state.currentMenues.selectedMenu)
 		if (this.state.currentMenues.selectedMenu.includes(1))
 		{
-			//console.log("one");
 			newArray = [...newArray, winter];
 			newArray = [...newArray, summer];
 			newArray = [...newArray, fall];
@@ -184,15 +156,12 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 			newArray = [...newArray, vegan];
 			newArray = [...newArray, diet];
 		}
-		//console.log(newArray);
 		return (newArray);
 	}
 
 	//Permet de filtrer pour qu'il n'y ait pas de doublons dans les tags recettes
 	setClearedRecipes = (cleared: any, clearedNames: string[]) =>
 	{
-		//console.log("set cleared recipes called");
-
 		this.setState({
 			currentMenues: {
 				selectedMenu: this.state.currentMenues.selectedMenu,
@@ -204,18 +173,6 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 				selectedRecipes: [],//TODO
 			}
 		})
-	}
-
-	//getClearedRecipes = () => 
-	//{
-	//	//console.log("--------");
-	//}
-
-	componentDidUpdate()
-	{
-		let ret: RecipeTagInterface[] | undefined = this.getSelectedRecipes();
-		//console.log(ret);
-		//console.log(this.state);
 	}
 
 	render() {
@@ -237,6 +194,7 @@ export default class TagContextParent extends React.Component<{}, AppState> {
 						},
 					onSelectRecipe: {handleSelection: this.handleRecipeSelection}
 				}}>
+				<Header />
                 <Tag />
 				<Recipe />
 				</RecipeContext.Provider>

@@ -7,35 +7,36 @@ ul {
   display:inline-block;
   list-style: none;
   overflow-x: scroll;
-  /*border: 0.1rem solid red;*/
-  /*text-align: center;*/
-  /*display-flex: center;*/
-  /*max-width: 25%;*/
 }
 
 li, button {
-  background-color: #fff;
-  border: 0.2rem solid #37b877;
+  /*background-color: #fff;*/
+  /*border: 0.2rem solid #37b877;*/
   padding: 2px 15px;
-  color: #37b877;
-  border-radius: 1em;
+  /*color: #37b877;*/
+  /*border-radius: 1em;*/
   font-size: 18px;
-  font-family: "Vollkorn", Arial;;
-  /*margin: 10px;*/
-  /*space-between: 10px;*/
-  /*display: inline;*/
+  /*font-family: "Grotesk";*/
 }
 
+/* TODO: style a revoir après logique */
 .selected {
   background-color: #37b877;
   color: #fff;
   border-radius: 1rem;
+  border-radius: 1em;
   border: 0.2rem solid #99ff99;
-  /*max-width: 20px;*/
+}
+
+.tag {
+  background-color: #fff;
+  color: #37b877;
+  border-radius: 1rem;
+  border-radius: 1em;
+  border: 0.2rem solid #99ff99;
 }
 
 .app-container {
-  /*width: 45%;*/
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -43,19 +44,18 @@ li, button {
 }
 
 h1 {
-  font-family: "Vollkorn", Arial;
+  font-family: "Grotesk";
   font-size: 2.6em;
   font-weight: 700;
   letter-spacing: .02em;
 }
 
 h2 {
-  font-family: "Vollkorn", Arial;
+  font-family: "Grotesk";
   margin: 0px;
 }
 
 @font-face {
-  font-family: 'Vollkorn';
-  src: url('../fonts/Vollkorn/Vollkorn.ttf') format('truetype')
-  /*src: local('Volkorn'), url(./fonts/Rajdhani/Rajdhani-Regular.ttf) format('truetype');*/
+  font-family: "Grotesk";
+  src: url('../fonts/Grotesk/OTF/HKGrotesk-SemiBold.otf') format('truetype');
 }
