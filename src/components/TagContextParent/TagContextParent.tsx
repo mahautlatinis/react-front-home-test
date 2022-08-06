@@ -15,6 +15,7 @@ import Header from "../Displaying/Header/Header";
 import { RecipeItemInterface} from "../../interfaces/Recipe/Recipe.interface"
 import { AllRecipes } from "../../assets/mock_data/RecipeData";
 import Presentation from "../Displaying/Presentation/Presentation";
+import Footer from "../Displaying/Footer/Footer";
 
 //Material UI
 
@@ -324,6 +325,8 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 				<Presentation />
                 <Tag />
 				<Recipe />
+				<Footer />
+				<br/>
 				</RecipeContext.Provider>
 			</MenuContext.Provider>
 			</div>

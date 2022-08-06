@@ -10,31 +10,26 @@ ul {
 }
 
 li, button {
-  /*background-color: #fff;*/
-  /*border: 0.2rem solid #37b877;*/
-  padding: 2px 15px;
-  /*color: #37b877;*/
-  /*border-radius: 1em;*/
   font-size: 18px;
-  /*font-family: "Grotesk";*/
+  font-family: "Grotesk";
 }
 
-/* TODO: style a revoir après logique */
+/*TODO: style a revoir après logique
 .selected {
   background-color: #37b877;
   color: #fff;
   border-radius: 1rem;
   border-radius: 1em;
   border: 0.2rem solid #99ff99;
-}
+}*/
 
-.tag {
+/*.tag {
   background-color: #fff;
   color: #37b877;
   border-radius: 1rem;
   border-radius: 1em;
   border: 0.2rem solid #99ff99;
-}
+}*/
 
 .app-container {
   margin-left: auto;
@@ -61,6 +56,7 @@ h2, .step-index, .ingredients-title, p, h3{
 
 p {
   color: #c0c0c0;
+  font-family: "Grotesk";
 }
 
 .step-index {

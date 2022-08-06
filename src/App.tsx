@@ -1,7 +1,6 @@
 import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
-//import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import TagContextParent from "./components/TagContextParent/TagContextParent";
@@ -14,6 +13,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { alpha, styled } from '@mui/material/styles';
 import { pink } from '@mui/material/colors';
 
+//tests pour animations
+import Grow from '@mui/material/Grow';
+
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
@@ -25,18 +27,6 @@ const lightTheme = createTheme({
     mode: 'light',
   },
 });
-
-  //const GreenSwitch = styled(Switch)(({ theme }) => ({
-  //'& .MuiSwitch-switchBase.Mui-checked': {
-  //  color: pink[600],
-  //  '&:hover': {
-  //    backgroundColor: alpha(pink[600], theme.palette.action.hoverOpacity),
-  //  },
-  //},
-  //'& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-  //  backgroundColor: pink[600],
-  //},
-//}));
 
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 

@@ -45,6 +45,11 @@ import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 
 import { useTheme,ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+//import ScrollEffect from 'react-scroll-effects';
+
+//Popover pour la description
+import Popover from '@mui/material/Popover';
+//import Typography from '@mui/material/Typography';
 
 //import IconButton from '@mui/material/IconButton';
 ////import Box from '@mui/material/Box';
@@ -66,6 +71,11 @@ export default function Recipe()
 
   //Accordéon ingrédients 
   const [expanded, setExpanded] = React.useState<string | false>(false);
+
+  //Pour le popover
+  const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
+
+  //const open = Boolean(anchorEl);
 
   //couleurs pales pour faire joli, pas utilise
   const colors = ["#CBE4F9", "#CDF5F6", "#EFF9DA", "#F9EBDF", "#D6CDEA", "F9D8D6", "#D6CDEA", "#8AE3B7", "#5DB7EA"]
@@ -110,10 +120,19 @@ export default function Recipe()
             >
         {recipesToDisplay && recipesToDisplay?.map((recipe, index) => 
           <>
-          <Card sx={{ width: "250px",height: "500px", padding: "20px", margin: "10px", borderRadius: "30px", border: "none", boxShadow: "none"}}>
-            <Typography gutterBottom variant="h5" component="div" style={{fontFamily: "Grotesk", paddingBottom: "0px", fontSize:"16px"}}>
+          <Card sx={{ width: "275px",/*height: "400px"*/ padding: "20px", margin: "10px", borderRadius: "30px", border: "none", boxShadow: "none"}}>
+            <Typography 
+              gutterBottom variant="h5"
+              component="div"
+              style={{fontFamily: "Grotesk", paddingBottom: "0px", fontSize:"16px"}}
+              //aria-owns={open ? 'mouse-over-popover' : undefined}
+              //aria-haspopup="true"
+              //onMouseEnter={handlePopoverOpen}
+              //onMouseLeave={handlePopoverClose}
+            >
               {recipe.name}
             </Typography>
+          
             {/*<FormControlLabel
                 control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} name="checkedH" />}
                 label=""/>*/}
@@ -161,14 +180,34 @@ export default function Recipe()
                 </Typography>
               </AccordionDetails>
             </Accordion>
-            <br />
             {/*<Button size="small" color="secondary">Étapes</Button>*/}
+
+            <Accordion expanded={expanded === 'panel2' + recipe.name } onChange={handleChange('panel2' + recipe.name)} style={{marginTop: '10px'}}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel2bh-content"
+                id="panel2bh-header"
+              >
+                <Typography />
+                <Typography>Étapes</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography /*style={{overflow:scroll}}*/>
+                  <Stack spacing={1}>
+                  {recipe.steps.map((step) =>
+                  //<ul>
+                    <p style={{fontSize: "12px"}}>{step.order} : {step.description}</p>
+                  //</ul>
+                    )}
+                  </Stack>
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
         </Card>
         </>
         )}
       </Grid>
     </Box>
-    
     </>
   );
 };

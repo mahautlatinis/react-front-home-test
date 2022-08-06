@@ -16,6 +16,15 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
+
+
+//var ScrollArea = require('react-scrollbar');
+//import ScrollArea from "react-scrollbar"
+//TODO: supprimer les telechargem
+
+//import * as Scroll from 'react-scroll';
+
+//import Zoom from 'react-reveal/Zoom';
 //import MenuIcon from '@mui/icons-material/Menu';
 
 
