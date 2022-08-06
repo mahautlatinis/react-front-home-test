@@ -1,25 +1,24 @@
-import IngredientItem from "./IngredientItem/IngredientItem";
-import {IngredientItemProps,  IngredientsProps } from "../../../../interfaces/Ingredient/Ingredient.interface";
-import "./style.css"
-import { RecipeItemInterface } from "../../../../interfaces/Recipe/Recipe.interface"
-
-
+import {IngredientsProps } from "../../../../interfaces/Ingredient/Ingredient.interface";
+import Stack from '@mui/material/Stack';
+import Avatar from '@mui/material/Avatar';
+import AvatarGroup from '@mui/material/AvatarGroup';
 
 export default function Ingredient(props: IngredientsProps)
 {
   return (
     <>
-    <h2>Ingrédients</h2>
-    <ul className="ingredientslist">
-      {props && props.list && props.list.map((item) =>
-        <IngredientItem 
-          name={item.name}
-          names={item.names}
-          type={item.type}
-          unit={item.unit}
-          prefix={item.prefix}
+    <AvatarGroup max={6}>
+      {props.list.map((ingredient) => 
+        <Avatar 
+          key={ingredient.name} 
+          src={ingredient.imgURL} 
+          style={{border: "1px solid #f2f3f4"}}
         />)}
-    </ul>
+    </AvatarGroup>
+    <Stack direction="row" spacing={1}>
+      {props.list.map((ingredient) =>
+        <span key={ingredient.name} style={{fontSize: "12px"}}>{ingredient.name} </span>)}
+    </Stack>
     </>
   );
 };

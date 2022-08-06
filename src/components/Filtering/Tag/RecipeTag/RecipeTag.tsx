@@ -5,7 +5,6 @@ import TagItem from "../../../Displaying/Tag/TagItem/TagItem";
 import { RecipeTagInterface } from "../../../../interfaces/Tag/RecipeTag.interface";
 import { menuTagList } from "../../../../assets/mock_data/TagData";
 import { RecipeContext } from "../../../../context/RecipeContext";
-import "./style.css"
 
 export default function RecipeTag()
 {

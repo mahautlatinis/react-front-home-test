@@ -1,7 +1,6 @@
 import { useState, useContext, useEffect } from "react"
 import { MenuContext } from "../../../../context/MenuContext";
 import TagItem from "../../../Displaying/Tag/TagItem/TagItem"
-import "./style.css"
 
 export default function MenuTag()
 {

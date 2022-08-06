@@ -1,20 +1,15 @@
 import * as React from 'react';
+
+//Imports material UI pour dark et light theme
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import TagContextParent from "./components/TagContextParent/TagContextParent";
 import Switch from '@mui/material/Switch';
-
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-
-//Buttonn swith customise
-import { alpha, styled } from '@mui/material/styles';
-import { pink } from '@mui/material/colors';
-
-//tests pour animations
-import Grow from '@mui/material/Grow';
+import { green } from '@mui/material/colors';
 
 const darkTheme = createTheme({
   palette: {
@@ -45,20 +40,23 @@ export default function MyApp() {
   };
   
   return (
+    <>
     <ThemeProvider theme={selectedMode}>
-      <CssBaseline />
-      <ul>
-      <Switch
-          {...label}
-          checked={checked}
-          color="success"
-          onChange={handleChange}
-          inputProps={{ 'aria-label': 'controlled' }}
-        />
-        <span>Choose your mode !</span>
-      </ul>
+      <div style={{backgroundColor: green[500]}}>
+        <CssBaseline />
+        <ul>
+        <Switch
+            {...label}
+            checked={checked}
+            color="default"
+            onChange={handleChange}
+            inputProps={{ 'aria-label': 'controlled' }}
+          />
+          <span>{selectedMode == lightTheme ? "Thème light" : "Thème sombre"}</span>
+        </ul>
+        </div>
       <TagContextParent/>
     </ThemeProvider>
-
+  </>
   );
 }

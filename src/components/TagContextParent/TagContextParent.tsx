@@ -9,7 +9,6 @@ import {RecipeContext} from "../../context/RecipeContext";
 import { RecipeTagList } from "../../assets/mock_data/TagData";
 import Recipe  from "../../components/Displaying/Recipe/Recipe"
 import RecipeTag from "../Filtering/Tag/RecipeTag/RecipeTag";
-import { RecipeTagType } from "../../interfaces/Tag/RecipeTag.interface";
 import { MenuTagInterface } from "../../interfaces/Tag/MenuTag.interface";
 import Header from "../Displaying/Header/Header";
 import { RecipeItemInterface} from "../../interfaces/Recipe/Recipe.interface"
@@ -17,15 +16,12 @@ import { AllRecipes } from "../../assets/mock_data/RecipeData";
 import Presentation from "../Displaying/Presentation/Presentation";
 import Footer from "../Displaying/Footer/Footer";
 
-//Material UI
-
 export default class TagContextParent extends React.Component<{}, ContextInterface> {
 
 	constructor(props: any) {
     super(props);
 		this.state = contextInitializer;
 		let ret: RecipeTagInterface[] | undefined = this.getSelectedRecipes();
-		//let allRecipes: RecipeItemInterface[] = AllRecipes;
 	}
 
 	getCorrespondingTag = (id: number) => {
@@ -297,39 +293,39 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 	render() {
 		return (
 		<>
-		<div style={{textAlign: "center"}}>
-			<MenuContext.Provider
-                value={
-                    {currentMenues: {
-                        selectedMenu: this.state.currentMenues.selectedMenu,
-                        menuTags: this.state.currentMenues.menuTags,
-                        maxSelection: 3}, 
-                    onSelect: {
-                        handleSelection: this.handleMenuSelection},
-					getClassName: {
-						getClassName: this.getClassName}
+			<div style={{textAlign: "center"}}>
+				<MenuContext.Provider
+					value={
+						{currentMenues: {
+							selectedMenu: this.state.currentMenues.selectedMenu,
+							menuTags: this.state.currentMenues.menuTags,
+							maxSelection: 3}, 
+						onSelect: {
+							handleSelection: this.handleMenuSelection},
+						getClassName: {
+							getClassName: this.getClassName}
+						}}>
+				<RecipeContext.Provider
+					value={
+						{currentRecipes: {
+							recipeTags: this.state.currentRecipes.recipeTags,
+							selectedRecipes: this.state.currentRecipes.selectedRecipes,
+							},
+						onSelectRecipe: {handleSelection: this.handleRecipeSelection},
+						getRecipesToDisplay: {getRecipesToDisplay: this.getRecipesToDisplay},
+						getSelectedMenuTags: {getSelectedMenuTags: this.getSelectedMenuTags},
+						getSelectedRecipesTags: {getSelectedRecipesTags: this.getSelectedRecipesTags},
 					}}>
-            <RecipeContext.Provider
-                value={
-                    {currentRecipes: {
-						recipeTags: this.state.currentRecipes.recipeTags,
-						selectedRecipes: this.state.currentRecipes.selectedRecipes,
-						},
-					onSelectRecipe: {handleSelection: this.handleRecipeSelection},
-					getRecipesToDisplay: {getRecipesToDisplay: this.getRecipesToDisplay},
-					getSelectedMenuTags: {getSelectedMenuTags: this.getSelectedMenuTags},
-					getSelectedRecipesTags: {getSelectedRecipesTags: this.getSelectedRecipesTags},
-				}}>
-				
-				<Header />
-				<Presentation />
-                <Tag />
-				<Recipe />
-				<Footer />
-				<br/>
-				</RecipeContext.Provider>
-			</MenuContext.Provider>
-			</div>
+					
+					<Header />
+					<Presentation />
+					<Tag />
+					<Recipe />
+					<Footer />
+					<br/>
+					</RecipeContext.Provider>
+				</MenuContext.Provider>
+				</div>
 		</>)
 	}
 }

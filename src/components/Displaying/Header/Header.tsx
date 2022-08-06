@@ -1,4 +1,3 @@
-import "./style.css"
 import React, {useContext, useEffect, useState} from "react";
 import { RecipeContext} from "../../../context/RecipeContext";
 import { MenuContext} from "../../../context/MenuContext";
@@ -13,10 +12,6 @@ import TagItem from "../Tag/TagItem/TagItem";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-
 
 export default function Header()
 {
@@ -26,8 +21,6 @@ export default function Header()
 	const recipeTagList = RecipeTagList;
 	const [selectedMenuTags, setSelectedMenuTags] = useState(MenuTaglist);
 	const [selectedRecipesTags, setSelectedRecipesTags] = useState<RecipeTagInterface[]>(recipeTagList)
-	
-
 
 	useEffect(() => {
 		//Récupération depuis le contexte des menus Tags sélectionnés 
@@ -49,9 +42,9 @@ export default function Header()
 	return (
 		<>
 		<Box sx={{ flexGrow: 1}}>
-			<AppBar position="static" color="transparent">
+			<AppBar position="static" color="transparent" style={{height: "100px",padding:"15px", overflowX:"scroll", overflowY:"hidden", whiteSpace:"nowrap", justifyContent: "space-evenly", alignItems: "center"/*display: "inline-block"*/}}>
 				<Toolbar>
-					<ul>
+					<ul  style={{overflowX: 'scroll', display: "inline"}} /*style={{overflow: "scroll"}}*/>
 						{selectedMenuTags && selectedMenuTags.map( (menuTag) => 
 						<TagItem 
 							tagType="headerMenu"

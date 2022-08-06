@@ -1,8 +1,8 @@
 export interface IngredientItemProps {
-	name?: string;
+	name: string;
 	names?: string;
 	imgURL?: string;
-	type?: string;
+	type: string;
 	unit?: string;
 	prefix?: string;
 }

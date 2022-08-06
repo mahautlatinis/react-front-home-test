@@ -2,11 +2,10 @@ import { MenuTagInterface} from "../../../../interfaces/Tag/MenuTag.interface";
 import {useEffect, useContext} from "react"
 import { MenuContext } from "../../../../context/MenuContext";
 import { RecipeContext } from "../../../../context/RecipeContext";
-import "./style.css"
 
 //Material UI
 import { Chip } from "@material-ui/core";
-import { green, blue } from "@material-ui/core/colors";
+import { green } from "@material-ui/core/colors";
 
 
 export default function TagItem(props: MenuTagInterface | null)
@@ -53,8 +52,7 @@ export default function TagItem(props: MenuTagInterface | null)
             variant="outlined"
             color={props && menuContext && menuContext?.getClassName.getClassName(props.id, props.tagType ?  props.tagType : "headerMenu") ? "primary" : "secondary"}
         />
-      </> 
-        }
+      </> }
     </ul>
   );
 };

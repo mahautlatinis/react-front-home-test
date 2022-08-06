@@ -10,7 +10,6 @@ import DoneIcon from '@mui/icons-material/Done';
 
 export default function AlertDialog() {
   const [open, setOpen] = useState(false);
-
   const [showButton, setShowButton] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
 

@@ -47,7 +47,6 @@ export const seasons: MenuTagInterface = {
   id: 1,
   name: "saison",
   tags: [winter, summer, spring, fall]
-  //tags: [{id:6, label: "winter"}, {id:1, label: "summer"}, {id: 7, label:"spring"}, {id: 5, label: "fall"}],
 }
 
 export const traditional: MenuTagInterface = {
@@ -60,7 +59,6 @@ export const specialDiet: MenuTagInterface = {
   id: 3,
   name: "régimes particuliers",
   tags: [vegan, diet]
-  //tags: {{id: 2, label: "vegan"}, {id: 8, label: "diet"}},
 }
 
 //Dirty
