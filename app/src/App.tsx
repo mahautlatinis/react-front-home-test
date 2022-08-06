@@ -32,24 +32,21 @@ export default function MyApp() {
   };
   
   return (
-    <>
+    <div>
     <ThemeProvider theme={selectedMode}>
-      <div style={{backgroundColor: green[500]}}>
+      <div style={{backgroundColor: green[300]}}>
         <CssBaseline />
-        <ul>
+        <ul style={{alignItems: 'center', textAlign:"center"}}>
         <Switch
-            //{...label}
             checked={checked}
-            color="success"
-            style={{opacity: 0.2}}
+            color="default"
             onChange={handleChange}
-            inputProps={{ 'aria-label': 'controlled' }}
           />
-          <span>{selectedMode === lightTheme ? "Thème light" : "Thème sombre"}</span>
+          <span style={{fontFamily: "Grotesk", fontWeight: "100"}}>Thème</span>
         </ul>
         </div>
       <TagContextParent/>
     </ThemeProvider>
-  </>
+  </div>
   );
 }

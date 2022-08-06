@@ -38,7 +38,7 @@ export default function Header()
 	return (
 		<>
 		<Box sx={{ flexGrow: 1}}>
-			<AppBar position="static" color="transparent" style={{height: "100px",padding:"15px", overflowX:"scroll", overflowY:"hidden", whiteSpace:"nowrap", justifyContent: "space-evenly", alignItems: "center"/*display: "inline-block"*/}}>
+			<AppBar position="static" color="transparent" style={{height: "100px",padding:"15px", overflowX:"scroll", overflowY:"hidden", whiteSpace:"nowrap", justifyContent: "space-evenly", alignItems: "center"}}>
 				<Toolbar>
 					<ul  style={{overflowX: 'scroll', display: "inline"}} /*style={{overflow: "scroll"}}*/>
 						{selectedMenuTags && selectedMenuTags.map( (menuTag) => 

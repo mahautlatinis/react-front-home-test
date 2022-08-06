@@ -1,16 +1,9 @@
 FROM node:18-alpine3.15
-
-RUN npm install -g npm@8.9.0
-
-WORKDIR /app_backend
-
-CMD mkdir upload
-
-RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
-
-RUN npm i -g @nestjs/cli
-
-EXPOSE 3000
-
-#pour dev
-ENTRYPOINT npm install --silent && npm run start:dev
+WORKDIR /app
+COPY package.json .
+RUN npm install -g npm@8.16.0
+WORKDIR /backendapp
+RUN npm install --legacy-peer-deps
+COPY . .
+EXPOSE 3030
+ENTRYPOINT npm run start:dev

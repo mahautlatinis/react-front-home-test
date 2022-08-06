@@ -27,7 +27,9 @@ Please commit as frequently as possible to make the review easier.
 ## Bonus
 
 - You can do whatever you want to improve the experience on this little app.  ✅  bonus will be on the bonus branch
-- I edited the package.json, please use npm instead of yarn for the bonus part. 
+
+- ✅  Made a Makefile and a docker-compose file so you just need to $make
+- If you do not have Docker, I edited the package.json, please use npm instead of yarn for the bonus part. 
 - Please use npm install --legacy-peer-deps
 
 # Requirements

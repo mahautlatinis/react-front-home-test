@@ -2,12 +2,12 @@ import React from "react"
 import { ContextInterface, contextInitializer } from "../../interfaces/ParentContext/ParentContext.interface"
 import { RecipeTagInterface } from "../../interfaces/Tag/RecipeTag.interface";
 import "../../assets/styles/styles.css"
-import Tag from "../../components/Displaying/Tag/Tag";
+import Tag from "../Displaying/Tag/Tag";
 import  { MenuContext } from "../../context/MenuContext";
 import { menuTagList, allRecipesTag, winter, summer, fall, spring, appetizer, diet, dessert, vegan} from "../../assets/mock_data/TagData";
 import {RecipeContext} from "../../context/RecipeContext";
 import { RecipeTagList } from "../../assets/mock_data/TagData";
-import Recipe  from "../../components/Displaying/Recipe/Recipe"
+import Recipe  from "../Displaying/Recipe/Recipe"
 import { MenuTagInterface } from "../../interfaces/Tag/MenuTag.interface";
 import Header from "../Displaying/Header/Header";
 import { RecipeItemInterface} from "../../interfaces/Recipe/Recipe.interface"

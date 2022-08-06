@@ -1,47 +1,22 @@
-DOCKER			= docker
-COMPOSE 		= docker-compose
+#Change your pwd
+PWD = "/Users/mahautlatinis/Desktop/3"
 
-.PHONY: all build up down pause unpause clean fclean re
+all:
+			docker-compose up --build
 
-all		:
-			$(COMPOSE) up --build
+buildImage:
+			docker build -t react-image . -f ./my-app/Dockerfile
 
-buildfront:
-			docker build -t react-image . -f ./frontend/Dockerfile
-#build or rebuild services
-build:
-			$(COMPOSE) build
+#runContainer: 
+#			docker run -it -p 3000:3000 -e CHOKIDAR_USEPOLLING=true react-image
 
-# Creates and start containers
-up:
-			${COMPOSE} up
+stopContainer:
+			docker stop react-app
 
-# Stops containers and removes containers, networks, volumes, and images created by up
-down:
-			$(COMPOSE) down
-
-# Pause containers
-pause:
-			$(COMPOSE) pause
-
-# Unpause containers
-unpause:
-			$(COMPOSE) unpause
-
-# down and make sure every containers are deleted
 clean:
-			$(COMPOSE) down -v --rmi all --remove-orphans
-			rm -rf ./database-data && echo "removed database"
-			rm -rf ./frontend/node_modules
-			rm -rf ./frontend/typescript-react-app/package-lock.json
-			rm -rf ./backend/node_modules
+			docker system prune
 
-
-# cleans and makes sure every volumes, networks and image are deleted
-fclean:		clean
-			$(DOCKER) system prune --volumes --all --force
-			$(DOCKER) network prune --force
-			echo docker volume rm $(docker volume ls -q)
-			$(DOCKER) image prune --force
-
-re:	fclean all
+#stopAll:
+#			docker stop $(docker ps -a -q)
+#rmAll:
+#			docker stop $(docker ps -a -q)
