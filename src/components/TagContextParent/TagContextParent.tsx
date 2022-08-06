@@ -16,6 +16,8 @@ import { RecipeItemInterface} from "../../interfaces/Recipe/Recipe.interface"
 import { AllRecipes } from "../../assets/mock_data/RecipeData";
 import Presentation from "../Displaying/Presentation/Presentation";
 
+//Material UI
+
 export default class TagContextParent extends React.Component<{}, ContextInterface> {
 
 	constructor(props: any) {
@@ -294,6 +296,7 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 	render() {
 		return (
 		<>
+		<div style={{textAlign: "center"}}>
 			<MenuContext.Provider
                 value={
                     {currentMenues: {
@@ -316,12 +319,14 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 					getSelectedMenuTags: {getSelectedMenuTags: this.getSelectedMenuTags},
 					getSelectedRecipesTags: {getSelectedRecipesTags: this.getSelectedRecipesTags},
 				}}>
+				
 				<Header />
 				<Presentation />
                 <Tag />
 				<Recipe />
 				</RecipeContext.Provider>
 			</MenuContext.Provider>
+			</div>
 		</>)
 	}
 }

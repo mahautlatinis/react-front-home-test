@@ -11,7 +11,7 @@ export default function MenuTag()
 	}, [menuContext])
 	return (
 			<div>
-				<h1>Choisissez vos menus préférés 😋</h1>
+				<h2 style={{marginBottom: "0px"}}>Choisissez vos menus préférés 😋</h2>
 				<div>
 					{menuContext && menuContext.currentMenues.menuTags && menuContext.currentMenues.menuTags.map(menuTag => 
 						<TagItem 

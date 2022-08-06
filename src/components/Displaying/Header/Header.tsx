@@ -49,14 +49,14 @@ export default function Header()
 	}, [recipeContext])
 	return (
 		<>
-		<h1><strong>Bienvenue sur notre Super Cook App ✨ !</strong></h1>
+		{/*<h1><strong>Bienvenue sur notre Super Cook App ✨ !</strong></h1>*/}
 		<Box sx={{ flexGrow: 1}}>
 			<AppBar position="static" color="transparent">
 				<Toolbar>
 					<ul>
 						{selectedMenuTags && selectedMenuTags.map( (menuTag) => 
 						<TagItem 
-							tagType="headerRecipe"
+							tagType="headerMenu"
 							id={menuTag.id}
 							name={menuTag.name}
 							key={menuTag.id}

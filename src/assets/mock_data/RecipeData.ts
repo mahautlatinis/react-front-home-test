@@ -43,7 +43,7 @@ export const waldorfSalad: RecipeItemInterface = {
     "https://assets.afcdn.com/recipe/20190704/94666_w420h420c1cx2689cy1920cxb5378cyb3840.webp",
   ingredients: [salad, cucumber, feta],
   steps: stepsWaldorfSalad,
-  tags: [appetizer, summer, vegan, diet],
+  tags: [summer, vegan, diet],
 };
 
 export const oliveCake: RecipeItemInterface = {

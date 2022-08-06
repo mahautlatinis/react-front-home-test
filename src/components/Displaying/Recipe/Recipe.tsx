@@ -8,9 +8,6 @@ import { RecipeTagList} from "../../../assets/mock_data/TagData"
 import {AllRecipes, oliveCake, waldorfSalad, pearPie, fondantChocolat, pavlova} from "../../../assets/mock_data/RecipeData"
 import "./style.css"
 import { Chip } from "@material-ui/core";
-
-//import { useState } from "react";
-
 //Import style material ui
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -23,7 +20,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 //import green from '@mui/material/';
-import { green, blue } from "@material-ui/core/colors";
+import { green, blue, purple } from "@material-ui/core/colors";
 
 //Import pour l'accordéon
 import Accordion from '@mui/material/Accordion';
@@ -37,8 +34,30 @@ import Stack from '@mui/material/Stack';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import { IndeterminateCheckBoxRounded } from "@mui/icons-material";
 
+//pour le coeur
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import Favorite from '@material-ui/icons/Favorite';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+
+import { useTheme,ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+//import IconButton from '@mui/material/IconButton';
+////import Box from '@mui/material/Box';
+////import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
+//import Brightness4Icon from '@mui/icons-material/Brightness4';
+//import Brightness7Icon from '@mui/icons-material/Brightness7';
+
+const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+
+//TO DO: a re factoriser
 export default function Recipe() 
 {
+  //Consommation de mes contextes
   const recipeContext = useContext(RecipeContext);
   const menuContext = useContext(MenuContext);
   const allRecipes = AllRecipes;
@@ -47,14 +66,13 @@ export default function Recipe()
 
   //Accordéon ingrédients 
   const [expanded, setExpanded] = React.useState<string | false>(false);
-  //const emojis = ['😀', '😋', '🍰', '🍡', '🍫', '🥗', '🍓', '🥦', '🥑', '🍉', '🍽', '🍇', '🫐', '🍐', '🥩', '🍑']
-  //const [fruits, setFruits] = useState(['🍇','🍈','🍉','🍊','🍋','🍌','🍍','🥭','🍎','🍏','🍐','🍑','🍒','🍓','🫐','🥝','🍅','🫒','🥥'])
 
-  //marche pas, a revoir
-  //const getRandomFruits = () => {
-  //  const random = fruits[~~(Math.random() * fruits.length)]
-  //  return random;
-  //}
+  //couleurs pales pour faire joli, pas utilise
+  const colors = ["#CBE4F9", "#CDF5F6", "#EFF9DA", "#F9EBDF", "#D6CDEA", "F9D8D6", "#D6CDEA", "#8AE3B7", "#5DB7EA"]
+
+  //Consommation du contexte material ui pour dark mode
+  //const theme = useTheme();
+  //const colorMode = React.useContext(ColorModeContext);
 
   useEffect(() => {
     //Rafraichissement à chaque le contexte est modifiés
@@ -72,31 +90,41 @@ export default function Recipe()
       setExpanded(isExpanded ? panel : false);
     };
 
-  return (
-    //<div className="recipe-list">
-    <>
-      <Box /*sx={{ flexGrow: 1 }}*/>
-      <Grid container 
-            direction="row"
-            justifyContent="center"
-            alignItems="stretch"
+  const getColor= () => {
+    //return ('#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0'));
+    //return "#" + ("00000" + Math.floor(Math.random() * Math.pow(16, 6)).toString(16)).slice(-6)
+    let shuffledArray = colors.sort((a, b) => 0.5 - Math.random())
+    return (shuffledArray[0]);
+  }
 
-      /*spacing={{ xs: 1, md: 3 }} columns={{ xs: 1, sm: 8, md: 12 }}*/>
+  return (
+    <>
+      <Box >
+      <Grid container 
+            //direction="row"
+            //item xs={1} sm={12}
+            justifyContent="center"
+            alignItems="center"
+            //justify="center"
+            //alignItems="stretch"
+            >
         {recipesToDisplay && recipesToDisplay?.map((recipe, index) => 
           <>
-          <Card sx={{ width: "15%", height: "500px", padding: "20px", margin: "10px", borderRadius: "30px", border: "none", boxShadow: "none"}}>
-            <Typography gutterBottom variant="h5" component="div" style={{fontFamily: "Grotesk", marginBottom: "10px", paddingBottom: "0px"}}>
+          <Card sx={{ width: "250px",height: "500px", padding: "20px", margin: "10px", borderRadius: "30px", border: "none", boxShadow: "none"}}>
+            <Typography gutterBottom variant="h5" component="div" style={{fontFamily: "Grotesk", paddingBottom: "0px", fontSize:"16px"}}>
               {recipe.name}
             </Typography>
+            {/*<FormControlLabel
+                control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} name="checkedH" />}
+                label=""/>*/}
           <CardMedia
             component="img"
             height="140"
-            //border-radius="20px"
             style={{borderRadius: "30px"}}
             image={recipe.imageURL}
           />
           {recipe && recipe.tags && recipe.tags.map( (tag) => 
-              <Chip label={tag.label} variant="outlined" style={{/*backgroundColor: green[300],*/ margin: "5px", marginTop: "15px", border: "1px solid green"}}/>
+              <Chip label={tag.label} variant="outlined" size="small" style={{/*backgroundColor: green[300],*/ margin: "5px", marginTop: "15px", border: "1px solid green", color: "green"}}/>
             )}
           {/*<CardContent>
           </CardContent>*/}
@@ -107,27 +135,25 @@ export default function Recipe()
               {recipe.description}
             </Typography>*/}
             {/*<Button size="small" color="success">Ingrédients</Button>*/}
-            <Accordion expanded={expanded === 'panel' + index.toString()} onChange={handleChange('panel' + index.toString() )} style={{marginTop: '10px'}}>
+            <Accordion expanded={expanded === 'panel' + recipe.name} onChange={handleChange('panel' + recipe.name )} style={{marginTop: '10px'}}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1bh-content"
                 id="panel1bh-header"
               >
-                <Typography sx={{ color: 'green'}}>Ingrédients</Typography>
+                <Typography>Ingrédients</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>
                   <>
-                    <AvatarGroup max={6} /*style={{width: "65%"}}*/>
+                    <AvatarGroup max={6}>
                       {recipe.ingredients.map((ingredient) => 
-                      <Avatar src={ingredient.imgURL} style={{border: "2px solid #E6E6E6"}}/>)}
+                      <Avatar src={ingredient.imgURL} style={{border: "1px solid #f2f3f4"}}/>)}
                     </AvatarGroup>
-                  {/*</Stack>*/}
                   <Stack direction="row" spacing={1}>
                   {recipe.ingredients.map((ingredient) =>
                   <>
-                    {/*<Avatar src={ingredient.imgURL}/>*/}
-                    <span>{ingredient.name} </span>
+                    <span style={{fontSize: "12px"}}>{ingredient.name} </span>
                   </>
                     )}
                   </Stack>

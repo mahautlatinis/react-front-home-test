@@ -3,6 +3,8 @@ import {useEffect, useContext} from "react"
 import { MenuContext } from "../../../../context/MenuContext";
 import { RecipeContext } from "../../../../context/RecipeContext";
 import "./style.css"
+
+//Material UI
 import { Chip } from "@material-ui/core";
 import { green, blue } from "@material-ui/core/colors";
 
@@ -31,19 +33,31 @@ export default function TagItem(props: MenuTagInterface | null)
                 }
   }
 
+  const getVariant = () => {
+    if (props && props.tagType && props.tagType == "headerMenu")
+      return ({backgroundColor: "purple"})
+    return ({})
+  }
+
   return (
     <ul className="tags">
-      {props && props.tagType == "headerRecipe" ?
+      {props && props.tagType == "headerRecipe" || props && props.tagType &&  props.tagType == "headerMenu"?
       <Chip 
         style={{backgroundColor: green[300]}}
+        //style={getVariant}
+        //variant={props.tagType == "headerMenu" ? "outlined" : "filled"}
         label={props && props.name ? props.name : ""} 
         onDelete={handleClick}
-      /> : 
-      <Chip 
-          label={props && props.name ? props.name : ""} 
-          onClick={handleClick}
-          color={props && menuContext && menuContext?.getClassName.getClassName(props.id, props.tagType ?  props.tagType : "") ? "primary" : "secondary"}
-        />}
+      /> :
+      <>
+        <Chip 
+            label={props && props.name ? props.name : ""} 
+            onClick={handleClick}
+            variant="outlined"
+            color={props && menuContext && menuContext?.getClassName.getClassName(props.id, props.tagType ?  props.tagType : "headerMenu") ? "primary" : "secondary"}
+        />
+      </> 
+        }
     </ul>
   );
 };
