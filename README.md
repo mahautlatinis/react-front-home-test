@@ -26,7 +26,7 @@ Please commit as frequently as possible to make the review easier.
 
 ## Bonus
 
-- You can do whatever you want to improve the experience on this little app.
+- You can do whatever you want to improve the experience on this little app.  ✅  bonus will be on the bonus branch
 
 # Requirements
 
