@@ -20,8 +20,6 @@ export default function RecipeTag()
 		<div className="recipe-tag">
 			<br />
 			<h3 style={{marginBottom: "0px"}}>Vos menus proposent des recettes aux thématiques gourmandes 🍂</h3>
-			{/*<h3>Il y a {nbSelectedCategories} catégorie(s) sélectionnée(s) !</h3>*/}
-			{/*<p>Les catégories séléctionnées sont : </p>*/}
 			<div className="recipeTags">
 				<ul>
 				</ul>

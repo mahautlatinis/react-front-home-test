@@ -4,7 +4,7 @@ export default class Presentation extends Component {
 	render () {
 	return (
 		<>
-			<br /><br />
+			<br />
 			<div>
 				<p>Chaque <span style={{color: "green"}}>menu propose différentes recettes </span>adaptées à vos envies et besoins.</p>
 				<p>Les tags sélectionnés se trouvent dans la Toolbar ci-dessus et sont indiqués par <span style={{color: "green"}}>la couleur verte.</span></p>

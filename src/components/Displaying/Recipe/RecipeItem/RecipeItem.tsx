@@ -31,8 +31,6 @@ export default function RecipeItem(props: RecipeItemInterface)
                 list={props.steps}
               />
         </ul>
-        
-        {/*<Step />*/}
       </div>
     </div>
   );

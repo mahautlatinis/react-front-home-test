@@ -1,15 +1,11 @@
 import IngredientItem from "./IngredientItem/IngredientItem";
-import {IngredientInterface} from "../../../../interfaces/Ingredient/Ingredient.interface";
+import {IngredientItemProps,  IngredientsProps } from "../../../../interfaces/Ingredient/Ingredient.interface";
 import "./style.css"
 import { RecipeItemInterface } from "../../../../interfaces/Recipe/Recipe.interface"
 
-interface IngredientProps {
-  list:  IngredientInterface[],
-}
 
-//TODO: reprendre un hide/show
-//TODO: a centrer
-export default function Ingredient(props: IngredientProps)
+
+export default function Ingredient(props: IngredientsProps)
 {
   return (
     <>
@@ -21,7 +17,6 @@ export default function Ingredient(props: IngredientProps)
           names={item.names}
           type={item.type}
           unit={item.unit}
-          //imgURL={item.imgURL}
           prefix={item.prefix}
         />)}
     </ul>

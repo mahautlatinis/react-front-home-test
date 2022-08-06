@@ -1,17 +1,6 @@
 import './style.css';
-import { IngredientInterface} from "../../../../../interfaces/Ingredient/Ingredient.interface";
+import { IngredientItemProps  } from "../../../../../interfaces/Ingredient/Ingredient.interface"
 
-interface IngredientItemProps {
-  //ingredient?: IngredientInterface
-  //quantity?: number,
-  //unit?: string
-  name?: string;
-	names?: string;
-  imgURL?: string;
-	type?: string;
-	unit?: string;
-	prefix?: string;
-}
 
 export default function IngredientItem(props: IngredientItemProps)
 {

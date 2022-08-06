@@ -1,9 +1,12 @@
-//TODO: a supprimer ou a revoir par rapport à l'interface déclarée dans le composant
-export interface IngredientInterface {
-	name: string;
+export interface IngredientItemProps {
+	name?: string;
 	names?: string;
-	imgURL: string,
+	imgURL?: string;
 	type?: string;
 	unit?: string;
 	prefix?: string;
-};
+}
+
+export interface IngredientsProps {
+	list:  IngredientItemProps[],
+}

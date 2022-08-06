@@ -1,6 +1,5 @@
 import "./style.css"
 import React, {useContext, useEffect, useState} from "react";
-//import RecipeContextInterface from "../../../context/RecipeContext";
 import { RecipeContext} from "../../../context/RecipeContext";
 import { MenuContext} from "../../../context/MenuContext";
 import { menuTagList,  RecipeTagList} from "../../../assets/mock_data/TagData";
@@ -10,22 +9,13 @@ import { RecipeTagInterface } from "../../../interfaces/Tag/RecipeTag.interface"
 import RecipeTag from "../../Filtering/Tag/RecipeTag/RecipeTag";
 import TagItem from "../Tag/TagItem/TagItem";
 
+//Material UI dependencies
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-
-
-//var ScrollArea = require('react-scrollbar');
-//import ScrollArea from "react-scrollbar"
-//TODO: supprimer les telechargem
-
-//import * as Scroll from 'react-scroll';
-
-//import Zoom from 'react-reveal/Zoom';
-//import MenuIcon from '@mui/icons-material/Menu';
 
 
 export default function Header()
@@ -58,7 +48,6 @@ export default function Header()
 	}, [recipeContext])
 	return (
 		<>
-		{/*<h1><strong>Bienvenue sur notre Super Cook App ✨ !</strong></h1>*/}
 		<Box sx={{ flexGrow: 1}}>
 			<AppBar position="static" color="transparent">
 				<Toolbar>

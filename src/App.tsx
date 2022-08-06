@@ -47,13 +47,11 @@ export default function MyApp() {
   return (
     <ThemeProvider theme={selectedMode}>
       <CssBaseline />
-      {/*<main>This app is using the dark mode</main>*/}
       <ul>
       <Switch
           {...label}
           checked={checked}
           color="success"
-          //label="Select dark/light mode"
           onChange={handleChange}
           inputProps={{ 'aria-label': 'controlled' }}
         />

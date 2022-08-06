@@ -7,7 +7,7 @@ import { MenuTagInterface} from "../interfaces/Tag/MenuTag.interface"
 export default interface RecipeContextInterface {
 	currentRecipes: {
 		recipeTags: RecipeTagInterface[] | undefined,
-		selectedRecipes?: number[],//on va identifier les éléments séléctionnés via leur id
+		selectedRecipes?: number[],
 	},
 	onSelectRecipe: {
 		handleSelection?: (id: number) => void,

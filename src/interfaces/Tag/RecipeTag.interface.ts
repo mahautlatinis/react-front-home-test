@@ -3,7 +3,6 @@ export interface RecipeTagInterface {
 	label: string;
 };
 
-//TODO: a supprimer ?
 export type RecipeTagType = {
 	id: number;
 	label: string;

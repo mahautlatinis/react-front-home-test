@@ -2,7 +2,6 @@
 	display: flex;
 	flex-direction: row;
 	padding: 10px;
-	/* TODO: choisir un style plus joli avec des effets */
 	margin-top: 20px;
 	width: 80%;
 }
@@ -11,22 +10,6 @@
 	border: 0.2rem solid green;
 	border-radius: 1rem;
 }
-
-/*.recipe-image {
-	width: 200px;
-	clip-path: circle();
-	height: 200px;
-}*/
-
-/*.recipe-cover {
-	width: 200px;
-	height: 200px;
-}*/
-
-/*.ingredients-image {
-	height: 100px;
-	width: 100px;
-}*/
 
 .recipe-description {
 	padding: 10px;

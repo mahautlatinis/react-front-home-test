@@ -33,7 +33,6 @@ export interface ContextInterface  {
 	}
 }
 
-//TODO: a deplacer dans un autre fichier ?
 export const contextInitializer = {
 	currentMenues: {
         selectedMenu: [1, 2, 3],

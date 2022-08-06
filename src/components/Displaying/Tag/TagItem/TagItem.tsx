@@ -19,7 +19,6 @@ export default function TagItem(props: MenuTagInterface | null)
     //Permet de sélectionner automatiquement "Toutes" si tous les tags sont sélectionnés
     }, [menuContext, recipeContext])
 
-  //TODO: A reindenter
   const handleClick = () => {
     if (props && props?.tagType == "recipeTag" || props?.tagType == "headerRecipe")
                 {
@@ -44,8 +43,6 @@ export default function TagItem(props: MenuTagInterface | null)
       {props && props.tagType == "headerRecipe" || props && props.tagType &&  props.tagType == "headerMenu"?
       <Chip 
         style={{backgroundColor: green[300]}}
-        //style={getVariant}
-        //variant={props.tagType == "headerMenu" ? "outlined" : "filled"}
         label={props && props.name ? props.name : ""} 
         onDelete={handleClick}
       /> :

@@ -1,6 +1,6 @@
-import { IngredientInterface} from "../../interfaces/Ingredient/Ingredient.interface";
+import { IngredientItemProps} from "../../interfaces/Ingredient/Ingredient.interface";
 
-export const chocolate: IngredientInterface= {
+export const chocolate: IngredientItemProps = {
   name: "chocolat",
   names: "chocolats",
   type: "confeseries",
@@ -9,7 +9,7 @@ export const chocolate: IngredientInterface= {
   prefix: "de",
 };
 
-export const sugar: IngredientInterface = {
+export const sugar: IngredientItemProps = {
   name: "sucre",
   names: "sucre",
   type:"sucres et edulcorants",
@@ -18,7 +18,7 @@ export const sugar: IngredientInterface = {
   prefix: "de",
 };
 
-export const butter: IngredientInterface = {
+export const butter: IngredientItemProps = {
   name: "beurre",
   names: "beurre",
   type: "crèmerie et produits frais",
@@ -27,7 +27,7 @@ export const butter: IngredientInterface = {
   prefix: "de",
 };
 
-export const flour: IngredientInterface = {
+export const flour: IngredientItemProps =  {
   name: "farine",
   names: "farine",
   type: "aides à la pâtisserie",
@@ -36,7 +36,7 @@ export const flour: IngredientInterface = {
   prefix: "de",
 };
 
-export const pear: IngredientInterface = {
+export const pear: IngredientItemProps = {
   name: "poire",
   names: "poires",
   type: "fruits",
@@ -45,7 +45,7 @@ export const pear: IngredientInterface = {
   prefix: "de"
 };
 
-export const egg: IngredientInterface = {
+export const egg: IngredientItemProps = {
   name: "oeuf",
   names: "oeufs",
   type: "crèmerie et produits frais",
@@ -54,7 +54,7 @@ export const egg: IngredientInterface = {
   prefix: "d'"
 };
 
-export const redFruits: IngredientInterface = {
+export const redFruits: IngredientItemProps = {
   name: "fruits",
   names: "fruits",
   type: "fruit",
@@ -63,7 +63,7 @@ export const redFruits: IngredientInterface = {
   prefix: "de",
 };
 
-export const almondPowder: IngredientInterface = {
+export const almondPowder: IngredientItemProps = {
   name: "poudre",
   names: "poudre",
   type: "aides à la pâtisserie",
@@ -72,7 +72,7 @@ export const almondPowder: IngredientInterface = {
   prefix: "de",
 };
 
-export const cream: IngredientInterface = {
+export const cream: IngredientItemProps = {
   name: "crème",
   names: "crème",
   type: "crèmerie et produits frais",
@@ -81,7 +81,7 @@ export const cream: IngredientInterface = {
   prefix: "de",
 };
 
-export const salad: IngredientInterface = {
+export const salad: IngredientItemProps = {
   name: "salade",
   names: "salade",
   type: "salades et légumes",
@@ -90,7 +90,7 @@ export const salad: IngredientInterface = {
   prefix: "de"
 };
 
-export const feta: IngredientInterface = {
+export const feta: IngredientItemProps = {
   name: "feta",
   names: "feta",
   type: "fromage",
@@ -99,7 +99,7 @@ export const feta: IngredientInterface = {
   prefix: "de",
 };
 
-export const cucumber: IngredientInterface = {
+export const cucumber: IngredientItemProps = {
   name: "concombre",
   names: "concombres",
   type: "légumes",
@@ -109,7 +109,7 @@ export const cucumber: IngredientInterface = {
 };
 
 //Added
-export const apple: IngredientInterface = {
+export const apple: IngredientItemProps = {
   name: "pomme",
   names: "pommes",
   type: "fruits",
@@ -118,7 +118,7 @@ export const apple: IngredientInterface = {
   prefix: "de"
 }
 
-export const vinegar: IngredientInterface = {
+export const vinegar: IngredientItemProps = {
   name: "vinaigre",
   names: "vinaigre",
   type: "huiles et vinaigres",
@@ -127,7 +127,7 @@ export const vinegar: IngredientInterface = {
   prefix: "de"
 }
 
-export const olive: IngredientInterface = {
+export const olive: IngredientItemProps = {
   name: "olive",
   names: "olives",
   type: "épicerie salée",
