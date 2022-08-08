@@ -28,9 +28,17 @@ Please commit as frequently as possible to make the review easier.
 
 - You can do whatever you want to improve the experience on this little app.  ✅  bonus will be on the bonus branch
 
-- ✅  Made a Makefile and a docker-compose file so you just need to $make
-- If you do not have Docker, I edited the package.json, please use npm instead of yarn for the bonus part. 
-- Please use npm install --legacy-peer-deps
+- ✅ Please use `npm install --legacy-peer-deps` and `npm start` in the bonus branch 
+- ⏱ Made a Makefile and a docker-compose file so you will be able to do a simple $make
+
+The mandatory part was ended around the 6th of August and the bonus part will be part timely done starting from Tuesday 09 August. 
+
+### Next Steps (candidate wants to do more)
+- Change the update so the recipes tags are not all deselected when a menu tag is deselected
+- Depending on the screen (retina or not) change the grey color text
+- create a backend with express and node
+- handle the possibility to add recipes (and related ingredients and steps), recipes tags and menu tags
+- add Cypress tests for frontend and Jest test for the backend 
 
 # Requirements
 

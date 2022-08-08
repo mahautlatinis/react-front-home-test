@@ -7,20 +7,20 @@ RUN npm install -g npm@8.16.0
 
 WORKDIR /app
 
-COPY package.json .
+#COPY package.json .
+#RUN npm install --legacy-peer-deps
+
 RUN npm install --legacy-peer-deps
-
-#RUN npm install --save-dev env-cmd
-#RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
-#RUN apk add xsel
-#RUN npm install -g serve
-
-#RUN npm install --legacy-peer-deps @apideck/better-ajv-errors@0.3.6 @emotion/react@11.10.0 @emotion/styled@11.10.0 \
+# @apideck/better-ajv-errors@0.3.6 @emotion/react@11.10.0 @emotion/styled@11.10.0 \
 #	@material-ui/core@4.12.4 @mui/icons-material@5.8.4 @mui/material@5.9.3 @mui/styled-engine-sc@5.9.3 \
 #	@types/node@16.11.47 @types/react@17.0.2 @types/react-dom@17.0.2 ajv@6.12.6 react@17.0.2 \
-#	react-scripts@5.0.1 styled-components@5.3.5 web-vitals@2.1.4 bash vim
+#	react-scripts@5.0.1 styled-components@5.3.5 web-vitals@2.1.4 bash vim @testing-library/cypress@8.0.3 \
+#	@types/testing-library__cypress@5.0.9 @typescript-eslint/eslint-plugin@5.32.0 @typescript-eslint/parse@5.32.0 \
+#	babel@10.1.0 cypress@10.4.0 eslint@8.21.0 eslint-config-airbnb@19.0.4 eslint-config-google@0.14.0 \
+#	eslint-config-prettier@8.5.0 eslint-plugin-import@2.26.0 eslint-plugin-react@7.30.1 husky@8.0.1 lint-staged@13.0.3 \
+#	prettier@2.7.1 pretty-quick@3.1.3 typescript@4.7.4
 
 COPY . .
 EXPOSE 3000
-#CMD ["npm", "start"]
-CMD npm start
+ENTRYPOINT ["npm", "start"]
+#CMD npm start

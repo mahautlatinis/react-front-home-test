@@ -7,7 +7,7 @@ export default function Ingredient(props: IngredientsProps)
 {
   return (
     <>
-    <AvatarGroup max={6}>
+    <AvatarGroup max={6} style={{width: "175px"}}>
       {props.list.map((ingredient) => 
         <Avatar 
           key={ingredient.name} 
