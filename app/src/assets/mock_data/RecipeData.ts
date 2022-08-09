@@ -1,6 +1,6 @@
 import { RecipeItemInterface } from "../../interfaces/Recipe/Recipe.interface";
-import { stepsFondantChocolat,stepsPavlova, stepsTarteAuxPoires, stepsWaldorfSalad, stepsOliveCake} from "./StepData";
-import {sugar, egg, cream, chocolate, butter, flour, pear, redFruits, almondPowder, salad, feta, cucumber, olive} from "./IngredientData"
+import { stepsFondantChocolat,stepsPavlova, stepsTarteAuxPoires, stepsWaldorfSalad, stepsOliveCake, stepsHamRoll, stepsZucchiniGratin, stepsZucchiniSalad} from "./StepData";
+import {sugar, egg, cream, chocolate, butter, flour, pear, redFruits, almondPowder, salad, feta, cucumber, olive, ham, zucchini, vinegar} from "./IngredientData"
 import { appetizer, fall, dessert, summer, vegan, winter, spring, diet} from "./TagData";
 
 export const pavlova: RecipeItemInterface= {
@@ -44,6 +44,7 @@ export const waldorfSalad: RecipeItemInterface = {
   tags: [summer, vegan, diet],
 };
 
+//Added
 export const oliveCake: RecipeItemInterface = {
   name:"Le cake aux olives",
   description: "Le cake aux olives parfait pour le printemps",
@@ -54,13 +55,45 @@ export const oliveCake: RecipeItemInterface = {
   tags: [diet],
 }
 
-//TODO: a renimmer ? attention une recette au nom en français
+export const hamroll: RecipeItemInterface = {
+  name:"Roulés au jambon",
+  description: "Le délicieux roulé feuilleté au jambon",
+  imageURL:
+    "https://www.cuisineactuelle.fr/imgre/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2FCAC.2Fvar.2Fcui.2Fstorage.2Fimages.2Fdossiers-gourmands.2Ftendance-cuisine.2Fjambon-cru-notre-selection-de-recettes-faciles-et-gourmandes-293961.2F3177527-1-fre-FR.2Fjambon-cru-notre-selection-de-recettes-faciles-et-gourmandes.2Ejpg/850x478/quality/90/crop-from/center/roules-feuilletes-au-jambon.jpeg",
+  ingredients: [butter, flour, egg, ham],
+  steps: stepsHamRoll,
+  tags: [appetizer],
+}
+
+export const zucchiniGratin: RecipeItemInterface = {
+  name:"Gratin de courgettes",
+  description: "Le plat parfait de l'automne",
+  imageURL:
+    "https://n6g3q5q8.rocketcdn.me/wp-content/uploads/2020/08/Gratin-de-courgettes-et-pommes-de-terre-WW.jpg",
+  ingredients: [butter, flour, egg, zucchini, cream],
+  steps: stepsZucchiniGratin,
+  tags: [fall],
+}
+
+export const zucchiniSalad: RecipeItemInterface = {
+  name:"Salade de courgettes et feta",
+  description: "La meilleure salade du printemps",
+  imageURL:
+    "https://resize.elle.fr/portrait_webp/var/plain_site/storage/images/elle-a-table/recettes-de-cuisine/salade-courgettes-citron-et-pignons-3867582/93579212-1-fre-FR/Salade-courgettes-citron-et-pignons.jpg",
+  ingredients: [salad, zucchini,feta, vinegar ],
+  steps: stepsZucchiniSalad,
+  tags: [spring],
+}
+
 export const AllRecipes: RecipeItemInterface[] = [
   pavlova,
   fondantChocolat,
   pearPie,
   waldorfSalad,
-  oliveCake
+  oliveCake,
+  hamroll,
+  zucchiniGratin,
+  zucchiniSalad
 ];
 
 // Pas utilisé, déclaré dans le sujet, modification des types depuis

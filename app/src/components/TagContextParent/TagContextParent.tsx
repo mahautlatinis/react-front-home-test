@@ -164,8 +164,7 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 			}},
 			() => {
 				let ret: RecipeTagInterface[] | undefined = this.getSelectedRecipes();
-
-				console.log(ret);
+				//console.log(ret);
 				let i: number = 0;
 				let newSelected: any[] = [];
 				while (i < ret.length)

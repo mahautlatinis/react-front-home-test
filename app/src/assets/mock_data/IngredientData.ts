@@ -136,4 +136,22 @@ export const olive: IngredientItemProps = {
   prefix: "d'"
 }
 
-export const mockIngredients = [sugar, flour, redFruits, chocolate, egg, butter, almondPowder, pear, cream, salad, cucumber, feta, apple, vinegar, olive]
+export const ham: IngredientItemProps = {
+  name: "jambon",
+  names: "jambon",
+  type: "épicerie salée",
+  imgURL: "https://courses.monoprix.fr/images-v3/0c44253f-c4a3-4340-9d37-d41e42b9d14a/fe0a4911-8eb5-455d-a214-9e8eafa8810c/500x500.jpg",
+  unit: "tranches",
+  prefix: "de"
+}
+
+export const zucchini: IngredientItemProps = {
+  name: "courgette",
+  names: "courgettes",
+  type: "légumes",
+  imgURL: "https://res.cloudinary.com/hv9ssmzrz/image/fetch/c_fill,f_auto,h_630,q_auto,w_1200/https://images-ca-1-0-1-eu.s3-eu-west-1.amazonaws.com/photos/original/741/produit-courgettes-AdobeStock_86727844.jpg",
+  unit: "unités",
+  prefix: "de"
+}
+
+export const mockIngredients = [sugar, flour, redFruits, chocolate, egg, butter, almondPowder, pear, cream, salad, cucumber, feta, apple, vinegar, olive, ham, zucchini]

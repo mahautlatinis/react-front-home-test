@@ -1,5 +1,5 @@
 import { StepInterface} from "../../interfaces/Recipe/Step/Step.interface"
-import {sugar, egg, cream, chocolate, butter, flour,redFruits, salad, apple, vinegar, olive} from "./IngredientData"
+import {sugar, egg, cream, chocolate, butter, flour,redFruits, salad, apple, vinegar, olive, ham, zucchini, feta} from "./IngredientData"
 
 export const stepsPavlova: StepInterface[] = [
   {
@@ -128,3 +128,42 @@ export const stepsOliveCake: StepInterface[] = [
     ingredients: [],
     quantities: []
 }]
+
+export const stepsHamRoll: StepInterface[] = [
+  {
+    description: "Préparer votre pâte feuilletée grâce aux oeufs, au beurre et à la farine",
+    order: 1,
+    ingredients: [flour, egg, butter],
+    quantities: [150, 50, 3]
+  },
+  {
+    description: "Mélangez le jambon à la pâte et enfournez 20 minutes !",
+    order: 2,
+    ingredients: [ham],
+    quantities: [2]
+  }
+]
+
+export const stepsZucchiniGratin: StepInterface[] = [
+  {
+    description: "Préparer les courgettes en les éplucant et les coupant en fin morceaux",
+    order: 1,
+    ingredients: [zucchini],
+    quantities: [2]
+  },
+  {
+    description: "Faites votre pâte à gratin et melangez y les courgettes!",
+    order: 2,
+    ingredients: [egg, flour, cream],
+    quantities: [2, 150, 200]
+  }
+]
+
+export const stepsZucchiniSalad: StepInterface[] = [
+  {
+    description: "Mélangez la salade, la feta et les courgettes découpées en fines lamelles, assaisonnez à votre convenance et c'est prêt 😋",
+    order: 1,
+    ingredients: [zucchini, salad, feta, vinegar],
+    quantities: [2]
+  }
+]

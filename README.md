@@ -30,7 +30,9 @@ Please commit as frequently as possible to make the review easier.
 ### Next Steps (candidate wants to do more and will do it after mid august)
 - Mock data will be updated (and added) so that the user will clearly see the updates on tags selection.
 - Depending on the screen (retina or not) change the grey color text (Presentation)
-- create a backend with express and node so that the mock_data is in a real database and the app interacts with a backend 
+- Media queries will be added so the mobile screen only displays few recipes
+- create a backend with express and node so that the mock_data is in a real database and the app interacts with a backend
+- relations between tables should be made to check if everything is correct (check that the steps include the correct ingredients...)
 - handle the possibility to add recipes (and related ingredients and steps), recipes tags and menu tags
 - add Cypress tests for frontend and Jest test for the backend 
 
