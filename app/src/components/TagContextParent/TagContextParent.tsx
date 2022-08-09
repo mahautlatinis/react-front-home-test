@@ -144,7 +144,7 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 					newArray.push(this.state.currentMenues.selectedMenu[i])
 			}
 			if (newArray.length === 0)
-				newArray = [1];
+				newArray = [];
 		}
 		else
 		{
