@@ -15,7 +15,7 @@ export default function TagItem(props: MenuTagInterface | null)
   const recipeContext = useContext(RecipeContext)
 
   useEffect(() => {
-    //Permet de sélectionner automatiquement "Toutes" si tous les tags sont sélectionnés
+    //console.log("recipe context is ", recipeContext);
     }, [menuContext, recipeContext])
 
   const handleClick = () => {
@@ -30,12 +30,6 @@ export default function TagItem(props: MenuTagInterface | null)
                     menuContext?.onSelect.handleSelection(props.id)
                 }
   }
-
-  //const getVariant = () => {
-  //  if (props && props.tagType && props.tagType == "headerMenu")
-  //    return ({backgroundColor: "purple"})
-  //  return ({})
-  //}
 
   return (
     <ul className="tags">
