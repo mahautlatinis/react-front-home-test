@@ -31,12 +31,6 @@ export default function TagItem(props: MenuTagInterface | null)
                 }
   }
 
-  //const getVariant = () => {
-  //  if (props && props.tagType && props.tagType == "headerMenu")
-  //    return ({backgroundColor: "purple"})
-  //  return ({})
-  //}
-
   return (
     <ul className="tags">
       {((props && props.tagType === "headerRecipe") || (props && props.tagType &&  props.tagType === "headerMenu")) ?

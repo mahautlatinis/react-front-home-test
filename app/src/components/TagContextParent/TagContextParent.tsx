@@ -87,7 +87,6 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 			else
 				return false
 		}
-		//TODO: Attention a mes modifs
 		else if (tagType === "recipeTag")
 		{
 			if (this.state.currentRecipes.selectedRecipes && this.state.currentRecipes.selectedRecipes.some( elem => {
@@ -165,7 +164,15 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 			}},
 			() => {
 				let ret: RecipeTagInterface[] | undefined = this.getSelectedRecipes();
-				//console.log(ret);
+
+				console.log(ret);
+				let i: number = 0;
+				let newSelected: any[] = [];
+				while (i < ret.length)
+				{
+					newSelected = [...newSelected, ret[i].id];
+					i++;
+				}
 				this.setState({
 				currentMenues: {
 					selectedMenu: newArray,
@@ -174,7 +181,7 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 				},
 				currentRecipes: {
 					recipeTags: ret,
-					selectedRecipes: []
+					selectedRecipes: newSelected
 				}
 				})
 			})

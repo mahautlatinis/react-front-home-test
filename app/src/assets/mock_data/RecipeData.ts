@@ -10,7 +10,7 @@ export const pavlova: RecipeItemInterface= {
     "https://www.mycake.fr/wp-content/uploads/2019/10/rs_Pavlova_4x3.jpg",
   ingredients: [sugar, flour, redFruits, egg, cream],
   steps: stepsPavlova,
-  tags: [summer, dessert],
+  tags: [summer],
 };
 
 export const fondantChocolat: RecipeItemInterface = {
@@ -31,7 +31,7 @@ export const pearPie: RecipeItemInterface = {
     "https://assets.afcdn.com/recipe/20201228/116793_w1200h800c1cx1060cy707cxb2121cyb1414.webp",
   ingredients: [almondPowder, sugar, butter, flour, pear],
   steps: stepsTarteAuxPoires,
-  tags: [dessert, fall],
+  tags: [dessert],
 };
 
 export const waldorfSalad: RecipeItemInterface = {
@@ -51,7 +51,7 @@ export const oliveCake: RecipeItemInterface = {
     "https://img-3.journaldesfemmes.fr/FMseEv4OWBADkpClRZdcp0iIArA=/750x500/smart/bb58e69d2891490eb1044d9414e8b2c3/recipe-jdf/10027203.jpg",
   ingredients: [butter, flour, egg, olive],
   steps: stepsOliveCake,
-  tags: [appetizer, spring, diet],
+  tags: [diet],
 }
 
 //TODO: a renimmer ? attention une recette au nom en français
