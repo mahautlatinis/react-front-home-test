@@ -16,6 +16,8 @@ export default function TagItem(props: MenuTagInterface | null)
 
   useEffect(() => {
     //Permet de sélectionner automatiquement "Toutes" si tous les tags sont sélectionnés
+    //console.log("recipe context is ", recipeContext);
+    //console.log("menu context is ", menuContext);
     }, [menuContext, recipeContext])
 
   const handleClick = () => {

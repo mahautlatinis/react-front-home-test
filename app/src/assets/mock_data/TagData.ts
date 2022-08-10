@@ -4,43 +4,60 @@ import { MenuTagInterface } from "../../interfaces/Tag/MenuTag.interface";
 export const summer: RecipeTagInterface = {
   id: 1,
   label: "été",
-};
-
-export const vegan: RecipeTagInterface = {
-  id: 2,
-  label: "vegan",
-};
-
-export const appetizer: RecipeTagInterface = {
-  id: 3,
-  label: "entrées",
-};
-
-export const dessert: RecipeTagInterface = {
-  id: 4,
-  label: "dessert",
+  //Added properties
+  menuId: 1,
+  menuName: "saison"
 };
 
 export const fall: RecipeTagInterface = {
-  id: 5,
+  id: 2,
   label: "automne",
+  menuId: 1,
+  menuName: "saison"
 };
 
 export const winter: RecipeTagInterface = {
-  id: 6,
+  id: 3,
   label: "hiver",
+  menuId: 1,
+  menuName: "saison"
 };
 
-//Added
 export const spring: RecipeTagInterface = {
-  id: 7, 
+  id: 4, 
   label: "printemps",
+  menuId: 1,
+  menuName: "saison"
 }
 
 export const diet: RecipeTagInterface = {
-  id: 8,
+  id: 5,
   label: "diet",
+  menuId: 3,
+  menuName: "régimes particuliers"
 }
+
+
+export const vegan: RecipeTagInterface = {
+  id: 6,
+  label: "vegan",
+  menuId: 3,
+  menuName: "régimes particuliers"
+};
+
+export const appetizer: RecipeTagInterface = {
+  id: 7,
+  label: "entrées",
+  menuId: 2,
+  menuName: "traditionnel"
+};
+
+export const dessert: RecipeTagInterface = {
+  id: 8,
+  label: "desserts",
+  menuId: 2,
+  menuName: "traditionnel"
+};
 
 //Dirty modifications
 export const seasons: MenuTagInterface = {
@@ -61,39 +78,54 @@ export const specialDiet: MenuTagInterface = {
   tags: [vegan, diet]
 }
 
-//Dirty
 export const allRecipesTag: RecipeTagInterface[] = [
   {
     id: 1,
     label: "été",
+    menuId: 1,
+    menuName: "saison"
   },
   {
     id: 2,
-    label: "vegan",
+    label: "automne",
+    menuId: 1,
+    menuName: "saison"
   },
   {
     id: 3,
-    label: "entrées",
+    label: "hiver",
+    menuId: 1,
+    menuName: "saison"
   },
   {
     id: 4,
-    label: "dessert",
+    label: "printemps",
+    menuId: 1,
+    menuName: "saison"
   },
   {
     id: 5,
-    label: "automne",
+    label: "diet",
+    menuId: 3,
+    menuName: "régimes particuliers"
   },
   {
     id: 6,
-    label: "hiver",
+    label: "vegan",
+    menuId: 3,
+    menuName: "régimes particuliers"
   },
   {
     id: 7,
-    label: "printemps",
+    label: "entrées",
+    menuId: 2,
+    menuName: "traditionnel"
   },
   {
     id: 8,
-    label: "diet",
+    label: "desserts",
+    menuId: 2,
+    menuName: "traditionnel"
   }
 ]
 

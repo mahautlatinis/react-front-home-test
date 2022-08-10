@@ -4,7 +4,7 @@ import { RecipeTagInterface } from "../../interfaces/Tag/RecipeTag.interface";
 import "../../assets/styles/styles.css"
 import Tag from "../Displaying/Tag/Tag";
 import  { MenuContext } from "../../context/MenuContext";
-import { menuTagList, allRecipesTag, winter, summer, fall, spring, appetizer, diet, dessert, vegan} from "../../assets/mock_data/TagData";
+import { menuTagList, allRecipesTag} from "../../assets/mock_data/TagData";
 import {RecipeContext} from "../../context/RecipeContext";
 import { RecipeTagList } from "../../assets/mock_data/TagData";
 import Recipe  from "../Displaying/Recipe/Recipe"
@@ -22,8 +22,11 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 		this.state = contextInitializer;
 	}
 
+	//Permet de récupérer les recipe tags relatifs au menu tag qui a été cliqué 
 	getCorrespondingTag = (id: number) => {
-		let i = 0;
+		//console.log("get corresponding tag");
+
+		let i: number = 0;
 		while (i < menuTagList.length)
 		{
 			if (menuTagList[i].id === id)
@@ -55,6 +58,8 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 
 	//Permet de retourner un tableau de RecipeTags afin de voir les recipe tags sélectionnés
 	getSelectedRecipesTags =  () => {
+
+		//console.log("get selected recipes tags");
 		let ret: RecipeTagInterface[] = [];
 
 		let i: number = 0, j: number = 0, len2: number = RecipeTagList.length;
@@ -74,7 +79,7 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 		return (ret);
 	}
 
-	//Va permettre aux TagItem de définir leur className en fonction du retour
+	//Va permettre aux TagItem de définir leur className (affichae, style, si sélectionné ou pas sélectionné)
 	getClassName = (id: number, tagType: string) => 
 	{
 		if (tagType === "menuTag")
@@ -100,8 +105,10 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 		return false
 	}
 
-	//Permet de gérer la sélection des MenuTag
+	//Permet de gérer la sélection des recipe tags (primary / secondary) une fois générés par la sélection du menu
 	handleRecipeSelection = (id: number) => {
+		//console.log("handle recipe selection");
+
 		let newArray: number[] | undefined = [];
 		if (this.state.currentRecipes.selectedRecipes.includes(id))
 		{
@@ -132,10 +139,14 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 
 	//Permet de sélectionner les menus, mise à jour du contexte
 	handleMenuSelection = (id: number) =>  {
+		//console.log("handle menu selection");
+
 		if (!id)
 			return;
 		let newArray: number[] = [];
+		let adding: Boolean = false;
 
+		//Removing
 		if (this.state.currentMenues.selectedMenu.includes(id))
 		{
 			for (let i = 0; i < this.state.currentMenues.selectedMenu.length; i++)
@@ -143,18 +154,13 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 				if (this.state.currentMenues.selectedMenu[i] !== id)
 					newArray.push(this.state.currentMenues.selectedMenu[i])
 			}
-			if (newArray.length === 0)
-				newArray = [];
 		}
+		//Adding
 		else
 		{
 			newArray = this.state.currentMenues.selectedMenu;
-			if (this.state.currentMenues.selectedMenu.includes(0))
-				newArray = [id]
-			else if (id === 0)
-				newArray = [0];
-			else
-				newArray = [...this.state.currentMenues.selectedMenu, id];
+			newArray = [...this.state.currentMenues.selectedMenu, id];
+			adding = true;
 		}
 		this.setState({
 			currentMenues: {
@@ -163,13 +169,27 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 				maxSelection: this.state.currentMenues.maxSelection
 			}},
 			() => {
-				let ret: RecipeTagInterface[] | undefined = this.getSelectedRecipes();
-				//console.log(ret);
+				//Va permettre de séléctionner automatiquement tous les recipes tags lorsqu'un menu tag change
+				let ret: RecipeTagInterface[] | undefined = this.getRecipesTags();
+
 				let i: number = 0;
 				let newSelected: any[] = [];
 				while (i < ret.length)
 				{
-					newSelected = [...newSelected, ret[i].id];
+					if (this.state.currentRecipes.selectedRecipes.includes(ret[i].id) && this.state.currentMenues.selectedMenu.includes(ret[i].menuId))
+						newSelected = [...newSelected, ret[i].id];
+					else if (adding === true)
+					{
+						let tagsToAdd = this.getCorrespondingTag(id);
+						let i: number = 0;
+						while (i < tagsToAdd.length)
+						{
+							if (!newSelected.includes(tagsToAdd[i].id))
+								newSelected = [...newSelected, tagsToAdd[i].id];
+							i++;
+						}
+					
+					}
 					i++;
 				}
 				this.setState({
@@ -189,6 +209,8 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 
 	//Pour permet l'affichage des recettes, on retourne un tableau aevc les "Recipe Item"
 	getRecipesToDisplay = () => {
+
+		//console.log("get recipes to display");
 		let arrToDisplay: RecipeItemInterface[] | undefined = [];
 
 		let len: number = this.state.currentRecipes?.selectedRecipes?.length ? this.state?.currentRecipes?.selectedRecipes?.length : 0
@@ -233,65 +255,11 @@ export default class TagContextParent extends React.Component<{}, ContextInterfa
 			return (arrToDisplay);
 	}
 
-	onMenuSelectionDisplayRecipes = () => {
-		let newArray: any[] = [];
-		let tags: any;
-
-		if (this.state.currentMenues.selectedMenu)
-		{
-			for (let i = 0; i < this.state.currentMenues.selectedMenu.length; i++)
-			{
-				tags = this.getCorrespondingTag(this.state.currentMenues.selectedMenu[i]);
-				newArray = [...newArray, tags]
-			}
-		}
-		return (newArray);
-	}
-
-	//Permet d'extraire l'id et le nom (label) des recettes dépendantes des sélection
-	getSelectedRecipes = () => 
+	//Permet d'extraire l'id et le nom (label) des recettes tags dépendants des sélection de menu
+	getRecipesTags = () => 
 	{
-		let newArray: RecipeTagInterface[] = [];
-
-		if (this.state.currentMenues.selectedMenu.length === 3)
-			return allRecipesTag;
-
-		if (this.state.currentMenues.selectedMenu.includes(1))
-		{
-			newArray = [...newArray, winter];
-			newArray = [...newArray, summer];
-			newArray = [...newArray, fall];
-			newArray = [...newArray, spring];
-		}
-			
-		if (this.state.currentMenues.selectedMenu.includes(2))
-		{
-			newArray = [...newArray, appetizer];
-			newArray = [...newArray, dessert];
-		}
-			
-		if (this.state.currentMenues.selectedMenu.includes(3))
-		{
-			newArray = [...newArray, vegan];
-			newArray = [...newArray, diet];
-		}
-		return (newArray);
-	}
-
-	//Permet de filtrer pour qu'il n'y ait pas de doublons dans les tags recettes
-	setClearedRecipes = (cleared: any, clearedNames: string[]) =>
-	{
-		this.setState({
-			currentMenues: {
-				selectedMenu: this.state.currentMenues.selectedMenu,
-				menuTags: this.state.currentMenues.menuTags,
-				maxSelection: this.state.currentMenues.maxSelection
-			},
-			currentRecipes: {
-				recipeTags: this.state.currentRecipes.recipeTags,
-				selectedRecipes: [],//TODO
-			}
-		})
+		//console.log("this state selected recipe ", this.state.currentRecipes.selectedRecipes);
+		return allRecipesTag
 	}
 
 	render() {
