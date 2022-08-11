@@ -87,7 +87,6 @@ export const stepsTarteAuxPoires: StepInterface[] = [
   }
 ];
 
-// Added
 export const stepsWaldorfSalad: StepInterface[] = [
   {
     description: "Couper les pommes en fins quartiers.",

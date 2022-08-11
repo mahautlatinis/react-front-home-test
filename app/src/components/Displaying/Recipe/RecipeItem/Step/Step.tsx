@@ -1,8 +1,5 @@
-import { StepInterface } from "../../../../../interfaces/Recipe/Step/Step.interface";
+import { StepProps } from "../../../../../interfaces/Recipe/Step/Step.interface";
 
-interface StepProps {
-  list?: StepInterface[]
-}
 
 export default function Step(props: StepProps)
 {

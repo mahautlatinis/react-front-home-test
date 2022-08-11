@@ -1,6 +1,4 @@
 import * as React from 'react';
-
-//Imports material UI pour dark et light theme
 import TagContextParent from "./components/TagContextParent/TagContextParent";
 import Switch from '@mui/material/Switch';
 import { ThemeProvider, createTheme } from '@mui/material/styles';

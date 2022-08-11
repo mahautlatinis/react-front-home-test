@@ -5,7 +5,6 @@ import TagItem from "../../../Displaying/Tag/TagItem/TagItem";
 
 export default function RecipeTag()
 {
-	//"Consommation" des contexts
 	const recipeContext = useContext(RecipeContext);
 	const menuContext = useContext(MenuContext);
 

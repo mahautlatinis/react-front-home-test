@@ -7,18 +7,18 @@ export default function Ingredient(props: IngredientsProps)
 {
   return (
     <>
-    <AvatarGroup max={6} style={{width: "175px"}}>
-      {props.list.map((ingredient) => 
-        <Avatar 
-          key={ingredient.name} 
-          src={ingredient.imgURL} 
-          style={{border: "1px solid #f2f3f4"}}
-        />)}
-    </AvatarGroup>
-    <Stack direction="row" spacing={1}>
-      {props.list.map((ingredient) =>
-        <span key={ingredient.name} style={{fontSize: "12px"}}>{ingredient.name} </span>)}
-    </Stack>
+      <AvatarGroup max={6} style={{width: "175px"}}>
+        {props.list.map((ingredient) => 
+          <Avatar 
+            key={ingredient.name} 
+            src={ingredient.imgURL} 
+            style={{border: "1px solid #f2f3f4"}}
+          />)}
+      </AvatarGroup>
+      <Stack direction="row" spacing={1}>
+        {props.list.map((ingredient) =>
+          <span key={ingredient.name} style={{fontSize: "12px"}}>{ingredient.name} </span>)}
+      </Stack>
     </>
   );
 };

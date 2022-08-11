@@ -59,7 +59,6 @@ export const dessert: RecipeTagInterface = {
   menuName: "traditionnel"
 };
 
-//Dirty modifications
 export const seasons: MenuTagInterface = {
   id: 1,
   name: "saison",

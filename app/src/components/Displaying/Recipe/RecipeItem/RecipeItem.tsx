@@ -2,14 +2,10 @@ import React from "react";
 import { RecipeItemInterface } from "../../../../interfaces/Recipe/Recipe.interface";
 import Ingredient from "../Ingredient/Ingredient";
 import Step from "./Step/Step"
-
-//Import pour les Cards MUI
 import { Chip } from "@material-ui/core";
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-
-//Import pour l'accordéon
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -18,7 +14,6 @@ import Stack from '@mui/material/Stack';
 
 export default function RecipeItem(props: RecipeItemInterface)
 {
-  //Accordéon ingrédients 
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -41,7 +36,6 @@ export default function RecipeItem(props: RecipeItemInterface)
               image={props.imageURL}
             />
 
-          {/* Badge des recettes */}
           {props && props.tags && props.tags.map( (tag) => 
               <Chip 
                 label={tag.label} 
@@ -51,7 +45,6 @@ export default function RecipeItem(props: RecipeItemInterface)
                 style={{margin: "5px", marginTop: "15px", border: "1px solid green", color: "green"}}/>
             )}
 
-            {/* Accordion permettant d'afficher ensuite le détails des ingrédients */}
             <Accordion 
               expanded={expanded === 'panel' + props.name}
               onChange={handleChange('panel' + props.name )} 
@@ -71,7 +64,6 @@ export default function RecipeItem(props: RecipeItemInterface)
               </AccordionDetails>
             </Accordion>
 
-            {/* Accordéon qui va permet d'affiche les infos des étapes de la recette */}
             <Accordion 
               expanded={expanded === 'panel2' + props.name } 
               onChange={handleChange('panel2' + props.name)}

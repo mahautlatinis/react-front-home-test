@@ -6,3 +6,7 @@ export interface StepInterface {
   ingredients: IngredientItemProps[];
   quantities: number[] | undefined;
 };
+
+export interface StepProps {
+  list?: StepInterface[]
+}

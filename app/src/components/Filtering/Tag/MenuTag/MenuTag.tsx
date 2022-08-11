@@ -8,6 +8,7 @@ export default function MenuTag()
 
 	useEffect(() => {
 	}, [menuContext])
+	
 	return (
 			<div>
 				<h2 style={{marginBottom: "0px"}}>Choisissez vos menus préférés 😋</h2>
