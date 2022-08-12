@@ -1,4 +1,4 @@
-import { useContext, useEffect} from "react";
+import React, { useContext, useEffect} from "react";
 import { MenuContext } from "../../../../context/MenuContext";
 import { RecipeContext} from "../../../../context/RecipeContext";
 import TagItem from "../../../Displaying/Tag/TagItem/TagItem";

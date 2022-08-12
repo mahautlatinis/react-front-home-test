@@ -1,7 +1,9 @@
+import { MenuTagInterface} from "../Tag/MenuTag.interface";
+
 export default interface MenuContextInterface {
 	currentMenues: {
 		selectedMenu?: number[],
-		menuTags: any[],//TODO: revoir le type
+		menuTags: MenuTagInterface[]
 	},
 	onSelect: {
 		handleSelection: (id: number) => void 

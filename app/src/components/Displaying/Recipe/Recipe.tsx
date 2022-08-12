@@ -25,8 +25,7 @@ export default function Recipe()
             justifyContent="center"
             alignItems="center"
             >
-        {/* Recipe Item */}
-        {recipesToDisplay && recipesToDisplay?.map((recipe, index) => 
+        {recipesToDisplay && recipesToDisplay?.map((recipe) => 
           <RecipeItem 
             name={recipe.name}
             description={recipe.description}

@@ -11,22 +11,21 @@ import { MenuContext } from "./MenuContext"
 
 export const RecipeContext = createContext<RecipeContextInterface | undefined >(undefined);
 
-export const RecipeContextProvider = (props) => {
+export const RecipeContextProvider = (props: any) => {
 
 	const menuContext = useContext(MenuContext);
 	const [selectedRecipes, setSelectedRecipes] = useState([1, 2, 3, 4, 5, 6, 7, 8]);
 	const [recipeTags, setRecipesTags] = useState(allRecipesTag);
 
 	const handleRecipeSelection = (id: number) => {
-		let newArray: number[] | undefined = [];
+		let newArray: number[] = [];
 
 		if (selectedRecipes.includes(id))
 		{
-			for (let i = 0; i < selectedRecipes.length; i++)
-			{
-				if (selectedRecipes[i] !== id)
-					newArray.push(selectedRecipes[i])
-			}
+			selectedRecipes.forEach( element => {
+				if (element !== id)
+					newArray.push(element)
+				})
 		}
 		else
 		{
@@ -43,23 +42,20 @@ export const RecipeContextProvider = (props) => {
 	}
 	
 	const getRecipesToDisplay = () => {
-		let arrToDisplay: RecipeItemInterface[] | undefined = [];
+		let arrToDisplay: RecipeItemInterface[] = [];
 
 		if (selectedRecipes.length === AllRecipes.length)
 			return (AllRecipes);
 		else
 		{
-			for (let i = 0; i < selectedRecipes.length; i++)
-			{
-				for (let j = 0; j < AllRecipes?.length; j++)
-				{
-					for (let k = 0; k < AllRecipes[j].tags.length; k++)
-					{
-						if (selectedRecipes && AllRecipes[j].tags[k].id === selectedRecipes[i])
-							arrToDisplay = [...arrToDisplay, AllRecipes[j]];
-					}
-				}
-			}
+			selectedRecipes.forEach( element => {
+				AllRecipes.forEach( elem => {
+					elem.tags.forEach( tag => {
+						if (tag.id === element)
+							arrToDisplay = [...arrToDisplay, elem];
+					})
+				})
+			})
 		}
 		arrToDisplay = dropDuplicates(arrToDisplay);
 		return (arrToDisplay);
@@ -73,29 +69,28 @@ export const RecipeContextProvider = (props) => {
 	const getSelectedRecipesTags =  () => {
 		let ret: RecipeTagInterface[] = [];
 
-		for (let i = 0; i < selectedRecipes.length; i++)
-		{
-			for (let j = 0; j < RecipeTagList.length; j++)
-			{
-				if (selectedRecipes && selectedRecipes[i] === RecipeTagList[j].id)
-					ret = [...ret, RecipeTagList[j]];
-			}
-		}
+		selectedRecipes.forEach( elem => {
+			RecipeTagList.forEach(element => {
+				if (selectedRecipes && elem === element.id)
+					ret = [...ret, element];
+			})
+		})
 		return (ret);
 	}
 
 	const getSelectedMenuTags = () =>  {
-			let selected: MenuTagInterface[] = [];
+		let selected: MenuTagInterface[] = [];
 
-			for (let i = 0; i < menuContext.currentMenues.selectedMenu?.length; i++)
-			{
-				for (let j = 0; j < menuTagList.length; j++)
-				{
-					if (menuContext.currentMenues.selectedMenu && menuContext.currentMenues.selectedMenu[i] === menuTagList[j].id)
-						selected = [...selected, menuTagList[j]];
-				}
-			}
-			return (selected);
+		if (menuContext && menuContext.currentMenues.selectedMenu)
+		{
+			menuContext.currentMenues.selectedMenu.forEach(element => {
+				menuTagList.forEach( elem => {
+					if (element === elem.id)
+						selected = [...selected, elem];
+				})
+			})
+		}
+		return (selected);
 	}
 
 	const getCorrespondingRecipeTagForSelectedMenus = (id: number) => {
@@ -110,7 +105,7 @@ export const RecipeContextProvider = (props) => {
 	{
 		if (tagType === "menuTag")
 		{
-			if (menuContext.currentMenues.selectedMenu && menuContext.currentMenues.selectedMenu.some( elem => {
+			if (menuContext && menuContext.currentMenues.selectedMenu && menuContext.currentMenues.selectedMenu.some( elem => {
 					if (elem === id)
 						return true
 					return false}))
@@ -128,27 +123,28 @@ export const RecipeContextProvider = (props) => {
 			else
 				return false
 		}
+		return (undefined)
 	}
 
 	const updateSelectedRecipesTagsOnMenuSelection = () => {
-		let ret: RecipeTagInterface[] | undefined = getAllRecipesTags();
+		let rets: RecipeTagInterface[] | undefined = getAllRecipesTags();
 		let newSelected: any[] = [];
-	
-		for (let i = 0; i < ret.length; i++)
-		{
-			if (selectedRecipes.includes(ret[i].id) && menuContext.currentMenues.selectedMenu.includes(ret[i].menuId))
-				newSelected = [...newSelected, ret[i].id];
-			else if (menuContext.adding.adding === true)
+
+		rets.forEach((ret) => {
+			if (selectedRecipes.includes(ret.id) && menuContext?.currentMenues?.selectedMenu && menuContext.currentMenues.selectedMenu.includes(ret.menuId))
+				newSelected = [...newSelected, ret.id];
+			else if (menuContext?.adding.adding === true)
 			{
 				let tagsToAdd = getCorrespondingRecipeTagForSelectedMenus(menuContext.adding.id);
-				for (let i = 0; i < tagsToAdd.length; i++)
+				if (tagsToAdd)
 				{
-					if (!newSelected.includes(tagsToAdd[i].id))
-						newSelected = [...newSelected, tagsToAdd[i].id];
+					tagsToAdd.forEach(tag => {
+						if (!newSelected.includes(tag.id))
+							newSelected = [...newSelected, tag.id];})
 				}
 			}
-		}
-		setRecipesTags(ret);
+		})
+		setRecipesTags(rets);
 		setSelectedRecipes(newSelected);
 	}
 
@@ -172,7 +168,7 @@ export const RecipeContextProvider = (props) => {
 				}
 			}
 		>
-			{props.children}
+		{props.children}
 		</RecipeContext.Provider>
 	)
 }

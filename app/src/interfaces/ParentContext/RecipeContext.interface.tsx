@@ -20,6 +20,6 @@ export default interface RecipeContextInterface {
 		getSelectedRecipesTags?: () => RecipeTagInterface[]
 	},
 	getClassName: {
-		getClassName: (id: number, tagType: string) => boolean
+		getClassName?: (id: number, tagType: string) => boolean | undefined
 	}
 }

@@ -1,5 +1,5 @@
 import { MenuTagInterface} from "../../../../interfaces/Tag/MenuTag.interface";
-import {useEffect, useContext} from "react"
+import React, {useEffect, useContext} from "react"
 import { MenuContext } from "../../../../context/MenuContext";
 import { RecipeContext } from "../../../../context/RecipeContext";
 import { Chip } from "@material-ui/core";
@@ -42,7 +42,8 @@ export default function TagItem(props: MenuTagInterface | null)
               label={props && props.name ? props.name : ""} 
               onClick={handleClick}
               variant="outlined"
-              color={props && recipeContext && recipeContext?.getClassName.getClassName(props.id, props.tagType ?  props.tagType : "headerMenu") ? "primary" : "secondary"}
+              color={props && recipeContext && recipeContext.getClassName.getClassName && 
+                recipeContext.getClassName.getClassName(props.id, props.tagType ?  props.tagType : "headerMenu") ? "primary" : "secondary"}
           />
         </>}
     </ul>

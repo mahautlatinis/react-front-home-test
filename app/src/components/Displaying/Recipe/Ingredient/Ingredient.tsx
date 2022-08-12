@@ -2,6 +2,7 @@ import {IngredientsProps } from "../../../../interfaces/Ingredient/Ingredient.in
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
+import React from "react";
 
 export default function Ingredient(props: IngredientsProps)
 {

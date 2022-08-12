@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -20,7 +20,7 @@ export default function AlertDialog() {
   };
 
   return (
-    <div>
+    <>
       <Button color="secondary" style={{borderRadius: "20px", padding: "10px", fontFamily: "Grotesk"}} onClick={handleClickOpen}>
         Le saviez-vous ? 
       </Button>
@@ -45,6 +45,6 @@ export default function AlertDialog() {
           </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </>
   );
 }
