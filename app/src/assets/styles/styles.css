@@ -9,27 +9,17 @@ ul {
   overflow-x: scroll;
 }
 
-li, button {
-  font-size: 18px;
+li, button, h1, h2, p {
   font-family: "Grotesk";
-}
-
-.app-container {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  align-items: center;
 }
 
 h1 {
-  font-family: "Grotesk";
   font-size: 2.6em;
   font-weight: 700;
   letter-spacing: .02em;
 }
 
 h2, .step-index, .ingredients-title, p, h3{
-  font-family: "Grotesk";
   margin: 0px;
   text-justify: auto;
   padding: 0px;
@@ -37,13 +27,7 @@ h2, .step-index, .ingredients-title, p, h3{
 
 p {
   color: #c0c0c0;
-  font-family: "Grotesk";
 }
-
-.step-index {
-  font-size: 24px;
-}
-
 
 @font-face {
   font-family: "Grotesk";
