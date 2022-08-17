@@ -25,15 +25,13 @@ Please commit as frequently as possible to make the review easier.
 
 ## Bonus
 
-- You can do whatever you want to improve the experience on this little app.  ✅  bonus will be on the bonus branch
+- You can do whatever you want to improve the experience on this little app.
 
-### Next Steps (candidate wants to do more and will do it after mid august)
-- Mock data will be updated (and added) so that the user will clearly see the updates on tags selection.
-- Depending on the screen (retina or not) change the grey color text (Presentation)
-- Media queries will be added so the mobile screen only displays few recipes
+### Next Steps (candidate would like to do more and will do it after her holidays)
+- Depending on the screen (retina or not) change the text colored in grey
+- Media queries will be added so the mobile screen only displays a specific number of  recipes
 - create a backend with express and node so that the mock_data is in a real database and the app interacts with a backend
-- relations between tables should be made to check if everything is correct (check that the steps include the correct ingredients...)
-- handle the possibility to add recipes (and related ingredients and steps), recipes tags and menu tags
+- handle the possibility to add recipes (and related ingredients and steps), recipes tags and menu tags (and edit and delete)
 - add Cypress tests for frontend and Jest test for the backend 
 
 ## Good to know
@@ -42,6 +40,4 @@ Please commit as frequently as possible to make the review easier.
 # Requirements
 
 To run this project you will need to install yarn and npm
-- ❗️ For the mandatory part, please cd into the app folder use `npm install` and `npm start`, I've worked with npm and updated the dependencies versions and tree.
-- For the bonus part, you will need to have Docker and Docker-Compose installed
-- You will need some internet connection to be able to access the image's sources, install the dependencies and pull docker image. 
+- ❗️ For the mandatory part, please cd into the app folder use `npm install` and `npm start`, I've worked with npm and updated the dependencies versions and tree - or simply do `make`
