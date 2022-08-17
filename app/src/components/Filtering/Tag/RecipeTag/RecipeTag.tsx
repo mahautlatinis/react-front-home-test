@@ -12,9 +12,8 @@ export default function RecipeTag()
 	}, [recipeContext, menuContext])
 	
 	return(
-		<div className="recipe-tag">
-			<br />
-			<h3 style={{marginBottom: "0px"}}>Vos menus proposent des recettes aux thématiques gourmandes 🍂</h3>
+		<div>
+			<h3>Vos menus proposent des recettes aux thématiques gourmandes 🍂</h3>
 			<div id="recipeTags" style={{height: "100px",padding:"15px", overflowX:"scroll", overflowY:"hidden", whiteSpace:"nowrap", justifyContent: "space-evenly", alignItems: "center"}}>
 					{recipeContext?.currentRecipes.recipeTags?.map((recipes) => 
 					<TagItem 

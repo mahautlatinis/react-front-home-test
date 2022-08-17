@@ -11,7 +11,7 @@ export default function MenuTag()
 	
 	return (
 			<div>
-				<h2 style={{marginBottom: "0px"}}>Choisissez vos menus préférés 😋</h2>
+				<h2>Choisissez vos menus préférés 😋</h2>
 				<div style={{height: "100px",padding:"15px", overflowX:"scroll", overflowY:"hidden", whiteSpace:"nowrap", justifyContent: "space-evenly", alignItems: "center"}}>
 					{menuContext && menuContext.currentMenues.menuTags && menuContext.currentMenues.menuTags.map(menuTag => 
 						<TagItem 

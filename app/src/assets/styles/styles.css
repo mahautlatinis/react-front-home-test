@@ -9,7 +9,7 @@ ul {
   overflow-x: scroll;
 }
 
-li, button, h1, h2, p {
+li, button, h1, h2, h3, p {
   font-family: "Grotesk";
 }
 
@@ -19,7 +19,7 @@ h1 {
   letter-spacing: .02em;
 }
 
-h2, .step-index, .ingredients-title, p, h3{
+h2, .step-index, .ingredients-title, p, h3 {
   margin: 0px;
   text-justify: auto;
   padding: 0px;
