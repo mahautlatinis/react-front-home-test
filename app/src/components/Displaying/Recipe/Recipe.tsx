@@ -20,7 +20,7 @@ export default function Recipe()
 
   return (
     <>
-      <Box >
+      <Box>
       <Grid container 
             justifyContent="center"
             alignItems="center"

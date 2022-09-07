@@ -32,7 +32,7 @@ export default function RecipeItem(props: RecipeItemInterface)
             <CardMedia
               component="img"
               height="140"
-              style={{borderRadius: "30px"}}
+              style={{borderRadius: "30px", marginBottom: "10px"}}
               image={props.imageURL}
             />
 
