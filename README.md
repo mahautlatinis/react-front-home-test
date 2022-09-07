@@ -6,6 +6,8 @@ The developer has gone on vacation, so you will have to take over and continue h
 
 Currently, the filter system is not working. You will try to improve/redo this filter system.
 
+<img src="https://github.com/malatini42/react-front-home-test/blob/master/react.gif" width="80%">
+
 ## Preliminary Tasks
 
 - add one recipe in the recipe database (RecipeData.ts) ✅ "Cake aux olives"
